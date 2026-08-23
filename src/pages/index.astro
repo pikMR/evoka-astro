@@ -1,0 +1,113 @@
+---
+import { categories, products } from '../data/catalog';
+import '../styles/global.css';
+
+const visibleCategories = categories;
+const featuredProducts = products.slice(3, 7);
+const clean = (html: string) => html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+const excerpt = (html: string) => clean(html).slice(0, 118) + (clean(html).length > 118 ? '…' : '');
+const formatPrice = (price: number) => price > 0 ? price.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' }) : 'Consultar';
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Evoka: regalos, detalles y piezas con personalidad para celebrar lo que importa." />
+    <meta name="theme-color" content="#f6f3ed" />
+    <title>Evoka · Regalos con personalidad</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="Evoka, inicio">evoka<span>.</span></a>
+      <nav aria-label="Navegación principal">
+        <a href="#seleccion">Selección</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#categorias">Categorías</a>
+      </nav>
+      <a class="header-contact" href="#contacto">Hablemos <span>↗</span></a>
+    </header>
+
+    <main id="inicio">
+      <section class="hero wrap">
+        <div class="hero-copy">
+          <p class="eyebrow">Regalos que cuentan algo</p>
+          <h1>Pequeñas cosas.<br /><em>Grandes momentos.</em></h1>
+          <p class="hero-text">Una selección de regalos, detalles y piezas especiales para celebrar, sorprender y hacerte sonreír.</p>
+          <div class="hero-actions"><a class="button button-dark" href="#catalogo">Ver catálogo <span>↗</span></a><a class="quiet-link" href="#contacto">¿Buscas algo concreto?</a></div>
+        </div>
+        <div class="hero-visual" aria-label="Selección de productos Evoka" role="img">
+          <div class="hero-shape hero-shape-one"></div><div class="hero-shape hero-shape-two"></div>
+          <div class="hero-label"><span>EVK / 2026</span><strong>elige<br /><em>bonito</em></strong></div>
+          <div class="hero-index">01 <span>/</span> 04</div>
+        </div>
+      </section>
+
+      <section class="promise-band"><div class="wrap promise-grid"><span class="eyebrow">Nuestra forma de elegir</span><h2>Lo especial no siempre<br /><em>hace mucho ruido.</em></h2><p>Buscamos piezas con personalidad, regalos que se recuerdan y detalles que transforman un día cualquiera.</p></div></section>
+
+      <section class="section wrap" id="seleccion">
+        <div class="section-heading"><div><p class="eyebrow">Para empezar por aquí</p><h2>La selección <em>Evoka</em></h2></div><span class="section-count">{featuredProducts.length.toString().padStart(2, '0')} / favoritos</span></div>
+        <div class="featured-grid">
+          {featuredProducts.map((product, index) => (
+            <article class={`featured-card featured-${index}`}>
+              <a class="featured-image" href={`#product-${product.id}`}><img src={`/images/products/${product.imageIds[0]}.jpg`} alt={product.name} loading={index > 1 ? 'lazy' : 'eager'} /><span class="image-index">0{index + 1}</span></a>
+              <div class="card-meta"><div><p class="product-category">{product.categories[0]}</p><h3>{product.name}</h3></div><strong>{formatPrice(product.price)}</strong></div>
+              <p class="card-description">{excerpt(product.description)}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="catalog-section" id="catalogo">
+        <div class="wrap">
+          <div class="section-heading catalog-heading"><div><p class="eyebrow">Todo lo que hemos reunido</p><h2>El catálogo</h2></div><p class="catalog-note">{products.length} productos<br />listos para descubrir</p></div>
+          <div class="catalog-toolbar"><label class="search-box"><span>⌕</span><input id="product-search" type="search" placeholder="Buscar un producto" aria-label="Buscar un producto" /></label><div class="filter-list" role="group" aria-label="Filtrar por categoría"><button class="filter-button is-active" data-filter="all">Todo</button>{visibleCategories.map((category) => <button class="filter-button" data-filter={category}>{category}</button>)}</div></div>
+          <div class="catalog-grid" id="product-grid">
+            {products.map((product) => (
+              <article class="catalog-card" id={`product-${product.id}`} data-name={`${product.name} ${product.categories.join(' ')}`.toLowerCase()} data-categories={product.categories.join('|')}>
+                <a class="catalog-image" href={`#product-${product.id}`}><img src={`/images/products/${product.imageIds[0]}.jpg`} alt={product.name} loading="lazy" /><span class="stock-badge">{product.stock > 0 ? 'Disponible' : 'Consultar'}</span></a>
+                <div class="catalog-card-body"><p class="product-category">{product.categories[0]}</p><div class="catalog-title-row"><h3>{product.name}</h3><strong>{formatPrice(product.price)}</strong></div><p class="catalog-excerpt">{excerpt(product.description)}</p><div class="catalog-links"><a href={`https://wa.me/?text=${encodeURIComponent(`Hola, me interesa ${product.name}`)}`} target="_blank" rel="noreferrer">WhatsApp <span>↗</span></a><a href="#contacto">Más detalles <span>→</span></a></div></div>
+              </article>
+            ))}
+          </div>
+          <p class="empty-state" id="empty-state" hidden>No hemos encontrado productos con esa búsqueda.</p>
+        </div>
+      </section>
+
+      <section class="section wrap categories-section" id="categorias"><div class="section-heading"><div><p class="eyebrow">Encuentra tu próximo favorito</p><h2>Explora por <em>categoría</em></h2></div></div><div class="category-list">{visibleCategories.map((category, index) => <button class={`category-row tone-${index % 3}`} data-filter-link={category}><span>0{index + 1}</span><h3>{category}</h3><small>{products.filter((product) => product.categories.includes(category)).length} productos</small><b>↗</b></button>)}</div></section>
+    </main>
+
+    <footer id="contacto"><div class="wrap footer-top"><div><a class="brand brand-light" href="#inicio">evoka<span>.</span></a><p>Una selección con personalidad<br />para regalar y regalarte.</p></div><div><p class="eyebrow">Compra como prefieras</p><p>Muy pronto: compra directa.<br />También estamos en WhatsApp y Vinted.</p></div><div><p class="eyebrow">Contacto</p><a href="mailto:hola@evoka.es">hola@evoka.es</a><p>Respondemos con calma.</p></div></div><div class="wrap footer-bottom"><span>© 2026 Evoka</span><span>Hecho con intención</span></div></footer>
+
+    <script>
+      const search = document.querySelector('#product-search');
+      const buttons = [...document.querySelectorAll('[data-filter]')];
+      const cards = [...document.querySelectorAll('.catalog-card')];
+      const empty = document.querySelector('#empty-state');
+      let activeFilter = 'all';
+      const update = () => {
+        const query = search.value.toLowerCase().trim();
+        let visible = 0;
+        cards.forEach((card) => {
+          const matchesQuery = card.dataset.name.includes(query);
+          const matchesFilter = activeFilter === 'all' || card.dataset.categories.split('|').includes(activeFilter);
+          const show = matchesQuery && matchesFilter;
+          card.hidden = !show;
+          if (show) visible++;
+        });
+        empty.hidden = visible !== 0;
+      };
+      buttons.forEach((button) => button.addEventListener('click', () => {
+        activeFilter = button.dataset.filter;
+        buttons.forEach((item) => item.classList.toggle('is-active', item === button));
+        update();
+      }));
+      document.querySelectorAll('[data-filter-link]').forEach((link) => link.addEventListener('click', () => {
+        const button = buttons.find((item) => item.dataset.filter === link.dataset.filterLink);
+        button?.click();
+        document.querySelector('#catalogo').scrollIntoView({ behavior: 'smooth' });
+      }));
+      search.addEventListener('input', update);
+    </script>
+  </body>
+</html>
