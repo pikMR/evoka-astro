@@ -14,9 +14,9 @@ export const categories = [
   "Amistad & Amor",
   "Bebés & Nacimientos",
   "Bienestar & Spa",
+  "Colección Snoopy",
   "Bienvenido al Mundo",
   "Bonus My Birthday Box Plus",
-  "Colecciones",
   "Despedidas de solter@s",
   "Entre Amig@s - Despedidas",
   "La magia del cumpleaños",
@@ -185,8 +185,7 @@ export const products: Product[] = [
     "price": 4.132231,
     "stock": 14,
     "categories": [
-      "Bienestar & Spa",
-      "Colecciones"
+      "Bienestar & Spa"
     ],
     "imageIds": [
       42
@@ -624,6 +623,7 @@ export const products: Product[] = [
     "price": 16.528926,
     "stock": 2,
     "categories": [
+      "Colección Snoopy",
       "Amistad & Amor",
       "Inicio"
     ],
@@ -640,6 +640,7 @@ export const products: Product[] = [
     "price": 20.661157,
     "stock": 1,
     "categories": [
+      "Colección Snoopy",
       "Amistad & Amor",
       "Inicio"
     ],
@@ -788,6 +789,7 @@ export const products: Product[] = [
     "price": 20.661157,
     "stock": 3,
     "categories": [
+      "Colección Snoopy",
       "Amistad & Amor",
       "Inicio"
     ],
@@ -807,6 +809,7 @@ export const products: Product[] = [
     "price": 30,
     "stock": 3,
     "categories": [
+      "Colección Snoopy",
       "Amistad & Amor",
       "Inicio"
     ],
@@ -824,6 +827,7 @@ export const products: Product[] = [
     "price": 24.793388,
     "stock": 1,
     "categories": [
+      "Colección Snoopy",
       "Amistad & Amor",
       "Inicio"
     ],

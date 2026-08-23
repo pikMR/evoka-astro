@@ -1,0 +1,10 @@
+---
+import CatalogPage from '../components/CatalogPage.astro';
+
+export function getStaticPaths() {
+  return ['es', 'en', 'fr'].map((locale) => ({ params: { lang: locale }, props: { locale } }));
+}
+
+const { locale } = Astro.props;
+---
+<CatalogPage locale={locale} />
