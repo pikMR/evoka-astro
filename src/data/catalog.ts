@@ -19,6 +19,7 @@ export const categories = [
   "Entre Amig@s - Despedidas",
   "Mascotas",
   "Packaging y Empresarial",
+  "TERMOS & TAZAS",
   "Papelería Creativa",
 ] as const;
 
@@ -518,7 +519,7 @@ export const products: Product[] = [
     "price": 3.305785,
     "stock": 12,
     "categories": [
-      "Entre Amig@s - Despedidas",
+      "Packaging y Empresarial",
       "Inicio"
     ],
     "imageIds": [
@@ -688,7 +689,7 @@ export const products: Product[] = [
     "price": 4.958678,
     "stock": 10,
     "categories": [
-      "Entre Amig@s - Despedidas",
+      "Packaging y Empresarial",
       "Inicio"
     ],
     "imageIds": [
@@ -755,6 +756,7 @@ export const products: Product[] = [
     "stock": 1,
     "categories": [
       "Amistad & Amor",
+      "Mascotas",
       "Inicio",
     ],
     "imageIds": [
@@ -1114,5 +1116,182 @@ export const products: Product[] = [
       132
     ],
     "description": "<p>Set de <strong>7 shots Team Groom</strong> en <strong>plástico</strong>, ideal para celebrar con estilo y diversión.</p>\n<p><strong>Códigos y colores:</strong></p>\n<p><strong>O250630631515:</strong> Blanco</p>\n<p><strong>O250630731515:</strong> Negro</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "53",
+    "reference": "120522",
+    "name": "Caja de regalo plegable",
+    "slug": "brown-bear-vector-graphics",
+    "price": 8.264463,
+    "stock": 38,
+    "categories": [
+      "Packaging y Empresarial",
+      "Inicio"
+    ],
+    "imageIds": [
+      127
+    ],
+    "description": "<p>Caja de regalo <strong>plegable y práctica</strong>, ideal para presentar detalles, regalos corporativos y productos especiales.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "99",
+    "reference": "120534-120541E",
+    "name": "Bolsa de Bambú Personalizada",
+    "slug": "brown-bear-vector-graphics",
+    "price": 8.264463,
+    "stock": 10,
+    "categories": [
+      "Packaging y Empresarial",
+      "Inicio"
+    ],
+    "imageIds": [
+      238
+    ],
+    "description": "<p><strong>Bolsa de bambú personalizable</strong>, ideal para regalos corporativos, eventos y detalles únicos con tu diseño o logotipo.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "100",
+    "reference": "120599",
+    "name": "Almohada de Viaje Personalizada",
+    "slug": "brown-bear-vector-graphics",
+    "price": 0,
+    "stock": 1,
+    "categories": [
+      "Packaging y Empresarial",
+      "Inicio"
+    ],
+    "imageIds": [
+      241
+    ],
+    "description": "<p>Almohada de viaje <strong>personalizada</strong>, cómoda y original para acompañar cualquier desplazamiento.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "101",
+    "reference": "1205100",
+    "name": "Juego Abridor de Vino Portátil",
+    "slug": "brown-bear-vector-graphics",
+    "price": 8.264463,
+    "stock": 1,
+    "categories": [
+      "Packaging y Empresarial",
+      "Inicio"
+    ],
+    "imageIds": [
+      242
+    ],
+    "description": "<p>Práctico <strong>juego abridor de vino portátil</strong>, perfecto como detalle, regalo corporativo o accesorio para disfrutar en cualquier ocasión.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "86",
+    "reference": "120586",
+    "name": "Vaso de Cristal con pétalos amarillos",
+    "slug": "termo-classic-snoopy-500ml",
+    "price": 8.264463,
+    "stock": 1,
+    "categories": [
+      "TERMOS & TAZAS",
+      "Inicio"
+    ],
+    "imageIds": [
+      220
+    ],
+    "description": "<p>Vaso de cristal decorativo con <strong>pétalos amarillos</strong>, ideal para regalar y disfrutar de tus bebidas favoritas.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "88",
+    "reference": "120588",
+    "name": "Taza de cristal en forma de flor",
+    "slug": "juguete-de-felpa-para-perro",
+    "price": 6.61157,
+    "stock": 1,
+    "categories": [
+      "TERMOS & TAZAS",
+      "Inicio"
+    ],
+    "imageIds": [
+      224
+    ],
+    "description": "<p>Taza de cristal con original <strong>forma de flor</strong>, perfecta para servir tus bebidas con un toque especial.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "94",
+    "reference": "120594",
+    "name": "Taza Happy de Cerámica",
+    "slug": "juguete-de-felpa-para-perro",
+    "price": 4.958678,
+    "stock": 1,
+    "categories": [
+      "TERMOS & TAZAS",
+      "Inicio"
+    ],
+    "imageIds": [
+      231
+    ],
+    "description": "<p>Taza Happy de <strong>cerámica</strong>, un detalle alegre y práctico para el día a día.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "95",
+    "reference": "120595",
+    "name": "Set de Termos Divertidos Frutales (x3) 🍋",
+    "slug": "juguete-de-felpa-para-perro",
+    "price": 16.528926,
+    "stock": 1,
+    "categories": [
+      "TERMOS & TAZAS",
+      "Inicio"
+    ],
+    "imageIds": [
+      233
+    ],
+    "description": "<p>Set de <strong>3 termos divertidos con diseños frutales</strong>, ideal para llevar tus bebidas contigo.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "96",
+    "reference": "120596",
+    "name": "Mini Batidora Portátil USB",
+    "slug": "juguete-de-felpa-para-perro",
+    "price": 24.793388,
+    "stock": 1,
+    "categories": [
+      "TERMOS & TAZAS",
+      "Inicio"
+    ],
+    "imageIds": [
+      234
+    ],
+    "description": "<p>Mini batidora portátil con conexión <strong>USB</strong>, práctica para preparar tus bebidas en cualquier lugar.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "97",
+    "reference": "120597",
+    "name": "Taza de Cerámica + Pintura",
+    "slug": "juguete-de-felpa-para-perro",
+    "price": 8.264463,
+    "stock": 1,
+    "categories": [
+      "TERMOS & TAZAS",
+      "Inicio"
+    ],
+    "imageIds": [
+      235
+    ],
+    "description": "<p>Taza de cerámica acompañada de pintura para crear un diseño <strong>personalizado y único</strong>.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "98",
+    "reference": "120598",
+    "name": "Hucha Donut",
+    "slug": "juguete-de-felpa-para-perro",
+    "price": 12.396694,
+    "stock": 1,
+    "categories": [
+      "TERMOS & TAZAS",
+      "Inicio"
+    ],
+    "imageIds": [
+      236,
+      237
+    ],
+    "description": "<p>Hucha con original diseño de <strong>donut</strong>, un accesorio decorativo y divertido para ahorrar.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
   }
 ];

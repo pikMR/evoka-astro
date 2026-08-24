@@ -62,7 +62,8 @@ export const categoryTranslations: Record<string, Record<'es' | 'en' | 'fr', str
   'La magia del cumpleaños': { es: 'La magia del cumpleaños', en: 'Birthday Magic', fr: 'La magie de l’anniversaire' },
   'Mascotas': { es: 'Mascotas', en: 'Pets', fr: 'Animaux' },
   'My Breakfast Box': { es: 'My Breakfast Box', en: 'My Breakfast Box', fr: 'My Breakfast Box' },
-  'Packaging': { es: 'Packaging', en: 'Packaging', fr: 'Emballage' },
+
+  'TERMOS & TAZAS': { es: 'TERMOS & TAZAS', en: 'THERMOS & MUGS', fr: 'THERMOS & TASSES' },
   'Papelería Creativa': { es: 'Papelería Creativa', en: 'Creative Stationery', fr: 'Papeterie créative' },
   'Regalos Corporativos': { es: 'Regalos Corporativos', en: 'Corporate Gifts', fr: 'Cadeaux d’entreprise' },
 };
