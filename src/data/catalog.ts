@@ -329,7 +329,7 @@ export const products: Product[] = [
     "price": 4.132231,
     "stock": 16,
     "categories": [
-      "Amistad & Amor",
+      "Papelería Creativa",
       "Inicio"
     ],
     "imageIds": [
@@ -414,12 +414,18 @@ export const products: Product[] = [
     "price": 14.876033,
     "stock": 11,
     "categories": [
+      "Amistad & Amor",
       "Inicio",
-      "Papelería Creativa"
     ],
     "imageIds": [
-      136,
-      135
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80
     ],
     "description": "<p><strong>Peluche \"Breakfast\"</strong> (unidad), con diseño divertido y <strong>textura suave</strong>, ideal como <strong>almohada abrazable</strong>. Fabricado en una sola pieza con acabados de alta calidad, perfecto para <strong>regalos, decoración o juego</strong>.</p>\n<p><strong>Estilos disponibles:</strong></p>\n<p><strong>O250630331515:</strong> Pretzel (18 × 18 cm)</p>\n<p><strong>O250630821515:</strong> Pan saladito (18 × 18 cm)</p>\n<p><strong>O250630031515:</strong> Sándwich (18 × 18 cm)</p>\n<p><strong>O250630231515:</st…2590 tokens truncated…tilos disponibles:</strong></p>\n<p><strong>O250822176969:</strong> Galleta mordida beige (sabor a crema)</p>\n<p><strong>O250822276969:</strong> Galleta mordida chocolate (sabor a chocolate)</p>\n<p><strong>O250822376969:</strong> Galleta chocolate (sabor a chocolate)</p>\n<p><strong>O250822476969:</strong> Barra de chocolate (sabor a chocolate)</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
   },
@@ -458,17 +464,17 @@ export const products: Product[] = [
   {
     "id": "61",
     "reference": "120543",
-    "name": "Gafas Bride",
+    "name": "Antifaz para dormir de seda (unidad)",
     "slug": "gafas-my-birthday",
-    "price": 7.438017,
-    "stock": 9,
+    "price": 4.958678,
+    "stock": 20,
     "categories": [
       "Entre Amig@s - Despedidas",
       "Inicio"
     ],
     "imageIds": [
-      148,
-      149
+      89,
+      86
     ],
     "description": "<p>Accesorios <strong>divertidos y originales</strong> para despedidas de soltera, ideales para <strong>fotos memorables</strong> y celebraciones llenas de estilo.</p>\n<p><strong>Códigos:</strong></p>\n<p><strong>O250520395051:</strong> Marco en perla blanco </p>\n<p><strong>O250520295051:</strong> Marco en perla negro </p>\n<p><strong>O250520095051:</strong> Novia de diamante rosa claro</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
   },
@@ -748,8 +754,8 @@ export const products: Product[] = [
     "price": 4.132231,
     "stock": 1,
     "categories": [
+      "Amistad & Amor",
       "Inicio",
-      "Mascotas"
     ],
     "imageIds": [
       205,
@@ -841,6 +847,272 @@ export const products: Product[] = [
       218
     ],
     "description": "<p><strong>Pantuflas cálidas para interiores</strong>, confeccionadas en <strong>algodón y felpa suave</strong>. Diseño creativo y divertido, ideales para el invierno, brindando <strong>comodidad y abrigo</strong>.</p>\n<p><strong>Longitud interior:</strong> 18 cm (adecuada para pies de 17,5 a 18 cm) <br /><strong>Estilo:</strong> Patata adorable<br /><strong>Talla disponible:</strong> 40-41</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "42",
+    "reference": "120527",
+    "name": "Tarjeta de animales adorables",
+    "slug": "brown-bear-vector-graphics",
+    "price": 2.479339,
+    "stock": 9,
+    "categories": [
+      "Papelería Creativa",
+      "Inicio"
+    ],
+    "imageIds": [
+      82
+    ],
+    "description": "<p><strong>Tarjetas con dibujos adorables</strong>, incluyendo invitaciones de fiesta con animales simpáticos. Cada pieza es única, perfecta para transmitir <strong>alegría y cariño</strong> en cualquier ocasión.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "47",
+    "reference": "120530",
+    "name": "Tarjeta de cumpleaños feliz",
+    "slug": "brown-bear-vector-graphics",
+    "price": 4.132231,
+    "stock": 15,
+    "categories": [
+      "Papelería Creativa",
+      "Inicio"
+    ],
+    "imageIds": [
+      101,
+      102
+    ],
+    "description": "<p><strong>Tarjeta de cumpleaños feliz</strong> con sobre, diseño colorido y plegable de pastel personalizado.</p>\n<p><strong>Ocasión:</strong> Cumpleaños, Felicidades<br /><strong>Funciones especiales:</strong> Personalizable, tridimensional</p>\n<p><strong>Estilos disponibles:</strong></p>\n<p><strong>120530-01:</strong> Pastel tridimensional</p>\n<p><strong>120530-02:</strong> Pastel corazón tridimensional</p>\n<p><strong>120530-03:</strong> Pastel circular con corazones</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "48",
+    "reference": "120558",
+    "name": "Tarjetas retro grabables 60 s",
+    "slug": "gafas-my-birthday",
+    "price": 7.438017,
+    "stock": 12,
+    "categories": [
+      "Papelería Creativa",
+      "Inicio"
+    ],
+    "imageIds": [
+      103,
+      111,
+      112,
+      113
+    ],
+    "description": "<p><strong>Tarjetas de felicitación grabables de estilo retro</strong>, reutilizables y recargables, ideales para <strong>cumpleaños y mensajes personalizados</strong>, combinando <strong>sostenibilidad y creatividad</strong>.</p>\n<p><strong>Estilos disponibles:</strong></p>\n<p><strong>O250822666969:</strong> Grabación de 60 segundos – Rosa</p>\n<p><strong>O250822566969:</strong> Grabación de 60 segundos – Gris</p>\n<p><strong>O250822366969:</strong> Grabación de 60 segundos – Blanco</p>\n<p><strong>O250822466969:</strong> Grabación de 60 segundos – Crema</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "56",
+    "reference": "120555",
+    "name": "Bolígrafo con diseño de frutas",
+    "slug": "brown-bear-vector-graphics",
+    "price": 1.652893,
+    "stock": 20,
+    "categories": [
+      "Papelería Creativa",
+      "Inicio"
+    ],
+    "imageIds": [
+      133,
+      134
+    ],
+    "description": "<p><strong>Bolígrafo con diseño de frutas</strong>, divertido y creativo, ideal para <strong>uso escolar, oficina o regalos</strong>.</p>\n<p><strong>Estilos disponibles:</strong></p>\n<p><strong>O250822966969:</strong> Bolígrafo Banana Gifts</p>\n<p><strong>O250822076969:</strong> Bolígrafo Sandía Gifts</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "57",
+    "reference": "120556",
+    "name": "Mini Blocs de Notas Biscuits",
+    "slug": "brown-bear-vector-graphics",
+    "price": 4.132231,
+    "stock": 9,
+    "categories": [
+      "Papelería Creativa",
+      "Inicio"
+    ],
+    "imageIds": [
+      136,
+      135
+    ],
+    "description": "<p><strong>Mini blocs de notas Biscuits</strong> con aroma a chocolate, ideales para <strong>uso escolar, regalos y papelería creativa</strong>.</p>\n<p><strong>Estilos disponibles:</strong></p>\n<p><strong>O250822176969:</strong> Galleta mordida beige (sabor a crema)</p>\n<p><strong>O250822276969:</strong> Galleta mordida chocolate (sabor a chocolate)</p>\n<p><strong>O250822376969:</strong> Galleta chocolate (sabor a chocolate)</p>\n<p><strong>O250822476969:</strong> Barra de chocolate (sabor a chocolate)</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "51",
+    "reference": "120523-120524-120525",
+    "name": "Set cuidado diario: Trapito apego, babero y  mamila",
+    "slug": "customizable-mug",
+    "price": 24.793388,
+    "stock": 3,
+    "categories": [
+      "Bebés & Nacimientos",
+      "Inicio"
+    ],
+    "imageIds": [
+      124
+    ],
+    "description": "<p><strong>Set de tres piezas de algodón</strong> en elegante color <strong>cúrcuma</strong>, suave y delicado con la piel del bebé. Ideal para <strong>uso diario o como regalo</strong>.</p>\n<p><strong>Contenido:</strong></p>\n<p>1 <strong>trapito de apego</strong>, color cúrcuma</p>\n<p>1 <strong>juguete de tela</strong>, color cúrcuma</p>\n<p>1 <strong>babero de tela</strong>, color cúrcuma</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "52",
+    "reference": "120526",
+    "name": "Pañal de algodón",
+    "slug": "customizable-mug",
+    "price": 10.743802,
+    "stock": 3,
+    "categories": [
+      "Bebés & Nacimientos",
+      "Inicio"
+    ],
+    "imageIds": [
+      125
+    ],
+    "description": "<p><strong>Pañal para bebés y niños</strong>, confeccionado en <strong>algodón puro y transpirable</strong> para mantener frescura y comodidad todo el día.</p>\n<p><strong>Edad aplicable:</strong> 6-12 meses (6-11 kg)<br /><strong>Lavable y reutilizable</strong><br /><strong>Talla única:</strong> 22 × 20 cm, con <strong>cintura elástica ajustable</strong> para adaptarse a diferentes tamaños</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "45",
+    "reference": "120528",
+    "name": "Peluche Cupcake Llavero",
+    "slug": "brown-bear-vector-graphics",
+    "price": 20.661157,
+    "stock": 10,
+    "categories": [
+      "Amistad & Amor",
+      "Inicio"
+    ],
+    "imageIds": [
+      90,
+      91
+    ],
+    "description": "<p><strong>Peluche Cupcake Llavero</strong>, adorable y práctico, ideal para regalar o complementar tus accesorios favoritos. Perfecto como <strong>detalle decorativo, juguete o regalo</strong>.</p>\n<p><strong>Estilos disponibles:</strong></p>\n<p><strong>O250520026051:</strong> Beige (13 × 16 cm)</p>\n<p><strong>O250520126051:</strong> Verde (13 × 16 cm)</p>\n<p><strong>Mantenimiento:</strong> lavable a mano</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "89",
+    "reference": "120589",
+    "name": "Set de Cepillo de Bambú",
+    "slug": "juguete-de-felpa-para-perro",
+    "price": 33.057851,
+    "stock": 1,
+    "categories": [
+      "Bienestar & Spa",
+      "Inicio"
+    ],
+    "imageIds": [
+      225
+    ],
+    "description": "<p class=\"isSelectedEnd\">Práctico y original set de cepillo de <strong>bambú pintado</strong>, con un diseño natural y elegante. Ideal para el cuidado personal y como detalle especial.</p>\n<p><strong>No se aceptan cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "46",
+    "reference": "120557",
+    "name": "Termo Mini Snoopy-280ml",
+    "slug": "gafas-my-birthday",
+    "price": 20.661157,
+    "stock": 10,
+    "categories": [
+      "Colección Snoopy",
+      "Inicio"
+    ],
+    "imageIds": [
+      99,
+      98,
+      100
+    ],
+    "description": "<p><strong>Termo Mini Snoopy</strong>, práctica y adorable, con <strong>revestimiento aislante de cerámica</strong> que mantiene tus bebidas a la temperatura ideal.</p>\n<p><strong>Estilos dibujos animados:</strong></p>\n<p><strong>O250822766969:</strong> Snoopy sol</p>\n<p><strong>O250822866969:</strong> Snoopy ondas</p>\n<p><strong>Uso:</strong> regalo, doméstico, portátil, aislamiento al vacío<br /><strong>Capacidad:</strong> 280 ml<br /><strong>Peso:</strong> 300 g</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "93",
+    "reference": "120593",
+    "name": "Bol Snoopy de Cerámica",
+    "slug": "juguete-de-felpa-para-perro",
+    "price": 12.396694,
+    "stock": 1,
+    "categories": [
+      "Colección Snoopy",
+      "Inicio"
+    ],
+    "imageIds": [
+      229,
+      230
+    ],
+    "description": "<p class=\"isSelectedEnd\">Original bol de cerámica con diseño de <strong>Snoopy</strong>, ideal para el desayuno, snacks o para darle un toque divertido a tu mesa. Perfecto como regalo para cualquier fan de Snoopy.</p>\n<p><br /><strong>No se aceptan cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "90",
+    "reference": "120590",
+    "name": "Set Bonus Personalizado SPA",
+    "slug": "juguete-de-felpa-para-perro",
+    "price": 28.92562,
+    "stock": 1,
+    "categories": [
+      "BOX Personalizables",
+      "Inicio"
+    ],
+    "imageIds": [
+      226
+    ],
+    "description": "<p class=\"isSelectedEnd\">Un detalle especial para disfrutar de un momento de <strong>relax y bienestar</strong>. Personalízalo con tu diseño favorito y conviértelo en un regalo único.</p>\n<p class=\"isSelectedEnd\"><strong>Incluye:</strong> Bolsa de tela personalizada.<br /><strong>Importante:</strong> Envía el diseño que quieras imprimir en la bolsa de tela.</p>\n<p class=\"isSelectedEnd\"><strong>No se aceptan cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "91",
+    "reference": "120591",
+    "name": "Box Sweet Breakfast ☕💝",
+    "slug": "juguete-de-felpa-para-perro",
+    "price": 70.247934,
+    "stock": 1,
+    "categories": [
+      "BOX Personalizables",
+      "Inicio"
+    ],
+    "imageIds": [
+      227
+    ],
+    "description": "<p class=\"isSelectedEnd\">Un delicioso desayuno preparado para sorprender y comenzar el día con un detalle especial. Ideal para cumpleaños, aniversarios o simplemente para regalar un momento bonito.</p>\n<p class=\"isSelectedEnd\"><strong>Incluye:</strong></p>\n<ul>\n<li>🧸 Peluche (a elegir diseño)</li>\n<li>🐶 Mini termo Snoopy</li>\n<li>🍪 Galletas y dulces</li>\n<li>🧦 Calcetines tipo donut</li>\n<li>🍓 Lápiz frutal</li>\n<li>📔 Mini agenda en forma de galleta</li>\n<li>☕ Capuchino</li>\n<li>🍬 Tarro de cristal con dulces</li>\n<li>🎁 Caja decorativa</li>\n<li>💌 Tarjeta grabable</li>\n</ul>\n<p><strong>No se aceptan cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "92",
+    "reference": "120592",
+    "name": "Box SPA 🌸",
+    "slug": "juguete-de-felpa-para-perro",
+    "price": 53.719008,
+    "stock": 1,
+    "categories": [
+      "BOX Personalizables",
+      "Inicio"
+    ],
+    "imageIds": [
+      228
+    ],
+    "description": "<p class=\"isSelectedEnd\">Un regalo pensado para disfrutar de un momento de <strong>relax, bienestar y autocuidado</strong>. Ideal para sorprender y regalar una experiencia especial.</p>\n<p class=\"isSelectedEnd\"><strong>Incluye:</strong></p>\n<ul>\n<li>🐶 Termo Snoopy</li>\n<li>💦 Atomizador facial mini</li>\n<li>🌿 Gua Sha facial</li>\n<li>🕯️ Mini vela</li>\n<li>🎀 Banda para el cabello</li>\n<li>✨ 2 mascarillas faciales</li>\n<li>🧴 Kit de limpieza facial con esponjas</li>\n<li>🎁 Caja rígida decorada</li>\n</ul>\n<p><strong>No se aceptan cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "43",
+    "reference": "120545",
+    "name": "Vibrador bala",
+    "slug": "customizable-mug",
+    "price": 12.396694,
+    "stock": 5,
+    "categories": [
+      "Entre Amig@s - Despedidas",
+      "Inicio"
+    ],
+    "imageIds": [
+      85
+    ],
+    "description": "<p>Estimulador clitoriano y vaginal para Punto G, ideal para masturbación erótica. Vibrador recargable (batería no incluida) en elegante color negro.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "55",
+    "reference": "120552",
+    "name": "Set de 7 shots Team Groom",
+    "slug": "brown-bear-vector-graphics",
+    "price": 5.785124,
+    "stock": 2,
+    "categories": [
+      "Entre Amig@s - Despedidas",
+      "Inicio"
+    ],
+    "imageIds": [
+      131,
+      132
+    ],
+    "description": "<p>Set de <strong>7 shots Team Groom</strong> en <strong>plástico</strong>, ideal para celebrar con estilo y diversión.</p>\n<p><strong>Códigos y colores:</strong></p>\n<p><strong>O250630631515:</strong> Blanco</p>\n<p><strong>O250630731515:</strong> Negro</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
   }
 ];
-
