@@ -15,16 +15,11 @@ export const categories = [
   "Bebés & Nacimientos",
   "Bienestar & Spa",
   "Colección Snoopy",
-  "Bienvenido al Mundo",
-  "Bonus My Birthday Box Plus",
-  "Despedidas de solter@s",
+  "BOX Personalizables",
   "Entre Amig@s - Despedidas",
-  "La magia del cumpleaños",
   "Mascotas",
-  "My Breakfast Box",
-  "Packaging",
+  "Packaging y Empresarial",
   "Papelería Creativa",
-  "Regalos Corporativos"
 ] as const;
 
 export const products: Product[] = [
@@ -69,7 +64,7 @@ export const products: Product[] = [
     "price": 16.528926,
     "stock": 5,
     "categories": [
-      "Bonus My Birthday Box Plus",
+      "BOX Personalizables",
       "Inicio"
     ],
     "imageIds": [
@@ -85,7 +80,7 @@ export const products: Product[] = [
     "price": 49.586777,
     "stock": 3,
     "categories": [
-      "Bienvenido al Mundo",
+      "BOX Personalizables",
       "Inicio"
     ],
     "imageIds": [
@@ -102,7 +97,7 @@ export const products: Product[] = [
     "price": 16.528926,
     "stock": 5,
     "categories": [
-      "Bonus My Birthday Box Plus",
+      "BOX Personalizables",
       "Inicio"
     ],
     "imageIds": [
@@ -118,7 +113,7 @@ export const products: Product[] = [
     "price": 63.636364,
     "stock": 3,
     "categories": [
-      "Bienvenido al Mundo",
+      "BOX Personalizables",
       "Inicio"
     ],
     "imageIds": [
@@ -135,8 +130,8 @@ export const products: Product[] = [
     "price": 46.280992,
     "stock": 5,
     "categories": [
-      "Inicio",
-      "La magia del cumpleaños"
+      "BOX Personalizables",
+      "Inicio"
     ],
     "imageIds": [
       32,
@@ -152,8 +147,8 @@ export const products: Product[] = [
     "price": 60.330579,
     "stock": 5,
     "categories": [
-      "Inicio",
-      "La magia del cumpleaños"
+      "BOX Personalizables",
+      "Inicio"
     ],
     "imageIds": [
       35,
@@ -169,8 +164,8 @@ export const products: Product[] = [
     "price": 49.586777,
     "stock": 11,
     "categories": [
-      "Inicio",
-      "My Breakfast Box"
+      "BOX Personalizables",
+      "Inicio"
     ],
     "imageIds": [
       37
@@ -252,8 +247,8 @@ export const products: Product[] = [
     "price": 0,
     "stock": 10,
     "categories": [
+      "Packaging y Empresarial",
       "Inicio",
-      "Packaging"
     ],
     "imageIds": [
       46,
@@ -269,7 +264,7 @@ export const products: Product[] = [
     "price": 22.31405,
     "stock": 5,
     "categories": [
-      "Bonus My Birthday Box Plus",
+      "BOX Personalizables",
       "Inicio"
     ],
     "imageIds": [
@@ -317,7 +312,7 @@ export const products: Product[] = [
     "price": 16.528926,
     "stock": 5,
     "categories": [
-      "Bonus My Birthday Box Plus",
+      "BOX Personalizables",
       "Inicio"
     ],
     "imageIds": [
@@ -366,7 +361,7 @@ export const products: Product[] = [
     "price": 45.454545,
     "stock": 5,
     "categories": [
-      "Despedidas de solter@s",
+      "BOX Personalizables",
       "Inicio"
     ],
     "imageIds": [
@@ -383,7 +378,7 @@ export const products: Product[] = [
     "price": 45.454545,
     "stock": 5,
     "categories": [
-      "Despedidas de solter@s",
+      "BOX Personalizables",
       "Inicio"
     ],
     "imageIds": [
@@ -436,9 +431,8 @@ export const products: Product[] = [
     "price": 16.528926,
     "stock": 5,
     "categories": [
-      "Bonus My Birthday Box Plus",
+      "BOX Personalizables",
       "Inicio",
-      "Regalos Corporativos"
     ],
     "imageIds": [
       142
@@ -624,7 +618,6 @@ export const products: Product[] = [
     "stock": 2,
     "categories": [
       "Colección Snoopy",
-      "Amistad & Amor",
       "Inicio"
     ],
     "imageIds": [
@@ -641,7 +634,6 @@ export const products: Product[] = [
     "stock": 1,
     "categories": [
       "Colección Snoopy",
-      "Amistad & Amor",
       "Inicio"
     ],
     "imageIds": [
@@ -790,7 +782,6 @@ export const products: Product[] = [
     "stock": 3,
     "categories": [
       "Colección Snoopy",
-      "Amistad & Amor",
       "Inicio"
     ],
     "imageIds": [
@@ -810,7 +801,6 @@ export const products: Product[] = [
     "stock": 3,
     "categories": [
       "Colección Snoopy",
-      "Amistad & Amor",
       "Inicio"
     ],
     "imageIds": [
@@ -828,7 +818,6 @@ export const products: Product[] = [
     "stock": 1,
     "categories": [
       "Colección Snoopy",
-      "Amistad & Amor",
       "Inicio"
     ],
     "imageIds": [
