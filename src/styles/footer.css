@@ -16,6 +16,7 @@ footer {
 }
 
 .footer-top p:not(.eyebrow) {
+  font-style: italic;
   color: #6b4635;
   font-size: 13px;
   line-height: 1.7;
@@ -23,8 +24,23 @@ footer {
 }
 
 .footer-top a:not(.brand) {
+  font-style: italic;
   color: #4a271b;
   font-size: 13px;
+}
+
+.footer-info-trigger {
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  padding: 0 0 4px;
+  background: transparent;
+  color: inherit;
+  font: 600 11px 'DM Sans', sans-serif;
+  cursor: pointer;
+}
+
+.footer-info-trigger span {
+  margin-left: 7px;
 }
 
 .footer-brand-logo {
@@ -142,6 +158,12 @@ footer {
 
 .footer-bottom span {
   color: #805f4d;
+}
+
+@media (max-width: 850px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 620px) {

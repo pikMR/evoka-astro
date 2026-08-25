@@ -1,3 +1,17 @@
+export const CATALOG_CATEGORIES = {
+  FRIENDSHIP_LOVE: "Amistad & Amor",
+  BABIES_BIRTHS: "Bebés & Nacimientos",
+  WELLNESS_SPA: "Bienestar & Spa",
+  SNOOPY_COLLECTION: "Colección Snoopy",
+  CUSTOM_BOXES: "Box Personalizables",
+  FRIENDS_BACHELORETTE: "Entre amigos - Despedidas",
+  PETS: "Mascotas",
+  CORPORATE_PACKAGING: "Packaging y Empresarial",
+  THERMOS_CUPS: "Termos & Tazas",
+  CREATIVE_STATIONERY: "Papelería Creativa",
+  INTERNAL: "Inicio",
+} as const;
+
 export type Product = {
   id: string;
   reference: string;
@@ -11,16 +25,16 @@ export type Product = {
 };
 
 export const categories = [
-  "Amistad & Amor",
-  "Bebés & Nacimientos",
-  "Bienestar & Spa",
-  "Colección Snoopy",
-  "BOX Personalizables",
-  "Entre Amig@s - Despedidas",
-  "Mascotas",
-  "Packaging y Empresarial",
-  "TERMOS & TAZAS",
-  "Papelería Creativa",
+  CATALOG_CATEGORIES.FRIENDSHIP_LOVE,
+  CATALOG_CATEGORIES.BABIES_BIRTHS,
+  CATALOG_CATEGORIES.WELLNESS_SPA,
+  CATALOG_CATEGORIES.SNOOPY_COLLECTION,
+  CATALOG_CATEGORIES.CUSTOM_BOXES,
+  CATALOG_CATEGORIES.FRIENDS_BACHELORETTE,
+  CATALOG_CATEGORIES.PETS,
+  CATALOG_CATEGORIES.CORPORATE_PACKAGING,
+  CATALOG_CATEGORIES.THERMOS_CUPS,
+  CATALOG_CATEGORIES.CREATIVE_STATIONERY,
 ] as const;
 
 export const products: Product[] = [
@@ -32,8 +46,8 @@ export const products: Product[] = [
     "price": 6.61157,
     "stock": 6,
     "categories": [
-      "Bienestar & Spa",
-      "Inicio"
+      CATALOG_CATEGORIES.WELLNESS_SPA,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       16,
@@ -49,8 +63,8 @@ export const products: Product[] = [
     "price": 4.132231,
     "stock": 5,
     "categories": [
-      "Bienestar & Spa",
-      "Inicio"
+      CATALOG_CATEGORIES.WELLNESS_SPA,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       17
@@ -65,8 +79,8 @@ export const products: Product[] = [
     "price": 16.528926,
     "stock": 5,
     "categories": [
-      "BOX Personalizables",
-      "Inicio"
+      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       23
@@ -81,8 +95,8 @@ export const products: Product[] = [
     "price": 49.586777,
     "stock": 3,
     "categories": [
-      "BOX Personalizables",
-      "Inicio"
+      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       81,
@@ -98,8 +112,8 @@ export const products: Product[] = [
     "price": 16.528926,
     "stock": 5,
     "categories": [
-      "BOX Personalizables",
-      "Inicio"
+      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       29
@@ -114,8 +128,8 @@ export const products: Product[] = [
     "price": 63.636364,
     "stock": 3,
     "categories": [
-      "BOX Personalizables",
-      "Inicio"
+      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       30,
@@ -131,8 +145,8 @@ export const products: Product[] = [
     "price": 46.280992,
     "stock": 5,
     "categories": [
-      "BOX Personalizables",
-      "Inicio"
+      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       32,
@@ -148,8 +162,8 @@ export const products: Product[] = [
     "price": 60.330579,
     "stock": 5,
     "categories": [
-      "BOX Personalizables",
-      "Inicio"
+      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       35,
@@ -165,8 +179,8 @@ export const products: Product[] = [
     "price": 49.586777,
     "stock": 11,
     "categories": [
-      "BOX Personalizables",
-      "Inicio"
+      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       37
@@ -181,7 +195,7 @@ export const products: Product[] = [
     "price": 4.132231,
     "stock": 14,
     "categories": [
-      "Bienestar & Spa"
+      CATALOG_CATEGORIES.WELLNESS_SPA
     ],
     "imageIds": [
       42
@@ -196,8 +210,8 @@ export const products: Product[] = [
     "price": 0.826446,
     "stock": 114,
     "categories": [
-      "Inicio",
-      "Papelería Creativa"
+      CATALOG_CATEGORIES.INTERNAL,
+      CATALOG_CATEGORIES.CREATIVE_STATIONERY
     ],
     "imageIds": [
       43
@@ -212,8 +226,8 @@ export const products: Product[] = [
     "price": 4.132231,
     "stock": 12,
     "categories": [
-      "Inicio",
-      "Papelería Creativa"
+      CATALOG_CATEGORIES.INTERNAL,
+      CATALOG_CATEGORIES.CREATIVE_STATIONERY
     ],
     "imageIds": [
       44,
@@ -232,8 +246,8 @@ export const products: Product[] = [
     "price": 4.958678,
     "stock": 6,
     "categories": [
-      "Bienestar & Spa",
-      "Inicio"
+      CATALOG_CATEGORIES.WELLNESS_SPA,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       45
@@ -248,8 +262,8 @@ export const products: Product[] = [
     "price": 0,
     "stock": 10,
     "categories": [
-      "Packaging y Empresarial",
-      "Inicio",
+      CATALOG_CATEGORIES.CORPORATE_PACKAGING,
+      CATALOG_CATEGORIES.INTERNAL,
     ],
     "imageIds": [
       46,
@@ -265,8 +279,8 @@ export const products: Product[] = [
     "price": 22.31405,
     "stock": 5,
     "categories": [
-      "BOX Personalizables",
-      "Inicio"
+      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       47
@@ -281,8 +295,8 @@ export const products: Product[] = [
     "price": 2.479339,
     "stock": 12,
     "categories": [
-      "Bienestar & Spa",
-      "Inicio"
+      CATALOG_CATEGORIES.WELLNESS_SPA,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       50
@@ -297,8 +311,8 @@ export const products: Product[] = [
     "price": 2.479339,
     "stock": 4,
     "categories": [
-      "Bienestar & Spa",
-      "Inicio"
+      CATALOG_CATEGORIES.WELLNESS_SPA,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       51
@@ -313,8 +327,8 @@ export const products: Product[] = [
     "price": 16.528926,
     "stock": 5,
     "categories": [
-      "BOX Personalizables",
-      "Inicio"
+      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       52,
@@ -330,8 +344,8 @@ export const products: Product[] = [
     "price": 4.132231,
     "stock": 16,
     "categories": [
-      "Papelería Creativa",
-      "Inicio"
+      CATALOG_CATEGORIES.CREATIVE_STATIONERY,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       54
@@ -346,8 +360,8 @@ export const products: Product[] = [
     "price": 1.652893,
     "stock": 14,
     "categories": [
-      "Bienestar & Spa",
-      "Inicio"
+      CATALOG_CATEGORIES.WELLNESS_SPA,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       55
@@ -362,8 +376,8 @@ export const products: Product[] = [
     "price": 45.454545,
     "stock": 5,
     "categories": [
-      "BOX Personalizables",
-      "Inicio"
+      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       57,
@@ -379,8 +393,8 @@ export const products: Product[] = [
     "price": 45.454545,
     "stock": 5,
     "categories": [
-      "BOX Personalizables",
-      "Inicio"
+      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       60,
@@ -396,8 +410,8 @@ export const products: Product[] = [
     "price": 4.132231,
     "stock": 150,
     "categories": [
-      "Amistad & Amor",
-      "Inicio"
+      CATALOG_CATEGORIES.FRIENDSHIP_LOVE,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       65,
@@ -415,8 +429,8 @@ export const products: Product[] = [
     "price": 14.876033,
     "stock": 11,
     "categories": [
-      "Amistad & Amor",
-      "Inicio",
+      CATALOG_CATEGORIES.FRIENDSHIP_LOVE,
+      CATALOG_CATEGORIES.INTERNAL,
     ],
     "imageIds": [
       73,
@@ -438,8 +452,8 @@ export const products: Product[] = [
     "price": 16.528926,
     "stock": 5,
     "categories": [
-      "BOX Personalizables",
-      "Inicio",
+      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.INTERNAL,
     ],
     "imageIds": [
       142
@@ -454,8 +468,8 @@ export const products: Product[] = [
     "price": 7.438017,
     "stock": 9,
     "categories": [
-      "Entre Amig@s - Despedidas",
-      "Inicio"
+      CATALOG_CATEGORIES.FRIENDS_BACHELORETTE,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       144
@@ -470,8 +484,8 @@ export const products: Product[] = [
     "price": 4.958678,
     "stock": 20,
     "categories": [
-      "Entre Amig@s - Despedidas",
-      "Inicio"
+      CATALOG_CATEGORIES.FRIENDS_BACHELORETTE,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       89,
@@ -487,8 +501,8 @@ export const products: Product[] = [
     "price": 7.438017,
     "stock": 12,
     "categories": [
-      "Entre Amig@s - Despedidas",
-      "Inicio"
+      CATALOG_CATEGORIES.FRIENDS_BACHELORETTE,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       151
@@ -503,8 +517,8 @@ export const products: Product[] = [
     "price": 5.785124,
     "stock": 6,
     "categories": [
-      "Entre Amig@s - Despedidas",
-      "Inicio"
+      CATALOG_CATEGORIES.FRIENDS_BACHELORETTE,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       152
@@ -519,8 +533,8 @@ export const products: Product[] = [
     "price": 3.305785,
     "stock": 12,
     "categories": [
-      "Packaging y Empresarial",
-      "Inicio"
+      CATALOG_CATEGORIES.CORPORATE_PACKAGING,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       154,
@@ -537,8 +551,8 @@ export const products: Product[] = [
     "price": 6.61157,
     "stock": 3,
     "categories": [
-      "Inicio",
-      "Mascotas"
+      CATALOG_CATEGORIES.INTERNAL,
+      CATALOG_CATEGORIES.PETS
     ],
     "imageIds": [
       159,
@@ -556,8 +570,8 @@ export const products: Product[] = [
     "price": 9.090909,
     "stock": 11,
     "categories": [
-      "Amistad & Amor",
-      "Inicio"
+      CATALOG_CATEGORIES.FRIENDSHIP_LOVE,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       166,
@@ -575,8 +589,8 @@ export const products: Product[] = [
     "price": 18.181818,
     "stock": 3,
     "categories": [
-      "Bebés & Nacimientos",
-      "Inicio"
+      CATALOG_CATEGORIES.BABIES_BIRTHS,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       170
@@ -591,8 +605,8 @@ export const products: Product[] = [
     "price": 20.661157,
     "stock": 3,
     "categories": [
-      "Bebés & Nacimientos",
-      "Inicio"
+      CATALOG_CATEGORIES.BABIES_BIRTHS,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       171
@@ -607,8 +621,8 @@ export const products: Product[] = [
     "price": 16.528926,
     "stock": 3,
     "categories": [
-      "Bebés & Nacimientos",
-      "Inicio"
+      CATALOG_CATEGORIES.BABIES_BIRTHS,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       172,
@@ -624,8 +638,8 @@ export const products: Product[] = [
     "price": 16.528926,
     "stock": 2,
     "categories": [
-      "Colección Snoopy",
-      "Inicio"
+      CATALOG_CATEGORIES.SNOOPY_COLLECTION,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       180
@@ -640,8 +654,8 @@ export const products: Product[] = [
     "price": 20.661157,
     "stock": 1,
     "categories": [
-      "Colección Snoopy",
-      "Inicio"
+      CATALOG_CATEGORIES.SNOOPY_COLLECTION,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       181,
@@ -657,8 +671,8 @@ export const products: Product[] = [
     "price": 33.057851,
     "stock": 1,
     "categories": [
-      "Amistad & Amor",
-      "Inicio"
+      CATALOG_CATEGORIES.FRIENDSHIP_LOVE,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       192
@@ -673,8 +687,8 @@ export const products: Product[] = [
     "price": 5.785124,
     "stock": 5,
     "categories": [
-      "Entre Amig@s - Despedidas",
-      "Inicio"
+      CATALOG_CATEGORIES.FRIENDS_BACHELORETTE,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       197
@@ -689,8 +703,8 @@ export const products: Product[] = [
     "price": 4.958678,
     "stock": 10,
     "categories": [
-      "Packaging y Empresarial",
-      "Inicio"
+      CATALOG_CATEGORIES.CORPORATE_PACKAGING,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       200,
@@ -706,8 +720,8 @@ export const products: Product[] = [
     "price": 3.305785,
     "stock": 1,
     "categories": [
-      "Inicio",
-      "Mascotas"
+      CATALOG_CATEGORIES.INTERNAL,
+      CATALOG_CATEGORIES.PETS
     ],
     "imageIds": [
       201
@@ -722,8 +736,8 @@ export const products: Product[] = [
     "price": 3.305785,
     "stock": 3,
     "categories": [
-      "Inicio",
-      "Mascotas"
+      CATALOG_CATEGORIES.INTERNAL,
+      CATALOG_CATEGORIES.PETS
     ],
     "imageIds": [
       202
@@ -738,8 +752,8 @@ export const products: Product[] = [
     "price": 0,
     "stock": 1,
     "categories": [
-      "Inicio",
-      "Mascotas"
+      CATALOG_CATEGORIES.INTERNAL,
+      CATALOG_CATEGORIES.PETS
     ],
     "imageIds": [
       203,
@@ -755,9 +769,9 @@ export const products: Product[] = [
     "price": 4.132231,
     "stock": 1,
     "categories": [
-      "Amistad & Amor",
-      "Mascotas",
-      "Inicio",
+      CATALOG_CATEGORIES.FRIENDSHIP_LOVE,
+      CATALOG_CATEGORIES.PETS,
+      CATALOG_CATEGORIES.INTERNAL,
     ],
     "imageIds": [
       205,
@@ -773,8 +787,8 @@ export const products: Product[] = [
     "price": 0.413223,
     "stock": 2,
     "categories": [
-      "Inicio",
-      "Mascotas"
+      CATALOG_CATEGORIES.INTERNAL,
+      CATALOG_CATEGORIES.PETS
     ],
     "imageIds": [
       208
@@ -789,8 +803,8 @@ export const products: Product[] = [
     "price": 20.661157,
     "stock": 3,
     "categories": [
-      "Colección Snoopy",
-      "Inicio"
+      CATALOG_CATEGORIES.SNOOPY_COLLECTION,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       209,
@@ -808,8 +822,8 @@ export const products: Product[] = [
     "price": 30,
     "stock": 3,
     "categories": [
-      "Colección Snoopy",
-      "Inicio"
+      CATALOG_CATEGORIES.SNOOPY_COLLECTION,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       213,
@@ -825,8 +839,8 @@ export const products: Product[] = [
     "price": 24.793388,
     "stock": 1,
     "categories": [
-      "Colección Snoopy",
-      "Inicio"
+      CATALOG_CATEGORIES.SNOOPY_COLLECTION,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       215,
@@ -842,8 +856,8 @@ export const products: Product[] = [
     "price": 33.057851,
     "stock": 1,
     "categories": [
-      "Amistad & Amor",
-      "Inicio"
+      CATALOG_CATEGORIES.FRIENDSHIP_LOVE,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       218
@@ -858,8 +872,8 @@ export const products: Product[] = [
     "price": 2.479339,
     "stock": 9,
     "categories": [
-      "Papelería Creativa",
-      "Inicio"
+      CATALOG_CATEGORIES.CREATIVE_STATIONERY,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       82
@@ -874,8 +888,8 @@ export const products: Product[] = [
     "price": 4.132231,
     "stock": 15,
     "categories": [
-      "Papelería Creativa",
-      "Inicio"
+      CATALOG_CATEGORIES.CREATIVE_STATIONERY,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       101,
@@ -891,8 +905,8 @@ export const products: Product[] = [
     "price": 7.438017,
     "stock": 12,
     "categories": [
-      "Papelería Creativa",
-      "Inicio"
+      CATALOG_CATEGORIES.CREATIVE_STATIONERY,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       103,
@@ -910,8 +924,8 @@ export const products: Product[] = [
     "price": 1.652893,
     "stock": 20,
     "categories": [
-      "Papelería Creativa",
-      "Inicio"
+      CATALOG_CATEGORIES.CREATIVE_STATIONERY,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       133,
@@ -927,8 +941,8 @@ export const products: Product[] = [
     "price": 4.132231,
     "stock": 9,
     "categories": [
-      "Papelería Creativa",
-      "Inicio"
+      CATALOG_CATEGORIES.CREATIVE_STATIONERY,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       136,
@@ -944,8 +958,8 @@ export const products: Product[] = [
     "price": 24.793388,
     "stock": 3,
     "categories": [
-      "Bebés & Nacimientos",
-      "Inicio"
+      CATALOG_CATEGORIES.BABIES_BIRTHS,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       124
@@ -960,8 +974,8 @@ export const products: Product[] = [
     "price": 10.743802,
     "stock": 3,
     "categories": [
-      "Bebés & Nacimientos",
-      "Inicio"
+      CATALOG_CATEGORIES.BABIES_BIRTHS,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       125
@@ -976,8 +990,8 @@ export const products: Product[] = [
     "price": 20.661157,
     "stock": 10,
     "categories": [
-      "Amistad & Amor",
-      "Inicio"
+      CATALOG_CATEGORIES.FRIENDSHIP_LOVE,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       90,
@@ -993,8 +1007,8 @@ export const products: Product[] = [
     "price": 33.057851,
     "stock": 1,
     "categories": [
-      "Bienestar & Spa",
-      "Inicio"
+      CATALOG_CATEGORIES.WELLNESS_SPA,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       225
@@ -1009,8 +1023,8 @@ export const products: Product[] = [
     "price": 20.661157,
     "stock": 10,
     "categories": [
-      "Colección Snoopy",
-      "Inicio"
+      CATALOG_CATEGORIES.SNOOPY_COLLECTION,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       99,
@@ -1027,8 +1041,8 @@ export const products: Product[] = [
     "price": 12.396694,
     "stock": 1,
     "categories": [
-      "Colección Snoopy",
-      "Inicio"
+      CATALOG_CATEGORIES.SNOOPY_COLLECTION,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       229,
@@ -1044,8 +1058,8 @@ export const products: Product[] = [
     "price": 28.92562,
     "stock": 1,
     "categories": [
-      "BOX Personalizables",
-      "Inicio"
+      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       226
@@ -1060,8 +1074,8 @@ export const products: Product[] = [
     "price": 70.247934,
     "stock": 1,
     "categories": [
-      "BOX Personalizables",
-      "Inicio"
+      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       227
@@ -1076,8 +1090,8 @@ export const products: Product[] = [
     "price": 53.719008,
     "stock": 1,
     "categories": [
-      "BOX Personalizables",
-      "Inicio"
+      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       228
@@ -1092,8 +1106,8 @@ export const products: Product[] = [
     "price": 12.396694,
     "stock": 5,
     "categories": [
-      "Entre Amig@s - Despedidas",
-      "Inicio"
+      CATALOG_CATEGORIES.FRIENDS_BACHELORETTE,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       85
@@ -1108,8 +1122,8 @@ export const products: Product[] = [
     "price": 5.785124,
     "stock": 2,
     "categories": [
-      "Entre Amig@s - Despedidas",
-      "Inicio"
+      CATALOG_CATEGORIES.FRIENDS_BACHELORETTE,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       131,
@@ -1125,8 +1139,8 @@ export const products: Product[] = [
     "price": 8.264463,
     "stock": 38,
     "categories": [
-      "Packaging y Empresarial",
-      "Inicio"
+      CATALOG_CATEGORIES.CORPORATE_PACKAGING,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       127
@@ -1141,8 +1155,8 @@ export const products: Product[] = [
     "price": 8.264463,
     "stock": 10,
     "categories": [
-      "Packaging y Empresarial",
-      "Inicio"
+      CATALOG_CATEGORIES.CORPORATE_PACKAGING,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       238
@@ -1157,8 +1171,8 @@ export const products: Product[] = [
     "price": 0,
     "stock": 1,
     "categories": [
-      "Packaging y Empresarial",
-      "Inicio"
+      CATALOG_CATEGORIES.CORPORATE_PACKAGING,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       241
@@ -1173,8 +1187,8 @@ export const products: Product[] = [
     "price": 8.264463,
     "stock": 1,
     "categories": [
-      "Packaging y Empresarial",
-      "Inicio"
+      CATALOG_CATEGORIES.CORPORATE_PACKAGING,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       242
@@ -1189,8 +1203,8 @@ export const products: Product[] = [
     "price": 8.264463,
     "stock": 1,
     "categories": [
-      "TERMOS & TAZAS",
-      "Inicio"
+      CATALOG_CATEGORIES.THERMOS_CUPS,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       220
@@ -1205,8 +1219,8 @@ export const products: Product[] = [
     "price": 6.61157,
     "stock": 1,
     "categories": [
-      "TERMOS & TAZAS",
-      "Inicio"
+      CATALOG_CATEGORIES.THERMOS_CUPS,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       224
@@ -1221,8 +1235,8 @@ export const products: Product[] = [
     "price": 4.958678,
     "stock": 1,
     "categories": [
-      "TERMOS & TAZAS",
-      "Inicio"
+      CATALOG_CATEGORIES.THERMOS_CUPS,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       231
@@ -1237,8 +1251,8 @@ export const products: Product[] = [
     "price": 16.528926,
     "stock": 1,
     "categories": [
-      "TERMOS & TAZAS",
-      "Inicio"
+      CATALOG_CATEGORIES.THERMOS_CUPS,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       233
@@ -1253,8 +1267,8 @@ export const products: Product[] = [
     "price": 24.793388,
     "stock": 1,
     "categories": [
-      "TERMOS & TAZAS",
-      "Inicio"
+      CATALOG_CATEGORIES.THERMOS_CUPS,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       234
@@ -1269,8 +1283,8 @@ export const products: Product[] = [
     "price": 8.264463,
     "stock": 1,
     "categories": [
-      "TERMOS & TAZAS",
-      "Inicio"
+      CATALOG_CATEGORIES.THERMOS_CUPS,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       235
@@ -1285,13 +1299,45 @@ export const products: Product[] = [
     "price": 12.396694,
     "stock": 1,
     "categories": [
-      "TERMOS & TAZAS",
-      "Inicio"
+      CATALOG_CATEGORIES.THERMOS_CUPS,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       236,
       237
     ],
     "description": "<p>Hucha con original diseño de <strong>donut</strong>, un accesorio decorativo y divertido para ahorrar.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "102",
+    "reference": "120543",
+    "name": "Gafas Bride",
+    "slug": "gafas-bride",
+    "price": 7.438017,
+    "stock": 1,
+    "categories": [
+      CATALOG_CATEGORIES.FRIENDS_BACHELORETTE,
+      CATALOG_CATEGORIES.INTERNAL
+    ],
+    "imageIds": [
+      61
+    ],
+    "description": "<p>Accesorios <strong>divertidos y originales</strong> para despedidas de soltera, ideales para <strong>fotos memorables</strong> y celebraciones llenas de estilo.</p>\n<p><strong>Códigos:</strong></p>\n<p><strong>O250520395051:</strong> Marco en perla blanco</p>\n<p><strong>O250520295051:</strong> Marco en perla negro</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+  },
+  {
+    "id": "103",
+    "reference": "120543",
+    "name": "Gafas Bride to be",
+    "slug": "gafas-bride-to-be",
+    "price": 7.438017,
+    "stock": 1,
+    "categories": [
+      CATALOG_CATEGORIES.FRIENDS_BACHELORETTE,
+      CATALOG_CATEGORIES.INTERNAL
+    ],
+    "imageIds": [
+      62
+    ],
+    "description": "<p>Accesorios <strong>divertidos y originales</strong> para despedidas de soltera, ideales para <strong>fotos memorables</strong> y celebraciones llenas de estilo.</p>\n<p><strong>Códigos:</strong></p>\n<p><strong>O250520095051:</strong> Novia de diamante rosa claro</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
   }
 ];

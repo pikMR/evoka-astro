@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@500&display=swap');
 
 :root {
-    --evoka:#934616;
+    --evoka:#2e180a;
     --ink: #20211d;
     --muted: #77786e;
     --cream: #f4f1e9;
@@ -386,7 +386,7 @@ h2 em {
     color: var(--muted);
     border-radius: 99px;
     padding: 10px 13px;
-    font: 11px 'DM Sans', sans-serif;
+    font: 13px 'DM Sans', sans-serif;
     cursor: pointer
 }
 

@@ -1,5 +1,6 @@
 ---
 import CatalogSection from "./CatalogSection.astro";
+import AboutModal from "./AboutModal.astro";
 import CategoriesSection from "./CategoriesSection.astro";
 import FeaturedSelection from "./FeaturedSelection.astro";
 import Hero from "./Hero.astro";
@@ -43,5 +44,6 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
     <SiteFooter locale={locale} />
     <ProductModal locale={locale} />
     <SecurePaymentModal locale={locale} />
+    <AboutModal locale={locale} />
   </body>
 </html>

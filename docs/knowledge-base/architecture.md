@@ -15,7 +15,7 @@ Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical UR
 
 ## Flujo de datos
 
-1. `src/data/catalog.ts` exporta el contrato `Product`, las categorías públicas y el array de productos.
+1. `src/data/catalog.ts` exporta el contrato `Product`, las categorías públicas y el array de productos. Los nombres canónicos, incluida la categoría interna `Inicio`, se declaran una sola vez en `CATALOG_CATEGORIES` y se reutilizan en todo el dataset.
 2. `src/i18n/ui.ts` aporta textos de interfaz, nombres de categorías, traducciones parciales de productos y enlaces de catálogo de WhatsApp.
 3. `src/lib/catalog-view.ts` centraliza la localización de categorías y productos, el formato de precios, extractos, destacados y enlaces de WhatsApp.
 4. Los componentes Astro generan el HTML y enlazan imágenes desde `public/images/products` y `public/images/hero`.
@@ -24,6 +24,8 @@ Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical UR
 ## Comportamiento de la página
 
 - Los productos destacados son actualmente `products[3]`, `products[4]` y `products[6]`: IDs 19, 20 y 22. Su orden depende directamente del array.
+- El catálogo visible se ordena alfabéticamente por nombre español en `catalog-view.ts`; la fuente `products` conserva su orden de origen.
+- `CatalogSection.astro` muestra inicialmente 20 productos y amplía la ventana en bloques de 20 mediante el botón de carga; búsqueda y filtros muestran todos sus resultados y ocultan la paginación.
 - La búsqueda compara nombre localizado más categorías en minúsculas.
 - Los filtros utilizan las categorías canónicas en español, aunque su etiqueta visible pueda estar traducida.
 - El modal usa la descripción HTML y reutiliza el enlace de WhatsApp de la tarjeta.
@@ -34,6 +36,7 @@ Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical UR
 
 - `src/styles/global.css` contiene las variables, primitivas compartidas, portada, selección y reglas responsive generales.
 - `src/styles/header.css`, `catalog.css`, `footer.css` y `modals.css` separan los estilos por responsabilidad y se importan de forma explícita desde `CatalogPage.astro`.
+- `SiteFooter.astro` ofrece los modales de pago seguro y de información/FAQ mediante `SecurePaymentModal.astro` y `AboutModal.astro`.
 - Los logos están en `public/images/brand/`.
 - No hay pipeline de optimización de imágenes; los JPG se sirven como archivos estáticos.
 

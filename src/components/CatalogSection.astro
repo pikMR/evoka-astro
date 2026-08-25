@@ -1,6 +1,6 @@
 ---
-import { products } from "../data/catalog";
 import {
+  catalogProducts,
   excerpt,
   formatPrice,
   localizedCategory,
@@ -10,6 +10,7 @@ import {
   whatsappForProduct,
   type Locale,
 } from "../lib/catalog-view";
+import { CATALOG_PAGE_SIZE } from "../config/site";
 
 interface Props {
   locale: Locale;
@@ -28,7 +29,7 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
             {t("catalogTitle")}
           </h2>
         </div><p class="catalog-note">
-          {products.length}
+          {catalogProducts.length + " "}
           {t("products")}<br />{
             t("productsReady")
               .split("\\n")
@@ -80,10 +81,12 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
   <div class="wrap">
     <div class="catalog-grid" id="product-grid">
       {
-        products.map((product) => (
+        catalogProducts.map((product, index) => (
           <article
             class="catalog-card"
             id={`product-${product.id}`}
+            data-catalog-index={index}
+            hidden={index >= CATALOG_PAGE_SIZE}
             data-name={`${localizedProduct(locale, product).name} ${product.categories.join(" ")}`.toLowerCase()}
             data-categories={product.categories.join("|")}
           >
@@ -134,6 +137,21 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
         ))
       }
     </div>
+    <div class="catalog-pagination" id="catalog-pagination">
+      <p
+        class="catalog-progress"
+        id="catalog-progress"
+        data-showing={t("catalogShowing")}
+        data-of={t("catalogOf")}
+      ></p>
+      <button
+        type="button"
+        class="button button-dark catalog-load-more"
+        id="catalog-load-more"
+        data-page-size={CATALOG_PAGE_SIZE}
+        hidden={catalogProducts.length <= CATALOG_PAGE_SIZE}
+      >{t("catalogLoadMore")} <span aria-hidden="true">↓</span></button>
+    </div>
     <p class="empty-state" id="empty-state" hidden>{t("empty")}</p>
   </div>
 </section>
@@ -151,6 +169,12 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
     ...document.querySelectorAll<HTMLElement>(".catalog-card"),
   ];
   const empty = document.querySelector<HTMLElement>("#empty-state")!;
+  const pagination = document.querySelector<HTMLElement>("#catalog-pagination")!;
+  const loadMore = document.querySelector<HTMLButtonElement>(
+    "#catalog-load-more",
+  )!;
+  const progress = document.querySelector<HTMLElement>("#catalog-progress")!;
+  const catalogPageSize = Number(loadMore.dataset.pageSize);
   const featuredLinks = [
     ...document.querySelectorAll<HTMLAnchorElement>(
       '.featured-image[href^="#product-"]',
@@ -190,25 +214,40 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
   };
 
   let activeFilter = "all";
+  let visibleLimit = catalogPageSize;
   const update = () => {
     const query = search.value.toLowerCase().trim();
-    let visible = 0;
+    const showsAllMatches = activeFilter !== "all" || query.length > 0;
+    const displayLimit = showsAllMatches
+      ? Number.POSITIVE_INFINITY
+      : visibleLimit;
+    let matches = 0;
+    let hiddenMatches = false;
     cards.forEach((card) => {
       const matchesQuery = card.dataset.name?.includes(query) ?? false;
       const matchesFilter =
         activeFilter === "all" ||
         (card.dataset.categories?.split("|").includes(activeFilter) ?? false);
-      const show = matchesQuery && matchesFilter;
+      const matchesCard = matchesQuery && matchesFilter;
+      const index = Number(card.dataset.catalogIndex ?? 0);
+      if (matchesCard) {
+        matches++;
+        if (index >= displayLimit) hiddenMatches = true;
+      }
+      const show = matchesCard && index < displayLimit;
       card.hidden = !show;
-      if (show) visible++;
     });
-    empty.hidden = visible !== 0;
+    empty.hidden = matches !== 0;
+    loadMore.hidden = !hiddenMatches;
+    pagination.hidden = showsAllMatches;
+    progress.textContent = `${progress.dataset.showing} ${Math.min(displayLimit, matches)} ${progress.dataset.of} ${matches}`;
   };
 
   featuredLinks.forEach((link) =>
     link.addEventListener("click", (event) => {
       event.preventDefault();
       search.value = "";
+      visibleLimit = catalogPageSize;
       const filterButton = buttons.find(
         (button) => button.dataset.filter === link.dataset.featuredFilter,
       );
@@ -223,6 +262,7 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
     button.addEventListener("click", () => {
       const wasActive = button.classList.contains("is-active");
       activeFilter = wasActive ? "all" : (button.dataset.filter ?? "all");
+      visibleLimit = catalogPageSize;
       buttons.forEach((item) => {
         const selected = activeFilter !== "all" && item === button;
         item.classList.toggle("is-active", selected);
@@ -259,5 +299,13 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
           ?.scrollIntoView({ behavior: "smooth" });
       }),
     );
-  search.addEventListener("input", update);
+  loadMore.addEventListener("click", () => {
+    visibleLimit += catalogPageSize;
+    update();
+  });
+  search.addEventListener("input", () => {
+    visibleLimit = catalogPageSize;
+    update();
+  });
+  update();
 </script>

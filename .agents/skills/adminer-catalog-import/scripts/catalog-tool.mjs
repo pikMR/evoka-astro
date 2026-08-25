@@ -147,12 +147,29 @@ function evaluateAssignedLiteral(source, marker, opener, closer) {
     } else if (char === closer) {
       depth -= 1;
       if (depth === 0) {
-        const literal = source.slice(start, index + 1);
+        const literal = resolveCatalogConstants(source, source.slice(start, index + 1));
         return Function('"use strict"; return (' + literal + ");")();
       }
     }
   }
   fail("unterminated literal after " + marker);
+}
+
+function resolveCatalogConstants(source, literal) {
+  const declaration = source.match(
+    /export const CATALOG_CATEGORIES\s*=\s*\{([\s\S]*?)\}\s*as const/,
+  );
+  if (!declaration || !literal.includes("CATALOG_CATEGORIES.")) return literal;
+
+  const values = Object.fromEntries(
+    [...declaration[1].matchAll(/^\s*([A-Z_]+):\s*"([^"]*)"\s*,?\s*$/gm)].map(
+      ([, key, value]) => [key, value],
+    ),
+  );
+  return literal.replace(/CATALOG_CATEGORIES\.([A-Z_]+)/g, (_, key) => {
+    if (!(key in values)) fail("unknown CATALOG_CATEGORIES constant: " + key);
+    return JSON.stringify(values[key]);
+  });
 }
 
 function auditProject(root) {

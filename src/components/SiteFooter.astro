@@ -1,5 +1,6 @@
 ---
 import { translate, type Locale } from "../lib/catalog-view";
+import { BRAND_NAME, CONTACT_EMAIL, SITE_YEAR } from "../config/site";
 
 interface Props {
   locale: Locale;
@@ -16,7 +17,7 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
         ><img
           class="brand-logo-footer footer-brand-logo"
           src="/images/brand/logo-transparent-clean.png"
-          alt="Evoka"
+          alt={BRAND_NAME}
         /></a
       ><p>
         {
@@ -31,21 +32,8 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
         }
       </p>
     </div><div>
-      <p class="eyebrow">{t("footerBuyEyebrow")}</p><p>
-        {
-          t("footerBuy")
-            .split("\\n")
-            .map((line) => (
-              <>
-                {line}
-                <br />
-              </>
-            ))
-        }
-      </p>
-    </div><div>
       <p class="eyebrow">{t("footerContact")}</p><a
-        href="mailto:deco-evoka@hotmail.com">deco-evoka@hotmail.com</a
+        href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a
       ><p>{t("footerReply")}</p><div class="social-links">
         <a
           href="https://www.instagram.com/evoka_deco/"
@@ -107,6 +95,16 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
           ><span>Vinted ↗</span></a
         >
       </div>
+    </div><div class="footer-about-column">
+      <p class="eyebrow">{t("footerAboutEyebrow")}</p>
+      <p>{t("footerAboutSummary")}</p>
+      <button
+        type="button"
+        class="footer-info-trigger"
+        id="about-modal-trigger"
+        aria-haspopup="dialog"
+        aria-controls="about-modal"
+      >{t("footerAboutMore")} <span aria-hidden="true">↗</span></button>
     </div>
   </div><div class="wrap secure-payment-strip">
     <div class="secure-payment-mark" aria-hidden="true">
@@ -126,6 +124,6 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
       aria-controls="secure-payment-modal"
     >{t("securePaymentMore")} <span aria-hidden="true">↗</span></button>
   </div><div class="wrap footer-bottom">
-    <span>© 2026 Evoka</span><span>{t("footerMade")}</span>
+    <span>© {SITE_YEAR} {BRAND_NAME}</span><span>{t("footerMade")}</span>
   </div>
 </footer>

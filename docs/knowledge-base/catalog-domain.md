@@ -26,11 +26,11 @@ El orden de los filtros es contractual porque procede del array exportado:
 2. Bebés & Nacimientos
 3. Bienestar & Spa
 4. Colección Snoopy
-5. BOX Personalizables
-6. Entre Amig@s - Despedidas
+5. Box Personalizables
+6. Entre amigos - Despedidas
 7. Mascotas
 8. Packaging y Empresarial
-9. TERMOS & TAZAS
+9. Termos & Tazas
 10. Papelería Creativa
 
 `Inicio` aparece en 75 productos, pero no en los filtros públicos. Añadir una categoría a un producto no la hace visible: también hay que decidir si entra en el array `categories` y aportar traducciones.

@@ -6,7 +6,7 @@
 - `5120278` — 23-08-2026: mejora productos destacados y filtrado.
 - `575acfb` — 23-08-2026: incorpora rutas y copy en español, inglés y francés; extrae `CatalogPage.astro`.
 - `9f6d7bd` — 23-08-2026: consolida el diseño visual y añade logos de marca.
-- `5c5d553` — 24-08-2026: reorganiza categorías, incluyendo BOX Personalizables y Packaging y Empresarial.
+- `5c5d553` — 24-08-2026: reorganiza categorías, incluyendo Box Personalizables y Packaging y Empresarial.
 - `1598bde` — 24-08-2026: amplía el catálogo y sus imágenes.
 - `7f52e8e` — 24-08-2026: añade más productos/imágenes y refactoriza datos y traducciones.
 

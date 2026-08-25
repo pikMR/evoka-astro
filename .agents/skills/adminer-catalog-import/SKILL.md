@@ -62,7 +62,7 @@ Presentar el inventario agrupado por catálogo con, como mínimo: token seleccio
 Aceptar combinaciones como:
 
 - “Del catálogo Francia, todo lo nuevo con stock, salvo los IDs 120 y 124”.
-- “Mascotas y TERMOS & TAZAS del principal; sólo referencias que empiecen por 1205”.
+- “Mascotas y Termos & Tazas del principal; sólo referencias que empiecen por 1205”.
 - “Importa 102, 103 y 110; actualiza el 102 pero no toques los existentes restantes”.
 
 Aplicar esta precedencia:

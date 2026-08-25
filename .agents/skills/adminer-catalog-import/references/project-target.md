@@ -6,7 +6,7 @@ Leer esta referencia antes de comparar o importar.
 
 - `src/data/catalog.ts`: tipo `Product`, categorías públicas y productos.
 - `src/i18n/ui.ts`: copy, traducciones de categorías/productos y catálogos de WhatsApp.
-- `src/components/CatalogPage.astro`: localización, IVA, selección destacada y asignación a WhatsApp.
+- `src/lib/catalog-view.ts` y `src/components/`: localización, IVA, selección destacada y asignación a WhatsApp.
 - `public/images/products/<imageId>.jpg`: imágenes planas por ID de imagen.
 
 ## Mapeo

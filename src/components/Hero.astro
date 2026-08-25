@@ -1,5 +1,6 @@
 ---
 import { heroImages, translate, type Locale } from "../lib/catalog-view";
+import { GENERAL_WHATSAPP_URL } from "../config/site";
 
 interface Props {
   locale: Locale;
@@ -19,7 +20,7 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
         >{t("catalogButton")} <span>↗</span></a
       ><a
         class="whatsapp-link"
-        href="https://wa.me/?text=Hola%2C%20quiero%20contactar%20con%20Evoka"
+        href={GENERAL_WHATSAPP_URL}
         target="_blank"
         rel="noreferrer"
         aria-label={t("contactUs")}

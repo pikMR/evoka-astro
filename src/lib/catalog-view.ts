@@ -1,5 +1,6 @@
 import type { Product } from "../data/catalog";
 import { categories, products } from "../data/catalog";
+import { CATALOG_SORT_LOCALE } from "../config/site";
 import {
   categoryTranslations,
   productTranslations,
@@ -56,6 +57,13 @@ export const formatPrice = (locale: Locale, price: number) => {
 
 export const visibleCategories = categories;
 export const featuredProducts = [products[3], products[4], products[6]];
+export const catalogProducts = [...products].sort((left, right) =>
+  localizedProduct(CATALOG_SORT_LOCALE, left).name.localeCompare(
+    localizedProduct(CATALOG_SORT_LOCALE, right).name,
+    CATALOG_SORT_LOCALE,
+    { sensitivity: "base" },
+  ),
+);
 export const heroImages = [
   "/images/hero/1.jpeg",
   "/images/hero/2.jpeg",
