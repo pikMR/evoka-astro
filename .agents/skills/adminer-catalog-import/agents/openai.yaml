@@ -1,0 +1,4 @@
+interface:
+  display_name: "Importar catálogo desde Adminer"
+  short_description: "Audita y selecciona productos de Adminer"
+  default_prompt: "Usa $adminer-catalog-import para revisar los catálogos de Adminer y preparar una importación selectiva al proyecto."
