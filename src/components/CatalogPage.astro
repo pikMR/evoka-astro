@@ -35,7 +35,7 @@ const flagByLocale = {
 } as const;
 
 const visibleCategories = categories;
-const featuredProducts = products.slice(3, 6);
+const featuredProducts = [products[3], products[4], products[6]];
 const clean = (html: string) =>
   html
     .replace(/<[^>]+>/g, " ")
