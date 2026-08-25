@@ -13,6 +13,10 @@ export const ui = {
     categoriesEyebrow: 'Encuentra tu próximo favorito', categoriesTitle: 'Explora por', categoriesAccent: 'categoría', products: 'productos',
     footerBuyEyebrow: 'Compra como prefieras', footerBuy: 'Muy pronto: compra directa.\nTambién estamos en WhatsApp y Vinted.',
     footerContact: 'Contacto', footerReply: 'Respondemos con calma.', footerTagline: 'Una selección con personalidad\npara regalar y regalarte.', footerMade: 'Hecho con intención',
+    securePayment: 'Pago seguro', securePaymentEyebrow: 'Compra con tranquilidad', securePaymentIntro: 'Pagos mediante métodos verificados y conexiones cifradas.', securePaymentMore: 'Más información',
+    securePaymentTitle: 'Pago Seguro en ÉVOKA', securePaymentSummary: 'Protegemos tus pagos con enlaces seguros y conexiones cifradas SSL/TLS, para mantener privada y segura tu información personal y financiera.', securePaymentMethods: 'Métodos de pago disponibles',
+    securePaymentBizum: 'Bizum', securePaymentBizumText: 'Pago rápido y seguro desde tu móvil.', securePaymentBank: 'Transferencia bancaria', securePaymentBankText: 'Una opción directa y confiable.', securePaymentRevolut: 'Enlaces de pago con Revolut', securePaymentRevolutText: 'Procesados de forma segura a través de la plataforma de Revolut.',
+    securePaymentAbout: 'Sobre este servicio', securePaymentAboutText: 'Tu pago se realiza mediante métodos verificados y seguros. ÉVOKA no almacena los datos de tus cuentas ni tarjetas, para que compres con tranquilidad en cada transacción.',
     language: 'Idioma', prev: 'Imagen anterior', next: 'Imagen siguiente', left: 'Desplazar categorías hacia la izquierda', right: 'Desplazar categorías hacia la derecha',
   },
   en: {
@@ -29,6 +33,10 @@ export const ui = {
     categoriesEyebrow: 'Find your next favourite', categoriesTitle: 'Explore by', categoriesAccent: 'category', products: 'products',
     footerBuyEyebrow: 'Shop your way', footerBuy: 'Coming soon: direct purchase.\nWe are also on WhatsApp and Vinted.',
     footerContact: 'Contact', footerReply: 'We reply thoughtfully.', footerTagline: 'A personal selection\nfor giving and treating yourself.', footerMade: 'Made with intention',
+    securePayment: 'Secure payment', securePaymentEyebrow: 'Shop with confidence', securePaymentIntro: 'Payments through verified methods and encrypted connections.', securePaymentMore: 'More information',
+    securePaymentTitle: 'Secure Payment at ÉVOKA', securePaymentSummary: 'We protect your payments with secure links and SSL/TLS-encrypted connections, helping keep your personal and financial information private and secure.', securePaymentMethods: 'Available payment methods',
+    securePaymentBizum: 'Bizum', securePaymentBizumText: 'A fast and secure payment from your mobile.', securePaymentBank: 'Bank transfer', securePaymentBankText: 'A direct and reliable option.', securePaymentRevolut: 'Revolut payment links', securePaymentRevolutText: 'Processed securely through the Revolut platform.',
+    securePaymentAbout: 'About this service', securePaymentAboutText: 'Your payment is made using verified, secure methods. ÉVOKA does not store your bank account or card details, so you can shop with confidence in every transaction.',
     language: 'Language', prev: 'Previous image', next: 'Next image', left: 'Scroll categories left', right: 'Scroll categories right',
   },
   fr: {
@@ -45,6 +53,10 @@ export const ui = {
     categoriesEyebrow: 'Trouvez votre prochain coup de cœur', categoriesTitle: 'Explorer par', categoriesAccent: 'catégorie', products: 'produits',
     footerBuyEyebrow: 'Achetez comme vous préférez', footerBuy: 'Bientôt : achat direct.\nNous sommes aussi sur WhatsApp et Vinted.',
     footerContact: 'Contact', footerReply: 'Nous répondons avec attention.', footerTagline: 'Une sélection pleine de personnalité\npour offrir ou se faire plaisir.', footerMade: 'Fait avec intention',
+    securePayment: 'Paiement sécurisé', securePaymentEyebrow: 'Achetez en toute confiance', securePaymentIntro: 'Paiements par des moyens vérifiés et des connexions chiffrées.', securePaymentMore: 'En savoir plus',
+    securePaymentTitle: 'Paiement sécurisé chez ÉVOKA', securePaymentSummary: 'Nous protégeons vos paiements grâce à des liens sécurisés et des connexions chiffrées SSL/TLS, afin que vos informations personnelles et financières restent privées et sécurisées.', securePaymentMethods: 'Moyens de paiement disponibles',
+    securePaymentBizum: 'Bizum', securePaymentBizumText: 'Un paiement rapide et sécurisé depuis votre mobile.', securePaymentBank: 'Virement bancaire', securePaymentBankText: 'Une option directe et fiable.', securePaymentRevolut: 'Liens de paiement Revolut', securePaymentRevolutText: 'Traités de façon sécurisée par la plateforme Revolut.',
+    securePaymentAbout: 'À propos de ce service', securePaymentAboutText: 'Votre paiement est effectué par des moyens vérifiés et sécurisés. ÉVOKA ne conserve pas vos coordonnées bancaires ni les données de votre carte, pour vous permettre d’acheter en toute confiance à chaque transaction.',
     language: 'Langue', prev: 'Image précédente', next: 'Image suivante', left: 'Faire défiler les catégories à gauche', right: 'Faire défiler les catégories à droite',
   },
 } as const;
