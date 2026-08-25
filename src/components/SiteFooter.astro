@@ -1,0 +1,131 @@
+---
+import { translate, type Locale } from "../lib/catalog-view";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
+---
+
+<footer id="contacto">
+  <div class="wrap footer-top">
+    <div>
+      <a class="brand brand-light" href="#inicio"
+        ><img
+          class="brand-logo-footer footer-brand-logo"
+          src="/images/brand/logo-transparent-clean.png"
+          alt="Evoka"
+        /></a
+      ><p>
+        {
+          t("footerTagline")
+            .split("\\n")
+            .map((line) => (
+              <>
+                {line}
+                <br />
+              </>
+            ))
+        }
+      </p>
+    </div><div>
+      <p class="eyebrow">{t("footerBuyEyebrow")}</p><p>
+        {
+          t("footerBuy")
+            .split("\\n")
+            .map((line) => (
+              <>
+                {line}
+                <br />
+              </>
+            ))
+        }
+      </p>
+    </div><div>
+      <p class="eyebrow">{t("footerContact")}</p><a
+        href="mailto:deco-evoka@hotmail.com">deco-evoka@hotmail.com</a
+      ><p>{t("footerReply")}</p><div class="social-links">
+        <a
+          href="https://www.instagram.com/evoka_deco/"
+          target="_blank"
+          rel="noreferrer"
+          ><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"
+            ><rect
+              x="3"
+              y="3"
+              width="18"
+              height="18"
+              rx="5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"></rect><circle
+              cx="12"
+              cy="12"
+              r="4.2"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"></circle><circle
+              cx="17.5"
+              cy="6.5"
+              r="1.2"
+              fill="currentColor"></circle></svg
+          ><span>Instagram ↗</span></a
+        ><a
+          href="https://www.facebook.com/profile.php?id=61576576741857"
+          target="_blank"
+          rel="noreferrer"
+          ><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"
+            ><path
+              fill="currentColor"
+              d="M14 8h3V4h-3c-3.3 0-5 2-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.7.3-1 1-1Z"
+            ></path></svg
+          ><span>Facebook ↗</span></a
+        ><a
+          href="https://www.tiktok.com/@evoka_deco0"
+          target="_blank"
+          rel="noreferrer"
+          ><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"
+            ><path
+              fill="currentColor"
+              d="M15 4c.3 1.9 1.4 3.2 3.5 3.5v3.2c-1.4-.1-2.6-.5-3.5-1.2v6.1a5.4 5.4 0 1 1-4.7-5.3v3.3a2.2 2.2 0 1 0 1.5 2V4H15Z"
+            ></path></svg
+          ><span>TikTok ↗</span></a
+        ><a
+          href="https://www.vinted.es/member/3138307263-evoka-decomur"
+          target="_blank"
+          rel="noreferrer"
+          ><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"
+            ><path
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m4 5 8 14 8-14M7.2 5h9.6"></path></svg
+          ><span>Vinted ↗</span></a
+        >
+      </div>
+    </div>
+  </div><div class="wrap secure-payment-strip">
+    <div class="secure-payment-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 3 19 6v5c0 4.6-2.8 8.1-7 10-4.2-1.9-7-5.4-7-10V6l7-3Z"></path>
+        <path d="m9 12 2 2 4-5"></path>
+      </svg>
+    </div><div class="secure-payment-strip-copy">
+      <p class="eyebrow">{t("securePaymentEyebrow")}</p>
+      <h2>{t("securePayment")}</h2>
+      <p>{t("securePaymentIntro")}</p>
+    </div><button
+      type="button"
+      class="secure-payment-trigger"
+      id="secure-payment-trigger"
+      aria-haspopup="dialog"
+      aria-controls="secure-payment-modal"
+    >{t("securePaymentMore")} <span aria-hidden="true">↗</span></button>
+  </div><div class="wrap footer-bottom">
+    <span>© 2026 Evoka</span><span>{t("footerMade")}</span>
+  </div>
+</footer>

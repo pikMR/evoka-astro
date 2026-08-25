@@ -9,7 +9,7 @@ El repositorio contiene un catálogo estático de Evoka construido con Astro, Ty
 - `src/pages/index.astro` renderiza español en `/`.
 - `src/pages/[lang].astro` genera `/es/`, `/en/` y `/fr/` mediante `getStaticPaths`.
 - `astro.config.mjs` declara español como locale por defecto, sin prefijo obligatorio, y `https://catalogo.evoka.local` como `site` provisional.
-- `src/components/CatalogPage.astro` contiene la página completa y recibe `locale` (`es`, `en` o `fr`).
+- `src/components/CatalogPage.astro` compone la página y recibe `locale` (`es`, `en` o `fr`). Las secciones visuales, los modales y sus scripts viven en componentes independientes dentro de `src/components/`.
 
 Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical URLs ni sitemap configurados en el repositorio.
 
@@ -17,12 +17,13 @@ Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical UR
 
 1. `src/data/catalog.ts` exporta el contrato `Product`, las categorías públicas y el array de productos.
 2. `src/i18n/ui.ts` aporta textos de interfaz, nombres de categorías, traducciones parciales de productos y enlaces de catálogo de WhatsApp.
-3. `CatalogPage.astro` localiza los datos, calcula el precio visible, genera todo el HTML y enlaza imágenes desde `public/images/products`.
-4. El script cliente filtra tarjetas ya renderizadas; no consulta ninguna API ni base de datos.
+3. `src/lib/catalog-view.ts` centraliza la localización de categorías y productos, el formato de precios, extractos, destacados y enlaces de WhatsApp.
+4. Los componentes Astro generan el HTML y enlazan imágenes desde `public/images/products` y `public/images/hero`.
+5. Los scripts cliente están junto al componente que controlan: cabecera, carrusel, catálogo y modales. Filtran tarjetas ya renderizadas y no consultan ninguna API ni base de datos.
 
 ## Comportamiento de la página
 
-- Los productos destacados son actualmente `products.slice(3, 6)`: IDs 19, 20 y 21. Su orden depende directamente del array.
+- Los productos destacados son actualmente `products[3]`, `products[4]` y `products[6]`: IDs 19, 20 y 22. Su orden depende directamente del array.
 - La búsqueda compara nombre localizado más categorías en minúsculas.
 - Los filtros utilizan las categorías canónicas en español, aunque su etiqueta visible pueda estar traducida.
 - El modal usa la descripción HTML y reutiliza el enlace de WhatsApp de la tarjeta.
@@ -31,8 +32,8 @@ Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical UR
 
 ## Presentación
 
-- `src/styles/global.css` concentra casi todo el diseño, responsive incluido.
-- `src/styles/catalog.css` contiene reglas menores del catálogo.
+- `src/styles/global.css` contiene las variables, primitivas compartidas, portada, selección y reglas responsive generales.
+- `src/styles/header.css`, `catalog.css`, `footer.css` y `modals.css` separan los estilos por responsabilidad y se importan de forma explícita desde `CatalogPage.astro`.
 - Los logos están en `public/images/brand/`.
 - No hay pipeline de optimización de imágenes; los JPG se sirven como archivos estáticos.
 

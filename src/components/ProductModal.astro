@@ -1,0 +1,95 @@
+---
+import { translate, type Locale } from "../lib/catalog-view";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
+---
+
+<dialog
+  class="product-modal"
+  id="product-modal"
+  aria-labelledby="modal-product-title"
+>
+  <div class="product-modal-panel">
+    <button
+      type="button"
+      class="product-modal-close"
+      id="product-modal-close"
+      aria-label={t("close")}>×</button
+    >
+    <div class="product-modal-layout">
+      <div class="product-modal-image">
+        <img id="modal-product-image" src="" alt="" />
+      </div>
+      <div class="product-modal-copy">
+        <p class="eyebrow">{t("viewProduct")}</p><div class="modal-title-row">
+          <h2 id="modal-product-title"></h2><strong id="modal-product-price"
+          ></strong>
+        </div><div
+          class="modal-product-description"
+          id="modal-product-description"
+        >
+        </div><a
+          class="button button-dark modal-whatsapp"
+          id="modal-product-whatsapp"
+          href="#"
+          target="_blank"
+          rel="noreferrer">{t("whatsapp")} <span>↗</span></a
+        >
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const productModal = document.querySelector<HTMLDialogElement>(
+    "#product-modal",
+  )!;
+  const productModalClose = document.querySelector<HTMLButtonElement>(
+    "#product-modal-close",
+  )!;
+  const modalImage = document.querySelector<HTMLImageElement>(
+    "#modal-product-image",
+  )!;
+  const modalTitle = document.querySelector<HTMLElement>(
+    "#modal-product-title",
+  )!;
+  const modalPrice = document.querySelector<HTMLElement>(
+    "#modal-product-price",
+  )!;
+  const modalDescription = document.querySelector<HTMLElement>(
+    "#modal-product-description",
+  )!;
+  const modalWhatsapp = document.querySelector<HTMLAnchorElement>(
+    "#modal-product-whatsapp",
+  )!;
+  const detailTriggers = [
+    ...document.querySelectorAll<HTMLButtonElement>(".details-trigger"),
+  ];
+
+  const openProductModal = (trigger: HTMLButtonElement) => {
+    modalImage.src = trigger.dataset.detailsImage ?? "";
+    modalImage.alt = trigger.dataset.detailsName ?? "";
+    modalTitle.textContent = trigger.dataset.detailsName ?? "";
+    modalPrice.textContent = trigger.dataset.detailsPrice ?? "";
+    modalDescription.innerHTML = trigger.dataset.detailsDescription ?? "";
+    modalWhatsapp.href =
+      trigger
+        .closest(".catalog-card")
+        ?.querySelector<HTMLAnchorElement>(".catalog-links a:first-child")
+        ?.href || "#";
+    productModal.showModal();
+  };
+
+  detailTriggers.forEach((trigger) =>
+    trigger.addEventListener("click", () => openProductModal(trigger)),
+  );
+  productModalClose.addEventListener("click", () => productModal.close());
+  productModal.addEventListener("click", (event) => {
+    if (event.target === productModal) productModal.close();
+  });
+</script>

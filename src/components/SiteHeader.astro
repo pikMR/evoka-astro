@@ -1,0 +1,77 @@
+---
+import { translate, type Locale } from "../lib/catalog-view";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
+const flagByLocale = {
+  es: '<svg viewBox="0 0 24 16" role="img" aria-label="Español"><path fill="#aa151b" d="M0 0h24v16H0z"/><path fill="#f1bf00" d="M0 4h24v8H0z"/></svg>',
+  en: '<svg viewBox="0 0 24 16" role="img" aria-label="English"><path fill="#1a3478" d="M0 0h24v16H0z"/><path stroke="#fff" stroke-width="4" d="M0 0l24 16M24 0L0 16"/><path stroke="#c8102e" stroke-width="2" d="M0 0l24 16M24 0L0 16"/><path stroke="#fff" stroke-width="5" d="M12 0v16M0 8h24"/><path stroke="#c8102e" stroke-width="2" d="M12 0v16M0 8h24"/></svg>',
+  fr: '<svg viewBox="0 0 24 16" role="img" aria-label="Français"><path fill="#0055a4" d="M0 0h8v16H0z"/><path fill="#fff" d="M8 0h8v16H8z"/><path fill="#ef4135" d="M16 0h8v16h-8z"/></svg>',
+} as const;
+---
+
+<header class="site-header">
+  <a class="brand" href="#inicio" aria-label="Evoka, inicio"
+    ><img
+      class="brand-logo"
+      src="/images/brand/logo-transparent-clean.png"
+      alt="Evoka"
+    /></a
+  >
+  <nav aria-label="Navegación principal">
+    <a href="#seleccion">{t("navSelection")}</a>
+    <a href="#catalogo">{t("navCatalog")}</a>
+    <a href="#categorias">{t("navCategories")}</a>
+  </nav>
+  <a class="header-contact" href="#contacto"
+    >{t("contact")} <span>↗</span></a
+  ><div class="language-select">
+    <button
+      type="button"
+      class="language-current"
+      id="language-current"
+      aria-expanded="false"
+      aria-controls="language-menu"
+      ><span class="language-flag" set:html={flagByLocale[locale]} /><span
+        >{locale.toUpperCase()}</span
+      ><span class="language-chevron">⌄</span></button
+    ><div class="language-menu" id="language-menu" hidden>
+      {
+        (["es", "en", "fr"] as Locale[]).map((language) => (
+          <a
+            href={language === "es" ? "/" : `/${language}/`}
+            class:list={{ "is-active": locale === language }}
+          >
+            <span class="language-flag" set:html={flagByLocale[language]} />
+            <span>{language.toUpperCase()}</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</header>
+
+<script>
+  const languageCurrent = document.querySelector<HTMLButtonElement>(
+    "#language-current",
+  )!;
+  const languageMenu = document.querySelector<HTMLElement>("#language-menu")!;
+  languageCurrent.addEventListener("click", () => {
+    const isOpen = languageCurrent.getAttribute("aria-expanded") === "true";
+    languageCurrent.setAttribute("aria-expanded", String(!isOpen));
+    languageMenu.hidden = isOpen;
+  });
+  document.addEventListener("click", (event) => {
+    if (
+      !(event.target instanceof Element) ||
+      !event.target.closest(".language-select")
+    ) {
+      languageCurrent.setAttribute("aria-expanded", "false");
+      languageMenu.hidden = true;
+    }
+  });
+</script>

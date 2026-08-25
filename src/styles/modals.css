@@ -1,0 +1,240 @@
+.product-modal {
+  width: min(900px, calc(100% - 32px));
+  max-width: 900px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+}
+
+.product-modal::backdrop {
+  background: rgba(32, 33, 29, .56);
+  backdrop-filter: blur(4px);
+}
+
+.product-modal-panel {
+  position: relative;
+  background: var(--paper);
+  padding: 18px;
+}
+
+.product-modal-close {
+  position: absolute;
+  z-index: 2;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(251, 250, 247, .9);
+  color: var(--ink);
+  font: 24px/1 'DM Sans', sans-serif;
+  cursor: pointer;
+}
+
+.product-modal-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, .95fr) 1.05fr;
+  align-items: stretch;
+  gap: 34px;
+}
+
+.product-modal-image {
+  min-height: 430px;
+  background: #e9e5da;
+}
+
+.product-modal-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-modal-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 25px 34px 25px 0;
+}
+
+.modal-title-row {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.modal-title-row h2 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -1.8px;
+}
+
+.modal-title-row strong {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.modal-product-description {
+  margin: 25px 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.modal-product-description p {
+  margin: 0 0 13px;
+}
+
+.modal-product-description p:last-child {
+  margin-bottom: 0;
+}
+
+.modal-product-description strong {
+  color: var(--ink);
+}
+
+.modal-whatsapp {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+.secure-payment-modal {
+  width: min(720px, calc(100% - 32px));
+  max-width: 720px;
+}
+
+.secure-payment-panel {
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  padding: clamp(34px, 6vw, 62px);
+}
+
+.secure-payment-copy h2 {
+  max-width: 560px;
+  margin: 8px 0 18px;
+  font-size: clamp(34px, 6vw, 54px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.secure-payment-summary,
+.secure-payment-about p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.secure-payment-copy h3 {
+  margin: 30px 0 14px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.secure-payment-methods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+}
+
+.secure-payment-methods > div {
+  min-height: 132px;
+  padding: 18px;
+  background: #f3dfc0;
+}
+
+.secure-payment-methods strong {
+  display: block;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.secure-payment-methods p {
+  margin: 9px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.secure-payment-about {
+  margin-top: 28px;
+  padding-top: 2px;
+  border-top: 1px solid var(--line);
+}
+
+.secure-payment-about h3 {
+  margin-top: 24px;
+}
+
+.secure-payment-about p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 620px) {
+  .product-modal {
+    width: calc(100% - 20px);
+  }
+
+  .product-modal-panel {
+    padding: 10px;
+  }
+
+  .product-modal-layout {
+    display: block;
+  }
+
+  .product-modal-image {
+    height: 270px;
+    min-height: 0;
+  }
+
+  .product-modal-copy {
+    padding: 28px 15px 18px;
+  }
+
+  .modal-title-row {
+    display: block;
+  }
+
+  .modal-title-row strong {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .modal-product-description {
+    margin: 20px 0;
+    font-size: 13px;
+  }
+
+  .modal-whatsapp {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .product-modal-close {
+    top: 10px;
+    right: 10px;
+  }
+
+  .secure-payment-panel {
+    padding: 42px 24px 28px;
+  }
+
+  .secure-payment-methods {
+    grid-template-columns: 1fr;
+  }
+
+  .secure-payment-methods > div {
+    min-height: 0;
+  }
+}

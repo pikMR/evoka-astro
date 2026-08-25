@@ -1,0 +1,263 @@
+---
+import { products } from "../data/catalog";
+import {
+  excerpt,
+  formatPrice,
+  localizedCategory,
+  localizedProduct,
+  translate,
+  visibleCategories,
+  whatsappForProduct,
+  type Locale,
+} from "../lib/catalog-view";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
+---
+
+<section class="catalog-section" id="catalogo">
+  <div class="catalog-intro">
+    <div class="wrap">
+      <div class="section-heading catalog-heading">
+        <div>
+          <p class="eyebrow">{t("catalogEyebrow")}</p><h2>
+            {t("catalogTitle")}
+          </h2>
+        </div><p class="catalog-note">
+          {products.length}
+          {t("products")}<br />{
+            t("productsReady")
+              .split("\\n")
+              .map((line) => (
+                <>
+                  {line}
+                  <br />
+                </>
+              ))
+          }
+        </p>
+      </div>
+      <div class="catalog-toolbar">
+        <label class="search-box"
+          ><span>⌕</span><input
+            id="product-search"
+            type="search"
+            placeholder={t("searchPlaceholder")}
+            aria-label={t("searchPlaceholder")}
+          /></label
+        ><div class="filter-navigation">
+          <button
+            type="button"
+            class="filter-arrow"
+            data-filter-scroll="-1"
+            aria-label={t("left")}>←</button
+          ><div class="filter-list" role="group" aria-label={t("filterAria")}>
+            {
+              visibleCategories.map((category) => (
+                <button
+                  class="filter-button"
+                  data-filter={category}
+                  aria-pressed="false"
+                >
+                  {localizedCategory(locale, category)}
+                </button>
+              ))
+            }
+          </div><button
+            type="button"
+            class="filter-arrow"
+            data-filter-scroll="1"
+            aria-label={t("right")}>→</button
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="catalog-grid" id="product-grid">
+      {
+        products.map((product) => (
+          <article
+            class="catalog-card"
+            id={`product-${product.id}`}
+            data-name={`${localizedProduct(locale, product).name} ${product.categories.join(" ")}`.toLowerCase()}
+            data-categories={product.categories.join("|")}
+          >
+            <a class="catalog-image" href={`#product-${product.id}`}>
+              <img
+                src={`/images/products/${product.imageIds[0]}.jpg`}
+                alt={localizedProduct(locale, product).name}
+                loading="lazy"
+              />
+              <span class="stock-badge">
+                {product.stock > 0 ? t("available") : t("ask")}
+              </span>
+            </a>
+            <div class="catalog-card-body">
+              <p class="product-category">
+                {localizedCategory(locale, product.categories[0])}
+              </p>
+              <div class="catalog-title-row">
+                <h3>{localizedProduct(locale, product).name}</h3>
+                <strong>{formatPrice(locale, product.price)}</strong>
+              </div>
+              <p class="catalog-excerpt">
+                {excerpt(localizedProduct(locale, product).description)}
+              </p>
+              <div class="catalog-links">
+                <a
+                  href={whatsappForProduct(locale, product)}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {t("whatsapp")} <span>↗</span>
+                </a>
+                <button
+                  type="button"
+                  class="details-trigger"
+                  data-details-name={localizedProduct(locale, product).name}
+                  data-details-price={formatPrice(locale, product.price)}
+                  data-details-image={`/images/products/${product.imageIds[0]}.jpg`}
+                  data-details-description={
+                    localizedProduct(locale, product).description
+                  }
+                >
+                  {t("details")} <span>→</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+    <p class="empty-state" id="empty-state" hidden>{t("empty")}</p>
+  </div>
+</section>
+
+<script>
+  const search = document.querySelector<HTMLInputElement>("#product-search")!;
+  const buttons = [
+    ...document.querySelectorAll<HTMLButtonElement>("[data-filter]"),
+  ];
+  const filterList = document.querySelector<HTMLElement>(".filter-list")!;
+  const filterArrows = [
+    ...document.querySelectorAll<HTMLButtonElement>("[data-filter-scroll]"),
+  ];
+  const cards = [
+    ...document.querySelectorAll<HTMLElement>(".catalog-card"),
+  ];
+  const empty = document.querySelector<HTMLElement>("#empty-state")!;
+  const featuredLinks = [
+    ...document.querySelectorAll<HTMLAnchorElement>(
+      '.featured-image[href^="#product-"]',
+    ),
+  ];
+
+  const updateFilterArrows = () => {
+    const maxScroll = filterList.scrollWidth - filterList.clientWidth;
+    filterArrows[0].disabled = filterList.scrollLeft <= 1;
+    filterArrows[1].disabled = filterList.scrollLeft >= maxScroll - 1;
+  };
+  filterArrows.forEach((arrow) =>
+    arrow.addEventListener("click", () => {
+      filterList.scrollBy({
+        left: Number(arrow.dataset.filterScroll) * 190,
+        behavior: "smooth",
+      });
+    }),
+  );
+  filterList.addEventListener("scroll", updateFilterArrows, { passive: true });
+  window.addEventListener("resize", updateFilterArrows);
+  filterList.scrollLeft = 0;
+  window.setTimeout(updateFilterArrows, 0);
+
+  const highlightProduct = (id: string | null, updateHash = true) => {
+    if (!id) return;
+    const product = document.querySelector<HTMLElement>(id);
+    if (!product) return;
+    document
+      .querySelectorAll(".catalog-card.is-highlighted")
+      .forEach((card) => card.classList.remove("is-highlighted"));
+    void product.offsetWidth;
+    product.classList.add("is-highlighted");
+    product.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (updateHash) history.replaceState(null, "", id);
+    window.setTimeout(() => product.classList.remove("is-highlighted"), 1200);
+  };
+
+  let activeFilter = "all";
+  const update = () => {
+    const query = search.value.toLowerCase().trim();
+    let visible = 0;
+    cards.forEach((card) => {
+      const matchesQuery = card.dataset.name?.includes(query) ?? false;
+      const matchesFilter =
+        activeFilter === "all" ||
+        (card.dataset.categories?.split("|").includes(activeFilter) ?? false);
+      const show = matchesQuery && matchesFilter;
+      card.hidden = !show;
+      if (show) visible++;
+    });
+    empty.hidden = visible !== 0;
+  };
+
+  featuredLinks.forEach((link) =>
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      search.value = "";
+      const filterButton = buttons.find(
+        (button) => button.dataset.filter === link.dataset.featuredFilter,
+      );
+      if (filterButton && !filterButton.classList.contains("is-active"))
+        filterButton.click();
+      update();
+      highlightProduct(link.getAttribute("href"));
+    }),
+  );
+
+  buttons.forEach((button) =>
+    button.addEventListener("click", () => {
+      const wasActive = button.classList.contains("is-active");
+      activeFilter = wasActive ? "all" : (button.dataset.filter ?? "all");
+      buttons.forEach((item) => {
+        const selected = activeFilter !== "all" && item === button;
+        item.classList.toggle("is-active", selected);
+        item.setAttribute("aria-pressed", String(selected));
+      });
+      update();
+      if (!wasActive) {
+        const targetScroll =
+          button.offsetLeft - (filterList.clientWidth - button.offsetWidth) / 2;
+        filterList.scrollTo({
+          left: Math.max(
+            0,
+            Math.min(
+              targetScroll,
+              filterList.scrollWidth - filterList.clientWidth,
+            ),
+          ),
+          behavior: "smooth",
+        });
+      }
+    }),
+  );
+
+  document
+    .querySelectorAll<HTMLButtonElement>("[data-filter-link]")
+    .forEach((link) =>
+      link.addEventListener("click", () => {
+        const button = buttons.find(
+          (item) => item.dataset.filter === link.dataset.filterLink,
+        );
+        button?.click();
+        document
+          .querySelector<HTMLElement>("#catalogo")
+          ?.scrollIntoView({ behavior: "smooth" });
+      }),
+    );
+  search.addEventListener("input", update);
+</script>

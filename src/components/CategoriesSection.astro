@@ -1,0 +1,48 @@
+---
+import { products } from "../data/catalog";
+import {
+  localizedCategory,
+  translate,
+  visibleCategories,
+  type Locale,
+} from "../lib/catalog-view";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
+---
+
+<section class="section wrap categories-section" id="categorias">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">{t("categoriesEyebrow")}</p><h2>
+        {t("categoriesTitle")}
+        <em>{t("categoriesAccent")}</em>
+      </h2>
+    </div>
+  </div><div class="category-list">
+    {
+      visibleCategories.map((category, index) => (
+        <button
+          class={`category-row tone-${index % 3}`}
+          data-filter-link={category}
+        >
+          <span>0{index + 1}</span>
+          <h3>{localizedCategory(locale, category)}</h3>
+          <small>
+            {
+              products.filter((product) =>
+                product.categories.includes(category),
+              ).length
+            }{" "}
+            {t("products")}
+          </small>
+          <b>↗</b>
+        </button>
+      ))
+    }
+  </div>
+</section>

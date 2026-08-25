@@ -1,0 +1,65 @@
+---
+import {
+  excerpt,
+  featuredProducts,
+  formatPrice,
+  localizedCategory,
+  localizedProduct,
+  translate,
+  type Locale,
+} from "../lib/catalog-view";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
+---
+
+<section class="section wrap" id="seleccion">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">{t("selectionEyebrow")}</p><h2>
+        {t("selectionTitle")}
+        <em>{t("selectionAccent")}</em>
+      </h2>
+    </div><span class="section-count"
+      >{featuredProducts.length.toString().padStart(2, "0")} / {
+        t("favorites")
+      }</span
+    >
+  </div>
+  <div class="featured-grid">
+    {
+      featuredProducts.map((product, index) => (
+        <article class={`featured-card featured-${index}`}>
+          <a
+            class="featured-image"
+            href={`#product-${product.id}`}
+            data-featured-filter={product.categories[0]}
+          >
+            <img
+              src={`/images/products/${product.imageIds[0]}.jpg`}
+              alt={localizedProduct(locale, product).name}
+              loading={index > 1 ? "lazy" : "eager"}
+            />
+            <span class="image-index">0{index + 1}</span>
+          </a>
+          <div class="card-meta">
+            <div>
+              <p class="product-category">
+                {localizedCategory(locale, product.categories[0])}
+              </p>
+              <h3>{localizedProduct(locale, product).name}</h3>
+            </div>
+            <strong>{formatPrice(locale, product.price)}</strong>
+          </div>
+          <p class="card-description">
+            {excerpt(localizedProduct(locale, product).description)}
+          </p>
+        </article>
+      ))
+    }
+  </div>
+</section>

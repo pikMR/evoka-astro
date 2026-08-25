@@ -1,0 +1,69 @@
+---
+import { translate, type Locale } from "../lib/catalog-view";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
+---
+
+<dialog
+  class="product-modal secure-payment-modal"
+  id="secure-payment-modal"
+  aria-labelledby="secure-payment-title"
+>
+  <div class="product-modal-panel secure-payment-panel">
+    <button
+      type="button"
+      class="product-modal-close"
+      id="secure-payment-close"
+      aria-label={t("close")}>×</button
+    >
+    <div class="secure-payment-copy">
+      <p class="eyebrow">{t("securePaymentEyebrow")}</p>
+      <h2 id="secure-payment-title">{t("securePaymentTitle")}</h2>
+      <p class="secure-payment-summary">{t("securePaymentSummary")}</p>
+      <h3>{t("securePaymentMethods")}</h3>
+      <div class="secure-payment-methods">
+        <div>
+          <strong>{t("securePaymentBizum")}</strong>
+          <p>{t("securePaymentBizumText")}</p>
+        </div><div>
+          <strong>{t("securePaymentBank")}</strong>
+          <p>{t("securePaymentBankText")}</p>
+        </div><div>
+          <strong>{t("securePaymentRevolut")}</strong>
+          <p>{t("securePaymentRevolutText")}</p>
+        </div>
+      </div>
+      <div class="secure-payment-about">
+        <h3>{t("securePaymentAbout")}</h3>
+        <p>{t("securePaymentAboutText")}</p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const securePaymentModal = document.querySelector<HTMLDialogElement>(
+    "#secure-payment-modal",
+  )!;
+  const securePaymentTrigger = document.querySelector<HTMLButtonElement>(
+    "#secure-payment-trigger",
+  )!;
+  const securePaymentClose = document.querySelector<HTMLButtonElement>(
+    "#secure-payment-close",
+  )!;
+
+  securePaymentTrigger.addEventListener("click", () =>
+    securePaymentModal.showModal(),
+  );
+  securePaymentClose.addEventListener("click", () =>
+    securePaymentModal.close(),
+  );
+  securePaymentModal.addEventListener("click", (event) => {
+    if (event.target === securePaymentModal) securePaymentModal.close();
+  });
+</script>

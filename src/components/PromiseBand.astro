@@ -1,0 +1,18 @@
+---
+import { translate, type Locale } from "../lib/catalog-view";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
+---
+
+<section class="promise-band">
+  <div class="wrap promise-grid">
+    <span class="eyebrow">{t("promiseEyebrow")}</span><h2>
+      {t("promiseTitle")}<br /><em>{t("promiseTitleAccent")}</em>
+    </h2><p>{t("promiseText")}</p>
+  </div>
+</section>
