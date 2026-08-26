@@ -26,7 +26,7 @@ export const aboutContent = {
     ],
   },
   en: {
-    title: "About us",
+    title: "",
     intro: [
       "🎁 Hello! We are Dani and Kate, the creators of Évoka.",
       "We create personalised gifts that move people and bring them closer.",
@@ -44,7 +44,7 @@ export const aboutContent = {
     ],
   },
   fr: {
-    title: "À propos de nous",
+    title: "",
     intro: [
       "🎁 Bonjour ! Nous sommes Dani et Kate, les créatrices d’Évoka.",
       "Nous créons des cadeaux personnalisés qui émeuvent et rapprochent.",
