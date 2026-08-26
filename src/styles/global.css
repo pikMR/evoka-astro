@@ -189,24 +189,82 @@ h2 em {
 }
 
 .promise-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr 1fr;
-    gap: 45px;
-    align-items: start
+    display: flex;
+    align-items: center;
+    gap: clamp(28px, 5vw, 72px)
 }
 
 .promise-grid h2 {
-    font-size: 46px;
+    flex: 0 0 min(260px, 26%);
+    margin: 0;
+    font-family: 'Playfair Display';
+    font-weight: 800;
+    font-style: italic;
     line-height: 1.03;
-    letter-spacing: -2px;
-    margin: 0
+    letter-spacing: -1.5px;
+    font-size: 48px;
 }
 
-.promise-grid p:last-child {
-    color: var(--muted);
-    line-height: 1.7;
-    max-width: 280px;
-    margin: 0
+.box-design-gallery {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 0;
+    padding: 14px 0 22px
+}
+
+.box-design-card {
+    position: relative;
+    display: block;
+    width: clamp(108px, 14vw, 178px);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    transition: transform .25s ease, filter .25s ease;
+}
+
+.box-design-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 7px solid var(--paper);
+    box-shadow: 0 15px 28px rgba(50, 44, 35, .22)
+}
+
+.box-design-number {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: grid;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0 3px 8px rgba(50, 44, 35, .18)
+}
+
+.box-design-card-1 { transform: rotate(-7deg) translateY(8px) }
+.box-design-card-2 { transform: rotate(4deg) translateY(-8px) }
+.box-design-card-3 { transform: rotate(-3deg) translateY(11px) }
+.box-design-card-4 { transform: rotate(7deg) translateY(-5px) }
+
+.box-design-card:hover,
+.box-design-card:focus-visible {
+    z-index: 1;
+    filter: brightness(1.04);
+    transform: rotate(0) translateY(-8px) scale(1.04)
+}
+
+.box-design-card:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 5px
 }
 
 .section {
@@ -529,11 +587,7 @@ h2 em {
     }
 
     .promise-grid {
-        grid-template-columns: 1fr 1fr
-    }
-
-    .promise-grid>p:last-child {
-        grid-column: 2
+        gap: 28px
     }
 
     .featured-grid {
@@ -575,8 +629,22 @@ h2 em {
         gap: 25px
     }
 
-    .promise-grid>p:last-child {
-        grid-column: auto
+    .promise-grid {
+        display: block
+    }
+
+    .promise-grid h2 {
+        max-width: 300px;
+        margin-bottom: 22px
+    }
+
+    .box-design-gallery {
+        gap: 12px;
+        padding: 10px 2px 18px
+    }
+
+    .box-design-card {
+        width: calc((100% - 36px) / 4)
     }
 
     .promise-grid h2,

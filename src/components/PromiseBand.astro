@@ -1,18 +1,64 @@
 ---
-import { translate, type Locale } from "../lib/catalog-view";
+import { type Locale } from "../lib/catalog-view";
 
 interface Props {
   locale: Locale;
 }
 
 const { locale } = Astro.props;
-const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
+const title = locale === "fr" ? "Créez votre propre box" : locale === "en" ? "Create your own box" : "Crea tu propio box";
+const imageAlt = locale === "fr" ? "Étape" : locale === "en" ? "Step" : "Paso";
 ---
 
 <section class="promise-band">
   <div class="wrap promise-grid">
-    <span class="eyebrow">{t("promiseEyebrow")}</span><h2>
-      {t("promiseTitle")}<br /><em>{t("promiseTitleAccent")}</em>
-    </h2><p>{t("promiseText")}</p>
+    <h2>{title}</h2>
+    <div class="box-design-gallery" aria-label={title}>
+      {
+        [1, 2, 3, 4].map((step, index) => (
+          <button
+            type="button"
+            class:list={{ "box-design-card": true, [`box-design-card-${index + 1}`]: true }}
+            data-box-image={`/images/create-box/designbox-${step}-${locale}.jpeg`}
+            data-box-alt={`${imageAlt} ${step}`}
+            aria-label={`${imageAlt} ${step}`}
+          >
+            <img
+              src={`/images/create-box/designbox-${step}-${locale}.jpeg`}
+              alt={`${imageAlt} ${step}`}
+              loading={index === 0 ? "eager" : "lazy"}
+            />
+            <span class="box-design-number" aria-hidden="true">#{step}</span>
+          </button>
+        ))
+      }
+    </div>
   </div>
 </section>
+
+<dialog class="box-design-modal" id="box-design-modal" aria-label={title}>
+  <div class="box-design-modal-panel">
+    <button type="button" class="product-modal-close" id="box-design-modal-close" aria-label="Close">×</button>
+    <img id="box-design-modal-image" src="" alt="" />
+  </div>
+</dialog>
+
+<script>
+  const boxModal = document.querySelector<HTMLDialogElement>("#box-design-modal");
+  const boxModalImage = document.querySelector<HTMLImageElement>("#box-design-modal-image");
+  const boxModalClose = document.querySelector<HTMLButtonElement>("#box-design-modal-close");
+
+  document.querySelectorAll<HTMLButtonElement>("[data-box-image]").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      if (!boxModal || !boxModalImage) return;
+      boxModalImage.src = trigger.dataset.boxImage ?? "";
+      boxModalImage.alt = trigger.dataset.boxAlt ?? "";
+      boxModal.showModal();
+    });
+  });
+
+  boxModalClose?.addEventListener("click", () => boxModal?.close());
+  boxModal?.addEventListener("click", (event) => {
+    if (event.target === boxModal) boxModal.close();
+  });
+</script>
