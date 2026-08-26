@@ -26,6 +26,12 @@ La auditoría comprueba identidad, duplicados, categorías, precios, stock, cobe
 4. Revisar el impacto sobre los destacados si cambia el orden del array.
 5. Ejecutar auditoría y build.
 
+## Alta mediante el editor local
+
+Ejecutar `npm run catalog:editor` y abrir `http://127.0.0.1:4311`. La herramienta queda fuera del build y sólo acepta conexiones locales. Antes de confirmar muestra el producto resuelto, categoría, IDs de imagen y archivos exactos.
+
+Al confirmar, comprueba que la vista previa siga vigente, escribe catálogo e imágenes y ejecuta automáticamente la auditoría y el build. Un fallo restaura el catálogo anterior y elimina las imágenes de esa operación. Las categorías nuevas se hacen públicas y recurren al nombre español en EN/FR hasta que se añadan traducciones explícitas. Ver `local-catalog-editor/README.md` para límites y reglas de generación.
+
 ## Importación desde Adminer
 
 Invocar `$adminer-catalog-import`. El flujo esperado es:

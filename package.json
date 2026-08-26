@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "catalog:editor": "node local-catalog-editor/server.mjs",
+    "test:catalog-editor": "node --test local-catalog-editor/server.test.mjs"
   },
   "dependencies": {
     "@astrojs/check": "latest",

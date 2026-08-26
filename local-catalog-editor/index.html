@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor local de catálogo · Evoka</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">E</div>
+      <div>
+        <p class="eyebrow">Herramienta local · Evoka</p>
+        <h1>Nuevo producto</h1>
+      </div>
+      <div class="local-badge"><span></span> Solo este equipo</div>
+    </header>
+
+    <main class="layout">
+      <section class="editor-card">
+        <div class="intro">
+          <p class="step-label">01 · Datos del catálogo</p>
+          <p>Completa los campos y revisa el resultado antes de escribir ningún archivo.</p>
+        </div>
+
+        <form id="product-form" novalidate>
+          <div class="field-grid">
+            <label class="field field-wide">
+              <span>Categoría <b>*</b></span>
+              <select id="category" name="category" required>
+                <option value="">Cargando categorías…</option>
+              </select>
+            </label>
+
+            <label class="field field-wide is-hidden" id="new-category-field">
+              <span>Nueva categoría pública <b>*</b></span>
+              <input id="new-category" name="newCategory" maxlength="100" autocomplete="off" placeholder="Ej. Celebraciones">
+              <small>Se añadirá a los filtros públicos. “Inicio” se añade siempre de forma interna.</small>
+            </label>
+
+            <label class="field field-wide">
+              <span>Nombre <b>*</b></span>
+              <input id="name" name="name" maxlength="180" required autocomplete="off" placeholder="Nombre comercial del producto">
+              <small>El slug se genera automáticamente con palabras separadas por guiones.</small>
+            </label>
+
+            <label class="field">
+              <span>Referencia</span>
+              <input id="reference" name="reference" maxlength="100" autocomplete="off" placeholder="Automática si se deja vacía">
+            </label>
+
+            <label class="field">
+              <span>Precio sin IVA (€) <b>*</b></span>
+              <input id="price" name="price" type="number" min="0" step="0.000001" inputmode="decimal" required placeholder="0,00">
+              <small>Usa 0 para mostrar “Consultar”.</small>
+            </label>
+
+            <label class="field">
+              <span>Stock</span>
+              <input id="stock" name="stock" type="number" min="0" step="1" inputmode="numeric" value="0">
+              <small>Opcional; por defecto 0.</small>
+            </label>
+          </div>
+
+          <fieldset class="description-field">
+            <legend>Descripción <b>*</b></legend>
+            <div class="toolbar" role="toolbar" aria-label="Formato de la descripción">
+              <button type="button" data-command="bold" title="Negrita"><strong>B</strong></button>
+              <button type="button" data-command="italic" title="Cursiva"><em>I</em></button>
+              <button type="button" data-command="underline" title="Subrayado"><u>U</u></button>
+              <span class="toolbar-divider"></span>
+              <button type="button" data-block="p">Párrafo</button>
+              <button type="button" data-block="h3">Título</button>
+              <button type="button" data-command="insertUnorderedList" title="Lista con viñetas">• Lista</button>
+              <button type="button" data-command="insertOrderedList" title="Lista numerada">1. Lista</button>
+              <button type="button" data-link title="Añadir enlace">Enlace</button>
+              <button type="button" data-command="removeFormat" title="Quitar formato">Limpiar</button>
+            </div>
+            <div
+              id="description"
+              class="wysiwyg"
+              contenteditable="true"
+              role="textbox"
+              aria-multiline="true"
+              data-placeholder="Describe el producto, su contenido, medidas y condiciones…"
+            ></div>
+            <small>Se conserva un HTML sencillo y seguro; scripts, iframes y contenido activo están bloqueados.</small>
+          </fieldset>
+
+          <section class="image-section">
+            <div>
+              <p class="field-title">Imágenes <b>*</b></p>
+              <p class="field-help">Hasta 8 imágenes. Se convierten a JPG y reciben IDs consecutivos al revisar.</p>
+            </div>
+            <label class="dropzone" id="dropzone">
+              <input id="images" type="file" accept="image/*" multiple>
+              <span class="drop-icon">＋</span>
+              <strong>Selecciona o arrastra imágenes</strong>
+              <small>JPG, PNG, WEBP u otro formato compatible con el navegador</small>
+            </label>
+            <div id="image-list" class="image-list" aria-live="polite"></div>
+          </section>
+
+          <div id="form-error" class="notice notice-error is-hidden" role="alert"></div>
+          <button class="primary-button" type="submit" id="preview-button">
+            <span>Revisar producto</span><span aria-hidden="true">→</span>
+          </button>
+        </form>
+      </section>
+
+      <aside class="preview-card" id="preview-card">
+        <div class="preview-empty" id="preview-empty">
+          <span>02</span>
+          <h2>Vista previa</h2>
+          <p>Aquí aparecerán el producto generado, sus IDs y todos los archivos que cambiarán.</p>
+        </div>
+
+        <div class="preview-content is-hidden" id="preview-content">
+          <p class="step-label">02 · Confirmación</p>
+          <div id="preview-image-grid" class="preview-image-grid"></div>
+          <div class="preview-heading">
+            <div>
+              <p id="preview-category" class="preview-category"></p>
+              <h2 id="preview-name"></h2>
+            </div>
+            <strong id="preview-price" class="preview-price"></strong>
+          </div>
+          <dl class="metadata">
+            <div><dt>ID</dt><dd id="preview-id"></dd></div>
+            <div><dt>Referencia</dt><dd id="preview-reference"></dd></div>
+            <div><dt>Slug</dt><dd id="preview-slug"></dd></div>
+            <div><dt>Stock</dt><dd id="preview-stock"></dd></div>
+          </dl>
+          <div class="preview-description" id="preview-description"></div>
+          <div id="preview-warnings"></div>
+          <div class="file-preview">
+            <h3>Archivos que se escribirán</h3>
+            <ul id="preview-files"></ul>
+          </div>
+          <label class="confirmation-check">
+            <input type="checkbox" id="confirm-check">
+            <span>He revisado los datos, la descripción y las imágenes.</span>
+          </label>
+          <button class="primary-button" type="button" id="commit-button" disabled>
+            <span>Añadir al catálogo</span><span aria-hidden="true">✓</span>
+          </button>
+        </div>
+
+        <div class="success-panel is-hidden" id="success-panel" role="status">
+          <span class="success-icon">✓</span>
+          <p class="step-label">Producto guardado</p>
+          <h2 id="success-title"></h2>
+          <p>La auditoría y el build han finalizado correctamente.</p>
+          <ul id="success-files"></ul>
+          <button class="secondary-button" type="button" id="new-product-button">Añadir otro producto</button>
+        </div>
+      </aside>
+    </main>
+
+    <div class="loading-overlay is-hidden" id="loading-overlay" aria-live="assertive">
+      <div class="spinner"></div>
+      <strong id="loading-title">Preparando vista previa…</strong>
+      <p id="loading-detail">Las imágenes se están convirtiendo a JPG.</p>
+    </div>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

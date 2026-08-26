@@ -46,3 +46,9 @@ Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical UR
 - No hay API, autenticación, CMS, runtime PHP ni conexión a Adminer dentro del repositorio.
 - `dist/`, `.astro/` y `node_modules/` son artefactos locales ignorados por Git.
 - El procedimiento de despliegue no está documentado ni codificado.
+
+## Editor local de catálogo
+
+`local-catalog-editor/` es una aplicación Node independiente de Astro y versionada con el repositorio. Se inicia bajo demanda mediante `npm run catalog:editor`, escucha exclusivamente en `127.0.0.1` y no genera rutas ni archivos dentro de `dist/`.
+
+El navegador aporta el formulario, un editor WYSIWYG sin dependencias externas y la conversión de imágenes a JPG. El servidor vuelve a validar y sanear los datos, genera identidades, presenta una vista previa de un solo uso y aplica una alta focalizada a `src/data/catalog.ts` y `public/images/products/`. No permite editar productos existentes ni consulta Adminer.
