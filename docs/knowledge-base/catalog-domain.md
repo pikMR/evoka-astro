@@ -47,11 +47,11 @@ El orden de los filtros es contractual porque procede del array exportado:
 - La interfaz completa existe en español, inglés y francés.
 - Los nombres de categoría usan `categoryTranslations`; si falta una clave, se conserva el nombre español.
 - Las traducciones de producto están separadas entre `productTranslations` y `productTranslationsExtra`, y el fallback final es el producto español.
-- Estado medido el 25-08-2026: 18 de 76 productos tienen traducción explícita; 58 recurren al español en inglés y francés.
+- Estado medido el 26-08-2026: los 78 productos tienen traducción explícita en inglés y francés; el español continúa siendo la fuente base.
 
 ## Instantánea reproducible
 
-- 76 productos.
+- 78 productos.
 - 132 JPG locales, 130 referenciados.
 - Ninguna imagen referenciada falta.
 - Imágenes huérfanas: `148.jpg` y `149.jpg`.
