@@ -33,6 +33,9 @@ const catalogForProduct = (_product: Pick<Product, "id">) =>
 export const whatsappForProduct = (locale: Locale, product: Product) =>
   whatsappCatalogs[catalogForProduct(product)][locale === "fr" ? "fr" : "es"];
 
+export const assetUrl = (path: string) =>
+  `${import.meta.env.BASE_URL.replace(/\/?$/, "/")}${path.replace(/^\/+/, "")}`;
+
 const clean = (html: string) =>
   html
     .replace(/<[^>]+>/g, " ")
@@ -65,13 +68,5 @@ export const catalogProducts = [...products].sort((left, right) =>
   ),
 );
 export const heroImages = [
-  "/images/hero/1.jpeg",
-  "/images/hero/2.jpeg",
-  "/images/hero/3.jpeg",
-  "/images/hero/4.jpeg",
-  "/images/hero/5.jpeg",
-  "/images/hero/6.jpeg",
-  "/images/hero/7.jpeg",
-  "/images/hero/8.jpeg",
-  "/images/hero/9.jpeg",
+  ...Array.from({ length: 9 }, (_, index) => assetUrl(`images/hero/${index + 1}.jpeg`)),
 ];

@@ -1,6 +1,7 @@
 ---
 import {
   catalogProducts,
+  assetUrl,
   excerpt,
   formatPrice,
   localizedCategory,
@@ -92,7 +93,7 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
           >
             <a class="catalog-image" href={`#product-${product.id}`}>
               <img
-                src={`/images/products/${product.imageIds[0]}.jpg`}
+                src={assetUrl(`images/products/${product.imageIds[0]}.jpg`)}
                 alt={localizedProduct(locale, product).name}
                 loading="lazy"
               />
@@ -124,7 +125,7 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
                   class="details-trigger"
                   data-details-name={localizedProduct(locale, product).name}
                   data-details-price={formatPrice(locale, product.price)}
-                  data-details-image={`/images/products/${product.imageIds[0]}.jpg`}
+                  data-details-image={assetUrl(`images/products/${product.imageIds[0]}.jpg`)}
                   data-details-description={
                     localizedProduct(locale, product).description
                   }

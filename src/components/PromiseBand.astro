@@ -1,5 +1,5 @@
 ---
-import { type Locale } from "../lib/catalog-view";
+import { assetUrl, type Locale } from "../lib/catalog-view";
 
 interface Props {
   locale: Locale;
@@ -19,12 +19,12 @@ const imageAlt = locale === "fr" ? "Étape" : locale === "en" ? "Step" : "Paso";
           <button
             type="button"
             class:list={{ "box-design-card": true, [`box-design-card-${index + 1}`]: true }}
-            data-box-image={`/images/create-box/designbox-${step}-${locale}.jpeg`}
+            data-box-image={assetUrl(`images/create-box/designbox-${step}-${locale}.jpeg`)}
             data-box-alt={`${imageAlt} ${step}`}
             aria-label={`${imageAlt} ${step}`}
           >
             <img
-              src={`/images/create-box/designbox-${step}-${locale}.jpeg`}
+              src={assetUrl(`images/create-box/designbox-${step}-${locale}.jpeg`)}
               alt={`${imageAlt} ${step}`}
               loading={index === 0 ? "eager" : "lazy"}
             />

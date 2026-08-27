@@ -1,5 +1,5 @@
 ---
-import { translate, type Locale } from "../lib/catalog-view";
+import { assetUrl, translate, type Locale } from "../lib/catalog-view";
 
 interface Props {
   locale: Locale;
@@ -18,7 +18,7 @@ const flagByLocale = {
   <a class="brand" href="#inicio" aria-label="Evoka, inicio"
     ><img
       class="brand-logo"
-      src="/images/brand/logo-transparent-clean.png"
+      src={assetUrl("images/brand/logo-transparent-clean.png")}
       alt="Evoka"
     /></a
   >

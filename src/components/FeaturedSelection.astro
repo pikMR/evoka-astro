@@ -1,6 +1,7 @@
 ---
 import {
   excerpt,
+  assetUrl,
   featuredProducts,
   formatPrice,
   localizedCategory,
@@ -40,7 +41,7 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
             data-featured-filter={product.categories[0]}
           >
             <img
-              src={`/images/products/${product.imageIds[0]}.jpg`}
+              src={assetUrl(`images/products/${product.imageIds[0]}.jpg`)}
               alt={localizedProduct(locale, product).name}
               loading={index > 1 ? "lazy" : "eager"}
             />

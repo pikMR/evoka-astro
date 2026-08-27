@@ -1,6 +1,6 @@
 ---
 import { aboutContent } from "../config/site";
-import { translate, type Locale } from "../lib/catalog-view";
+import { assetUrl, translate, type Locale } from "../lib/catalog-view";
 
 interface Props {
   locale: Locale;
@@ -32,7 +32,7 @@ const content = aboutContent[locale];
         </div>
         <img
           class="about-modal-image"
-          src="/images/about/puente.jpeg"
+          src={assetUrl("images/about/puente.jpeg")}
           alt={t("footerAboutImageAlt")}
           loading="lazy"
         />
