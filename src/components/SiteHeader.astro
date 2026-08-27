@@ -43,7 +43,7 @@ const flagByLocale = {
       {
         (["es", "en", "fr"] as Locale[]).map((language) => (
           <a
-            href={language === "es" ? "/" : `/${language}/`}
+            href={language === "es" ? assetUrl("") : assetUrl(`${language}/`)}
             class:list={{ "is-active": locale === language }}
           >
             <span class="language-flag" set:html={flagByLocale[language]} />

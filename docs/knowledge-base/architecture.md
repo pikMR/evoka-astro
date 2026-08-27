@@ -9,6 +9,7 @@ El repositorio contiene un catálogo estático de Evoka construido con Astro, Ty
 - `src/pages/index.astro` renderiza español en `/`.
 - `src/pages/[lang].astro` genera `/es/`, `/en/` y `/fr/` mediante `getStaticPaths`.
 - `astro.config.mjs` declara español como locale por defecto, sin prefijo obligatorio, y usa `site: https://pikmr.github.io` con `base: /evoka-astro` en producción. En desarrollo cambia automáticamente a `http://localhost:4321` y `/`.
+- El selector de idioma construye sus enlaces con `assetUrl()`, por lo que conserva el prefijo de publicación (`/evoka-astro/`) en GitHub Pages y funciona también bajo `/` en desarrollo.
 - `src/components/CatalogPage.astro` compone la página y recibe `locale` (`es`, `en` o `fr`). Las secciones visuales, los modales y sus scripts viven en componentes independientes dentro de `src/components/`.
 
 Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical URLs ni sitemap configurados en el repositorio.
