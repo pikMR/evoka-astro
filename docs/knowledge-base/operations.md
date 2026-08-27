@@ -50,7 +50,7 @@ No introducir credenciales ni exports brutos en Git. Usar archivos temporales ig
 
 El despliegue de producción se realiza mediante GitHub Pages y GitHub Actions. El workflow está en `.github/workflows/astro.yml` y se ejecuta automáticamente con cada push a `main`; también se puede lanzar manualmente desde la pestaña Actions. Usa Node.js `22.12.0` porque la versión actual de Astro requiere Node.js 22.12.0 o superior. El build genera `dist/`, que se publica usando el entorno `github-pages`.
 
-La configuración está preparada para la URL de proyecto `https://pikmr.github.io/evoka-astro/`: `astro.config.mjs` define `site` y `base`, mientras que `configure-pages` proporciona esos valores al build del workflow. En el repositorio de GitHub, Pages debe tener seleccionado `GitHub Actions` como fuente de publicación.
+La configuración está preparada para la URL de proyecto `https://pikmr.github.io/evoka-astro/`: `astro.config.mjs` define `site` y `base`, mientras que `configure-pages` proporciona esos valores al build del workflow. En el repositorio de GitHub, Pages debe tener seleccionado `GitHub Actions` como fuente de publicación (Settings → Pages → Build and deployment → Source).
 
 Para publicar:
 
