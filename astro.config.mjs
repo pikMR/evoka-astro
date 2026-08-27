@@ -1,7 +1,8 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://catalogo.evoka.local',
+  site: 'https://pikmr.github.io',
+  base: '/evoka-astro',
   i18n: {
     defaultLocale: 'es',
     locales: ['es', 'en', 'fr'],

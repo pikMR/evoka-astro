@@ -48,4 +48,16 @@ No introducir credenciales ni exports brutos en Git. Usar archivos temporales ig
 
 ## Publicación
 
-No existe una configuración de despliegue en el repositorio. `npm run build` genera `dist/`, pero copiar o publicar ese directorio requiere conocer el destino real y obtener autorización. El remote Git apunta a una instancia privada en red local; hacer push no forma parte de una petición de edición salvo solicitud expresa.
+El despliegue de producción se realiza mediante GitHub Pages y GitHub Actions. El workflow está en `.github/workflows/astro.yml` y se ejecuta automáticamente con cada push a `main`; también se puede lanzar manualmente desde la pestaña Actions. El build genera `dist/`, que se publica usando el entorno `github-pages`.
+
+La configuración está preparada para la URL de proyecto `https://pikmr.github.io/evoka-astro/`: `astro.config.mjs` define `site` y `base`, mientras que `configure-pages` proporciona esos valores al build del workflow. En el repositorio de GitHub, Pages debe tener seleccionado `GitHub Actions` como fuente de publicación.
+
+Para publicar:
+
+```powershell
+git add .
+git commit -m "Configurar despliegue en GitHub Pages"
+git push github-evoka main
+```
+
+El remoto `github-evoka` apunta a `https://github.com/pikMR/evoka-astro.git`; `origin` continúa apuntando al remoto privado local.
