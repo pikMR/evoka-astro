@@ -1,0 +1,37 @@
+---
+import { shippingContent } from "../config/site";
+import { translate, type Locale } from "../lib/catalog-view";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
+const paragraphs = shippingContent[locale];
+---
+
+<dialog class="product-modal shipping-modal" id="shipping-modal" aria-labelledby="shipping-modal-title">
+  <div class="product-modal-panel shipping-modal-panel">
+    <button type="button" class="product-modal-close" id="shipping-modal-close" aria-label={t("close")}>×</button>
+    <div class="shipping-modal-copy">
+      <p class="eyebrow">{t("shippingPolicies")}</p>
+      <h2 id="shipping-modal-title"></h2>
+      <div class="shipping-modal-text">
+        {paragraphs.map((paragraph, index) => <p class:list={{ "shipping-warning": index === paragraphs.length - 1 }}>{paragraph}</p>)}
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const shippingModal = document.querySelector<HTMLDialogElement>("#shipping-modal")!;
+  const shippingTrigger = document.querySelector<HTMLButtonElement>("#shipping-modal-trigger")!;
+  const shippingClose = document.querySelector<HTMLButtonElement>("#shipping-modal-close")!;
+
+  shippingTrigger.addEventListener("click", () => shippingModal.showModal());
+  shippingClose.addEventListener("click", () => shippingModal.close());
+  shippingModal.addEventListener("click", (event) => {
+    if (event.target === shippingModal) shippingModal.close();
+  });
+</script>

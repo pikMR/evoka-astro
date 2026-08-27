@@ -62,3 +62,33 @@ export const aboutContent = {
     ],
   },
 } as const;
+
+export const shippingContent = {
+  es: [
+    "Envíos con InPost España. Entrega en lockers o Punto Pack en 2 a 7 días hábiles.",
+    "Para envíos dentro de Murcia capital, las entregas se realizarán el mismo día o al siguiente día hábil.",
+    "Se aplican límites de peso y tamaño según las condiciones de InPost.",
+    "Se proporciona un número de seguimiento al cliente.",
+    "Verifica que la dirección proporcionada sea correcta y revisa el paquete al recibirlo.",
+    "Por tratarse de artículos personalizados y, en algunos casos, por motivos de higiene, no se aceptan devoluciones, salvo defecto de fábrica conforme a la Ley 3/2014.",
+    "Es fundamental que el cliente verifique que todos los datos introducidos (nombre, dirección, código postal, email y teléfono) sean correctos y estén completos. En Évoka no nos hacemos responsables por retrasos, devoluciones o pérdidas causadas por errores en la información proporcionada. El cliente asume toda responsabilidad si el paquete no puede ser entregado por errores en los datos de envío.",
+  ],
+  en: [
+    "Shipping with InPost Spain. Delivery to lockers or Punto Pack locations within 2 to 7 business days.",
+    "For deliveries within Murcia city, delivery will take place the same day or the next business day.",
+    "Weight and size limits apply according to InPost's terms and conditions.",
+    "A tracking number is provided to the customer.",
+    "Please make sure that the address provided is correct and check the parcel upon receipt.",
+    "As these are personalised items and, in some cases, for hygiene reasons, returns are not accepted, except in the event of a manufacturing defect in accordance with Spanish Law 3/2014.",
+    "It is essential that the customer checks that all the details entered (name, address, postcode, email and telephone number) are correct and complete. Évoka cannot be held responsible for delays, returns or losses caused by errors in the information provided. The customer assumes full responsibility if the parcel cannot be delivered due to errors in the shipping details.",
+  ],
+  fr: [
+    "Livraison en lockers, Points Relais® et à domicile en France métropolitaine sous 2 à 5 jours ouvrables, et dans les DOM-TOM sous 5 à 10 jours ouvrés (délai variable selon les douanes).",
+    "Les livraisons peuvent être effectuées le jour même ou le jour ouvrable suivant.",
+    "Les limites de poids et de taille s'appliquent selon les conditions de Mondial Relay.",
+    "Un numéro de suivi est fourni au client.",
+    "Veuillez vérifier que l'adresse fournie est correcte et contrôler le colis dès sa réception.",
+    "Conformément à l’article L221-28 du Code de la consommation, les produits personnalisés ne sont ni repris ni échangés, sauf en cas de défaut de fabrication ou d’erreur de notre part.",
+    "Il est essentiel que le client vérifie que toutes les données saisies (nom, adresse, code postal, e-mail et téléphone) sont correctes et complètes. Évoka ne peut être tenue responsable des retards, retours ou pertes causés par des erreurs dans les informations fournies. Le client assume toute responsabilité si le colis ne peut être livré en raison d'erreurs dans les informations d'expédition.",
+  ],
+} as const;

@@ -97,14 +97,22 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
       </div>
     </div><div class="footer-about-column">
       <p class="eyebrow">{t("footerAboutEyebrow")}</p>
-      <p>{t("footerAboutSummary")}</p>
       <button
         type="button"
         class="footer-info-trigger"
         id="about-modal-trigger"
         aria-haspopup="dialog"
         aria-controls="about-modal"
-      >{t("footerAboutMore")} <span aria-hidden="true">↗</span></button>
+        >{t("footerAboutMore")} <span aria-hidden="true">↗</span></button>
+      <p class="eyebrow footer-shipping-heading">{t("shippingPolicies")}</p>
+      <button
+        type="button"
+        class="footer-info-trigger"
+        id="shipping-modal-trigger"
+        aria-haspopup="dialog"
+        aria-controls="shipping-modal"
+        >{t("footerAboutSummary")} <span aria-hidden="true">↗</span></button
+      >
     </div>
   </div><div class="wrap secure-payment-strip">
     <div class="secure-payment-mark" aria-hidden="true">
@@ -122,7 +130,7 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
       id="secure-payment-trigger"
       aria-haspopup="dialog"
       aria-controls="secure-payment-modal"
-    >{t("securePaymentMore")} <span aria-hidden="true">↗</span></button>
+      >{t("securePaymentMore")} <span aria-hidden="true">↗</span></button>
   </div><div class="wrap footer-bottom">
     <span>© {SITE_YEAR} {BRAND_NAME}</span><span>{t("footerMade")}</span>
   </div>

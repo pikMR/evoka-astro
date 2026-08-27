@@ -12,7 +12,7 @@ export const ui = {
     whatsapp: 'WhatsApp', details: 'Más detalles', close: 'Cerrar', viewProduct: 'Ver producto', empty: 'No hemos encontrado productos con esa búsqueda.',
     categoriesEyebrow: 'Encuentra tu próximo favorito', categoriesTitle: 'Explora por', categoriesAccent: 'categoría', products: 'productos',
     footerContact: 'Contacto', footerReply: '🌐 Atención 100% online', footerTagline: 'Cada detalle, una emoción.', footerMade: 'Hecho con intención',
-    footerAboutEyebrow: 'Acerca de nosotros', footerAboutSummary: '📦 Envíos desde España y Francia', footerAboutMore: 'Conócenos', footerAboutImageAlt: 'Puente sobre el río',
+    footerAboutEyebrow: 'Acerca de nosotros', footerAboutSummary: '📦 Envíos desde España y Francia', footerAboutMore: 'Conócenos', footerAboutImageAlt: 'Puente sobre el río', shippingPolicies: 'Políticas de envío', shippingTitle: 'Políticas de envío',
     securePayment: 'Pago seguro', securePaymentEyebrow: 'Compra con tranquilidad', securePaymentIntro: 'Pagos mediante métodos verificados y conexiones cifradas.', securePaymentMore: 'Más información',
     securePaymentTitle: 'Pago Seguro en ÉVOKA', securePaymentSummary: 'Protegemos tus pagos con enlaces seguros y conexiones cifradas SSL/TLS, para mantener privada y segura tu información personal y financiera.', securePaymentMethods: 'Métodos de pago disponibles',
     securePaymentBizum: 'Bizum', securePaymentBizumText: 'Pago rápido y seguro desde tu móvil.', securePaymentBank: 'Transferencia bancaria', securePaymentBankText: 'Una opción directa y confiable.', securePaymentRevolut: 'Enlaces de pago con Revolut', securePaymentRevolutText: 'Procesados de forma segura a través de la plataforma de Revolut.',
@@ -32,7 +32,7 @@ export const ui = {
     whatsapp: 'WhatsApp', details: 'More details', close: 'Close', viewProduct: 'View product', empty: 'We could not find products matching your search.',
     categoriesEyebrow: 'Find your next favourite', categoriesTitle: 'Explore by', categoriesAccent: 'category', products: 'products',
     footerContact: 'Contact', footerReply: '🌐 100% online service', footerTagline: 'Every detail, an emotion.', footerMade: 'Made with intention',
-    footerAboutEyebrow: 'About us', footerAboutSummary: '📦 Shipping from Spain and France', footerAboutMore: 'Meet us', footerAboutImageAlt: 'Bridge over the river',
+    footerAboutEyebrow: 'About us', footerAboutSummary: '📦 Shipping from Spain and France', footerAboutMore: 'Meet us', footerAboutImageAlt: 'Bridge over the river', shippingPolicies: 'Shipping policies', shippingTitle: 'Shipping policies',
     securePayment: 'Secure payment', securePaymentEyebrow: 'Shop with confidence', securePaymentIntro: 'Payments through verified methods and encrypted connections.', securePaymentMore: 'More information',
     securePaymentTitle: 'Secure Payment at ÉVOKA', securePaymentSummary: 'We protect your payments with secure links and SSL/TLS-encrypted connections, helping keep your personal and financial information private and secure.', securePaymentMethods: 'Available payment methods',
     securePaymentBizum: 'Bizum', securePaymentBizumText: 'A fast and secure payment from your mobile.', securePaymentBank: 'Bank transfer', securePaymentBankText: 'A direct and reliable option.', securePaymentRevolut: 'Revolut payment links', securePaymentRevolutText: 'Processed securely through the Revolut platform.',
@@ -52,7 +52,7 @@ export const ui = {
     whatsapp: 'WhatsApp', details: 'Plus de détails', close: 'Fermer', viewProduct: 'Voir le produit', empty: 'Aucun produit ne correspond à votre recherche.',
     categoriesEyebrow: 'Trouvez votre prochain coup de cœur', categoriesTitle: 'Explorer par', categoriesAccent: 'catégorie', products: 'produits',
     footerContact: 'Contact', footerReply: '🌐 Prise en charge 100 % en ligne', footerTagline: 'Chaque détail, une émotion.', footerMade: 'Fait avec intention',
-    footerAboutEyebrow: 'À propos de nous', footerAboutSummary: '📦 Expéditions depuis l\'Espagne et la France', footerAboutMore: 'Nous découvrir', footerAboutImageAlt: 'Pont au-dessus de la rivière',
+    footerAboutEyebrow: 'À propos de nous', footerAboutSummary: '📦 Expéditions depuis l\'Espagne et la France', footerAboutMore: 'Nous découvrir', footerAboutImageAlt: 'Pont au-dessus de la rivière', shippingPolicies: 'Politiques d’expédition', shippingTitle: 'Politiques d’expédition',
     securePayment: 'Paiement sécurisé', securePaymentEyebrow: 'Achetez en toute confiance', securePaymentIntro: 'Paiements par des moyens vérifiés et des connexions chiffrées.', securePaymentMore: 'En savoir plus',
     securePaymentTitle: 'Paiement sécurisé chez ÉVOKA', securePaymentSummary: 'Nous protégeons vos paiements grâce à des liens sécurisés et des connexions chiffrées SSL/TLS, afin que vos informations personnelles et financières restent privées et sécurisées.', securePaymentMethods: 'Moyens de paiement disponibles',
     securePaymentBizum: 'Bizum', securePaymentBizumText: 'Un paiement rapide et sécurisé depuis votre mobile.', securePaymentBank: 'Virement bancaire', securePaymentBankText: 'Une option directe et fiable.', securePaymentRevolut: 'Liens de paiement Revolut', securePaymentRevolutText: 'Traités de façon sécurisée par la plateforme Revolut.',
@@ -74,10 +74,11 @@ export const categoryTranslations: Record<string, Record<'es' | 'en' | 'fr', str
   'La magia del cumpleaños': { es: 'La magia del cumpleaños', en: 'Birthday Magic', fr: 'La magie de l’anniversaire' },
   'Mascotas': { es: 'Mascotas', en: 'Pets', fr: 'Animaux' },
   'My Breakfast Box': { es: 'My Breakfast Box', en: 'My Breakfast Box', fr: 'My Breakfast Box' },
-
+  'Box Personalizables': { es: 'Box Personalizables', en: 'Customizable Boxes', fr: 'Box personnalisable' },
   'Termos & Tazas': { es: 'Termos & Tazas', en: 'Thermos & Mugs', fr: 'Thermos & Tasses' },
   'Papelería Creativa': { es: 'Papelería Creativa', en: 'Creative Stationery', fr: 'Papeterie créative' },
   'Regalos Corporativos': { es: 'Regalos Corporativos', en: 'Corporate Gifts', fr: 'Cadeaux d’entreprise' },
+  'Packaging y Empresarial': { es: 'Packaging y Empresarial', en: 'Packaging & Corporate', fr: 'Packaging & Goodies Entrepise' },
 };
 export const productTranslations: Record<string, Partial<Record<'es' | 'en' | 'fr', { name: string; description: string }>>> = {
   '19': {

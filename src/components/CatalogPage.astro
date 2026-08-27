@@ -9,6 +9,7 @@ import PromiseBand from "./PromiseBand.astro";
 import SecurePaymentModal from "./SecurePaymentModal.astro";
 import SiteFooter from "./SiteFooter.astro";
 import SiteHeader from "./SiteHeader.astro";
+import ShippingModal from "./ShippingModal.astro";
 import { translate, type Locale } from "../lib/catalog-view";
 import "../styles/global.css";
 import "../styles/header.css";
@@ -45,5 +46,6 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
     <ProductModal locale={locale} />
     <SecurePaymentModal locale={locale} />
     <AboutModal locale={locale} />
+    <ShippingModal locale={locale} />
   </body>
 </html>

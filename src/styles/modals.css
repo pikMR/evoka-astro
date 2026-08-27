@@ -282,6 +282,43 @@
   line-height: 1.65;
 }
 
+.shipping-modal {
+  width: min(760px, calc(100% - 32px));
+  max-width: 760px;
+}
+
+.shipping-modal-panel {
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  padding: clamp(34px, 6vw, 62px);
+}
+
+.shipping-modal-copy h2 {
+  margin: 8px 0 22px;
+  font-size: clamp(34px, 6vw, 54px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.shipping-modal-text {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.shipping-modal-text p {
+  margin: 0 0 14px;
+}
+
+.shipping-modal-text .shipping-warning {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-weight: 500;
+}
+
 @media (max-width: 620px) {
   .product-modal {
     width: calc(100% - 20px);
