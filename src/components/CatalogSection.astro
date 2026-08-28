@@ -181,6 +181,13 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
 
   let activeFilter = "all";
   let visibleLimit = catalogPageSize;
+  const clearActiveFilter = () => {
+    activeFilter = "all";
+    buttons.forEach((button) => {
+      button.classList.remove("is-active");
+      button.setAttribute("aria-pressed", "false");
+    });
+  };
   const update = () => {
     const query = search.value.toLowerCase().trim();
     const showsAllMatches = activeFilter !== "all" || query.length > 0;
@@ -274,6 +281,7 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
     update();
   });
   search.addEventListener("input", () => {
+    clearActiveFilter();
     materializeDeferredCards();
     visibleLimit = catalogPageSize;
     update();
