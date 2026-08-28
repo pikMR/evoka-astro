@@ -5,6 +5,11 @@ export const CATALOG_PAGE_SIZE = 20;
 export const CATALOG_SORT_LOCALE = "es";
 export const GENERAL_WHATSAPP_URL =
   "https://wa.me/?text=Hola%2C%20quiero%20contactar%20con%20Evoka";
+export const VINTED_URLS = {
+  es: "https://www.vinted.es/member/3138307263-evoka-decomur",
+  en: "https://www.vinted.es/member/3138307263-evoka-decomur",
+  fr: "https://www.vinted.es/member/3139437374-evokafrancia",
+} as const;
 
 export const aboutContent = {
   es: {

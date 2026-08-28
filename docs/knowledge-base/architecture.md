@@ -34,7 +34,7 @@ Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical UR
   configura sus fuentes AVIF/WebP de 1200 px hasta que el usuario lo abre. El JPG
   original queda como fallback del detalle.
 - `catalogForProduct()` devuelve siempre `principal`; todavía no hay asignación real por producto a varios catálogos externos.
-- La compra directa no existe. Los CTA remiten a WhatsApp; el copy también menciona Vinted.
+- La compra directa no existe. Los CTA remiten a WhatsApp; el pie enlaza a Vinted España en español e inglés y a la cuenta francesa en francés.
 
 ## Presentación
 

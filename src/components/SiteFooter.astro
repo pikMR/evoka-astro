@@ -1,6 +1,6 @@
 ---
 import { assetUrl, translate, type Locale } from "../lib/catalog-view";
-import { BRAND_NAME, CONTACT_EMAIL, SITE_YEAR } from "../config/site";
+import { BRAND_NAME, CONTACT_EMAIL, SITE_YEAR, VINTED_URLS } from "../config/site";
 
 interface Props {
   locale: Locale;
@@ -81,7 +81,7 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
             ></path></svg
           ><span>TikTok ↗</span></a
         ><a
-          href="https://www.vinted.es/member/3138307263-evoka-decomur"
+          href={VINTED_URLS[locale]}
           target="_blank"
           rel="noreferrer"
           ><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"
