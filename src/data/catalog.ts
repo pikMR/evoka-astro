@@ -1,14 +1,14 @@
 export const CATALOG_CATEGORIES = {
-  FRIENDSHIP_LOVE: "Amistad & Amor",
-  BABIES_BIRTHS: "Bebés & Nacimientos",
-  WELLNESS_SPA: "Bienestar & Spa",
+  FRIENDSHIP_LOVE: "Amistad y amor",
+  BABIES_BIRTHS: "Bebés y nacimientos",
+  WELLNESS_SPA: "Bienestar y spa",
   SNOOPY_COLLECTION: "Colección Snoopy",
-  CUSTOM_BOXES: "Box Personalizables",
-  FRIENDS_BACHELORETTE: "Entre amigos - Despedidas",
+  CUSTOM_BOXES: "Box personalizables",
+  FRIENDS_BACHELORETTE: "Entre amigos y despedidas",
   PETS: "Mascotas",
-  CORPORATE_PACKAGING: "Packaging y Empresarial",
-  THERMOS_CUPS: "Termos & Tazas",
-  CREATIVE_STATIONERY: "Papelería Creativa",
+  CORPORATE_PACKAGING: "Packaging y empresarial",
+  THERMOS_CUPS: "Termos y tazas",
+  CREATIVE_STATIONERY: "Papelería creativa",
   INTERNAL: "Inicio",
 } as const;
 
@@ -948,7 +948,7 @@ export const products: Product[] = [
       136,
       135
     ],
-    "description": "<p><strong>Mini blocs de notas Biscuits</strong> con aroma a chocolate, ideales para <strong>uso escolar, regalos y papelería creativa</strong>.</p>\n<p><strong>Estilos disponibles:</strong></p>\n<p><strong>O250822176969:</strong> Galleta mordida beige (sabor a crema)</p>\n<p><strong>O250822276969:</strong> Galleta mordida chocolate (sabor a chocolate)</p>\n<p><strong>O250822376969:</strong> Galleta chocolate (sabor a chocolate)</p>\n<p><strong>O250822476969:</strong> Barra de chocolate (sabor a chocolate)</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+    "description": "<p><strong>Mini blocs de notas Biscuits</strong> con aroma a chocolate, ideales para <strong>uso escolar, regalos y Papelería creativa</strong>.</p>\n<p><strong>Estilos disponibles:</strong></p>\n<p><strong>O250822176969:</strong> Galleta mordida beige (sabor a crema)</p>\n<p><strong>O250822276969:</strong> Galleta mordida chocolate (sabor a chocolate)</p>\n<p><strong>O250822376969:</strong> Galleta chocolate (sabor a chocolate)</p>\n<p><strong>O250822476969:</strong> Barra de chocolate (sabor a chocolate)</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
   },
   {
     "id": "51",

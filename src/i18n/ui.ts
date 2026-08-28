@@ -63,22 +63,22 @@ export const ui = {
 
 export const categoryTranslations: Record<string, Record<'es' | 'en' | 'fr', string>> = {
   'Inicio': { es: 'Inicio', en: 'Home', fr: 'Accueil' },
-  'Amistad & Amor': { es: 'Amistad & Amor', en: 'Friendship & Love', fr: 'Amitié & Amour' },
+  'Amistad y amor': { es: 'Amistad y amor', en: 'Friendship & Love', fr: 'Amitié & Amour' },
   'Colección Snoopy': { es: 'Colección Snoopy', en: 'Snoopy Collection', fr: 'Collection Snoopy' },
-  'Bebés & Nacimientos': { es: 'Bebés & Nacimientos', en: 'Babies & Births', fr: 'Bébés & Naissances' },
-  'Bienestar & Spa': { es: 'Bienestar & Spa', en: 'Wellness & Spa', fr: 'Bien-être & Spa' },
+  'Bebés y nacimientos': { es: 'Bebés y nacimientos', en: 'Babies & Births', fr: 'Bébés & Naissances' },
+  'Bienestar y spa': { es: 'Bienestar y spa', en: 'Wellness & Spa', fr: 'Bien-être & Spa' },
   'Bienvenido al Mundo': { es: 'Bienvenido al Mundo', en: 'Welcome to the World', fr: 'Bienvenue au monde' },
   'Bonus My Birthday Box Plus': { es: 'Bonus My Birthday Box Plus', en: 'Bonus My Birthday Box Plus', fr: 'Bonus My Birthday Box Plus' },
   'Despedidas de solter@s': { es: 'Despedidas de solter@s', en: 'Hen & Stag Parties', fr: 'Enterrements de vie de célibataire' },
-  'Entre amigos - Despedidas': { es: 'Entre amigos - Despedidas', en: 'Friends - Party Favourites', fr: 'Entre ami·es - Fêtes' },
+  'Entre amigos y despedidas': { es: 'Entre amigos y despedidas', en: 'Friends - Party Favourites', fr: 'Entre ami·es - Fêtes' },
   'La magia del cumpleaños': { es: 'La magia del cumpleaños', en: 'Birthday Magic', fr: 'La magie de l’anniversaire' },
   'Mascotas': { es: 'Mascotas', en: 'Pets', fr: 'Animaux' },
   'My Breakfast Box': { es: 'My Breakfast Box', en: 'My Breakfast Box', fr: 'My Breakfast Box' },
-  'Box Personalizables': { es: 'Box Personalizables', en: 'Customizable Boxes', fr: 'Box personnalisable' },
-  'Termos & Tazas': { es: 'Termos & Tazas', en: 'Thermos & Mugs', fr: 'Thermos & Tasses' },
-  'Papelería Creativa': { es: 'Papelería Creativa', en: 'Creative Stationery', fr: 'Papeterie créative' },
+  'Box personalizables': { es: 'Box personalizables', en: 'Customizable Boxes', fr: 'Box personnalisable' },
+  'Termos y tazas': { es: 'Termos y tazas', en: 'Thermos & Mugs', fr: 'Thermos & Tasses' },
+  'Papelería creativa': { es: 'Papelería creativa', en: 'Creative Stationery', fr: 'Papeterie créative' },
   'Regalos Corporativos': { es: 'Regalos Corporativos', en: 'Corporate Gifts', fr: 'Cadeaux d’entreprise' },
-  'Packaging y Empresarial': { es: 'Packaging y Empresarial', en: 'Packaging & Corporate', fr: 'Packaging & Goodies Entrepise' },
+  'Packaging y empresarial': { es: 'Packaging y empresarial', en: 'Packaging & Corporate', fr: 'Packaging & Goodies Entrepise' },
 };
 export const productTranslations: Record<string, Partial<Record<'es' | 'en' | 'fr', { name: string; description: string }>>> = {
   '19': {

@@ -22,16 +22,16 @@ La forma del modelo coincide con una extracción típica de PrestaShop (`id_prod
 
 El orden de los filtros es contractual porque procede del array exportado:
 
-1. Amistad & Amor
-2. Bebés & Nacimientos
-3. Bienestar & Spa
+1. Amistad y amor
+2. Bebés y nacimientos
+3. Bienestar y spa
 4. Colección Snoopy
-5. Box Personalizables
-6. Entre amigos - Despedidas
+5. Box personalizables
+6. Entre amigos y despedidas
 7. Mascotas
-8. Packaging y Empresarial
-9. Termos & Tazas
-10. Papelería Creativa
+8. Packaging y empresarial
+9. Termos y tazas
+10. Papelería creativa
 
 `Inicio` aparece en 75 productos, pero no en los filtros públicos. Añadir una categoría a un producto no la hace visible: también hay que decidir si entra en el array `categories` y aportar traducciones.
 
