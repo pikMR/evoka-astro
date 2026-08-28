@@ -1,0 +1,66 @@
+---
+import {
+  excerpt,
+  formatPrice,
+  localizedCategory,
+  localizedProduct,
+  productImageUrl,
+  translate,
+  whatsappForProduct,
+  type Locale,
+} from "../lib/catalog-view";
+import type { Product } from "../data/catalog";
+import ResponsiveProductImage from "./ResponsiveProductImage.astro";
+
+interface Props {
+  locale: Locale;
+  product: Product;
+  index: number;
+}
+
+const { locale, product, index } = Astro.props;
+const localized = localizedProduct(locale, product);
+---
+
+<article
+  class="catalog-card"
+  id={`product-${product.id}`}
+  data-catalog-index={index}
+  data-name={`${localized.name} ${product.categories.join(" ")}`.toLowerCase()}
+  data-categories={product.categories.join("|")}
+>
+  <a class="catalog-image" href={`#product-${product.id}`}>
+    <ResponsiveProductImage
+      imageId={product.imageIds[0]}
+      alt={localized.name}
+    />
+    <span class="stock-badge">
+      {product.stock > 0 ? translate(locale, "available") : translate(locale, "ask")}
+    </span>
+  </a>
+  <div class="catalog-card-body">
+    <p class="product-category">{localizedCategory(locale, product.categories[0])}</p>
+    <div class="catalog-title-row">
+      <h3>{localized.name}</h3>
+      <strong>{formatPrice(locale, product.price)}</strong>
+    </div>
+    <p class="catalog-excerpt">{excerpt(localized.description)}</p>
+    <div class="catalog-links">
+      <a href={whatsappForProduct(locale, product)} target="_blank" rel="noreferrer">
+        {translate(locale, "whatsapp")} <span>↗</span>
+      </a>
+      <button
+        type="button"
+        class="details-trigger"
+        data-details-name={localized.name}
+        data-details-price={formatPrice(locale, product.price)}
+        data-details-image={productImageUrl(product.imageIds[0], "jpg")}
+        data-details-image-avif={productImageUrl(product.imageIds[0], "avif", 1200)}
+        data-details-image-webp={productImageUrl(product.imageIds[0], "webp", 1200)}
+        data-details-description={localized.description}
+      >
+        {translate(locale, "details")} <span>→</span>
+      </button>
+    </div>
+  </div>
+</article>

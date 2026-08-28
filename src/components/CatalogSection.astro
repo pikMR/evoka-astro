@@ -1,17 +1,13 @@
 ---
 import {
   catalogProducts,
-  assetUrl,
-  excerpt,
-  formatPrice,
   localizedCategory,
-  localizedProduct,
   translate,
   visibleCategories,
-  whatsappForProduct,
   type Locale,
 } from "../lib/catalog-view";
 import { CATALOG_PAGE_SIZE } from "../config/site";
+import CatalogProductCard from "./CatalogProductCard.astro";
 
 interface Props {
   locale: Locale;
@@ -82,60 +78,15 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
   <div class="wrap">
     <div class="catalog-grid" id="product-grid">
       {
-        catalogProducts.map((product, index) => (
-          <article
-            class="catalog-card"
-            id={`product-${product.id}`}
-            data-catalog-index={index}
-            hidden={index >= CATALOG_PAGE_SIZE}
-            data-name={`${localizedProduct(locale, product).name} ${product.categories.join(" ")}`.toLowerCase()}
-            data-categories={product.categories.join("|")}
-          >
-            <a class="catalog-image" href={`#product-${product.id}`}>
-              <img
-                src={assetUrl(`images/products/${product.imageIds[0]}.jpg`)}
-                alt={localizedProduct(locale, product).name}
-                loading="lazy"
-              />
-              <span class="stock-badge">
-                {product.stock > 0 ? t("available") : t("ask")}
-              </span>
-            </a>
-            <div class="catalog-card-body">
-              <p class="product-category">
-                {localizedCategory(locale, product.categories[0])}
-              </p>
-              <div class="catalog-title-row">
-                <h3>{localizedProduct(locale, product).name}</h3>
-                <strong>{formatPrice(locale, product.price)}</strong>
-              </div>
-              <p class="catalog-excerpt">
-                {excerpt(localizedProduct(locale, product).description)}
-              </p>
-              <div class="catalog-links">
-                <a
-                  href={whatsappForProduct(locale, product)}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {t("whatsapp")} <span>↗</span>
-                </a>
-                <button
-                  type="button"
-                  class="details-trigger"
-                  data-details-name={localizedProduct(locale, product).name}
-                  data-details-price={formatPrice(locale, product.price)}
-                  data-details-image={assetUrl(`images/products/${product.imageIds[0]}.jpg`)}
-                  data-details-description={
-                    localizedProduct(locale, product).description
-                  }
-                >
-                  {t("details")} <span>→</span>
-                </button>
-              </div>
-            </div>
-          </article>
-        ))
+        catalogProducts.map((product, index) =>
+          index < CATALOG_PAGE_SIZE ? (
+            <CatalogProductCard locale={locale} product={product} index={index} />
+          ) : (
+            <template data-deferred-card={index}>
+              <CatalogProductCard locale={locale} product={product} index={index} />
+            </template>
+          ),
+        )
       }
     </div>
     <div class="catalog-pagination" id="catalog-pagination">
@@ -144,6 +95,7 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
         id="catalog-progress"
         data-showing={t("catalogShowing")}
         data-of={t("catalogOf")}
+        data-total={catalogProducts.length}
       ></p>
       <button
         type="button"
@@ -166,11 +118,12 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
   const filterArrows = [
     ...document.querySelectorAll<HTMLButtonElement>("[data-filter-scroll]"),
   ];
-  const cards = [
+  let cards = [
     ...document.querySelectorAll<HTMLElement>(".catalog-card"),
   ];
   const empty = document.querySelector<HTMLElement>("#empty-state")!;
   const pagination = document.querySelector<HTMLElement>("#catalog-pagination")!;
+  const productGrid = document.querySelector<HTMLElement>("#product-grid")!;
   const loadMore = document.querySelector<HTMLButtonElement>(
     "#catalog-load-more",
   )!;
@@ -181,6 +134,18 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
       '.featured-image[href^="#product-"]',
     ),
   ];
+  const deferredCards = () => [
+    ...document.querySelectorAll<HTMLTemplateElement>("[data-deferred-card]"),
+  ];
+  const materializeDeferredCards = (limit = Number.POSITIVE_INFINITY) => {
+    deferredCards()
+      .filter((template) => Number(template.dataset.deferredCard) < limit)
+      .forEach((template) => {
+        productGrid.append(template.content.cloneNode(true));
+        template.remove();
+      });
+    cards = [...document.querySelectorAll<HTMLElement>(".catalog-card")];
+  };
 
   const updateFilterArrows = () => {
     const maxScroll = filterList.scrollWidth - filterList.clientWidth;
@@ -223,7 +188,8 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
       ? Number.POSITIVE_INFINITY
       : visibleLimit;
     let matches = 0;
-    let hiddenMatches = false;
+    const totalProducts = Number(progress.dataset.total ?? cards.length);
+    let hiddenMatches = !showsAllMatches && totalProducts > displayLimit;
     cards.forEach((card) => {
       const matchesQuery = card.dataset.name?.includes(query) ?? false;
       const matchesFilter =
@@ -238,10 +204,11 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
       const show = matchesCard && index < displayLimit;
       card.hidden = !show;
     });
+    const matchingTotal = showsAllMatches ? matches : totalProducts;
     empty.hidden = matches !== 0;
     loadMore.hidden = !hiddenMatches;
     pagination.hidden = showsAllMatches;
-    progress.textContent = `${progress.dataset.showing} ${Math.min(displayLimit, matches)} ${progress.dataset.of} ${matches}`;
+    progress.textContent = `${progress.dataset.showing} ${Math.min(displayLimit, matchingTotal)} ${progress.dataset.of} ${matchingTotal}`;
   };
 
   featuredLinks.forEach((link) =>
@@ -261,6 +228,7 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
 
   buttons.forEach((button) =>
     button.addEventListener("click", () => {
+      materializeDeferredCards();
       const wasActive = button.classList.contains("is-active");
       activeFilter = wasActive ? "all" : (button.dataset.filter ?? "all");
       visibleLimit = catalogPageSize;
@@ -299,12 +267,14 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
           .querySelector<HTMLElement>("#catalogo")
           ?.scrollIntoView({ behavior: "smooth" });
       }),
-    );
+  );
   loadMore.addEventListener("click", () => {
+    materializeDeferredCards(visibleLimit + catalogPageSize);
     visibleLimit += catalogPageSize;
     update();
   });
   search.addEventListener("input", () => {
+    materializeDeferredCards();
     visibleLimit = catalogPageSize;
     update();
   });

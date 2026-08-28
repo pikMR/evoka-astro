@@ -26,10 +26,13 @@ Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical UR
 
 - Los productos destacados son actualmente `products[3]`, `products[4]` y `products[6]`: IDs 19, 20 y 22. Su orden depende directamente del array.
 - El catálogo visible se ordena alfabéticamente por nombre español en `catalog-view.ts`; la fuente `products` conserva su orden de origen.
-- `CatalogSection.astro` muestra inicialmente 20 productos y amplía la ventana en bloques de 20 mediante el botón de carga; búsqueda y filtros muestran todos sus resultados y ocultan la paginación.
+- `CatalogSection.astro` activa inicialmente 20 productos y materializa los siguientes en bloques de 20 mediante el botón de carga. Las tarjetas restantes viven en plantillas HTML inertes, por lo que sus imágenes no pueden solicitarse antes de incorporarlas al DOM; búsqueda y filtros materializan el catálogo completo para poder buscar todos sus resultados.
 - La búsqueda compara nombre localizado más categorías en minúsculas.
 - Los filtros utilizan las categorías canónicas en español, aunque su etiqueta visible pueda estar traducida.
 - El modal usa la descripción HTML y reutiliza el enlace de WhatsApp de la tarjeta.
+- Las tarjetas usan las variantes responsivas de catálogo; el modal de producto no
+  configura sus fuentes AVIF/WebP de 1200 px hasta que el usuario lo abre. El JPG
+  original queda como fallback del detalle.
 - `catalogForProduct()` devuelve siempre `principal`; todavía no hay asignación real por producto a varios catálogos externos.
 - La compra directa no existe. Los CTA remiten a WhatsApp; el copy también menciona Vinted.
 
@@ -39,7 +42,12 @@ Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical UR
 - `src/styles/header.css`, `catalog.css`, `footer.css` y `modals.css` separan los estilos por responsabilidad y se importan de forma explícita desde `CatalogPage.astro`.
 - `SiteFooter.astro` ofrece los modales de pago seguro y de información/FAQ mediante `SecurePaymentModal.astro` y `AboutModal.astro`.
 - Los logos están en `public/images/brand/`.
-- No hay pipeline de optimización de imágenes; los JPG se sirven como archivos estáticos.
+- Las imágenes de producto originales permanecen en `public/images/products` como respaldo.
+  Cada producto también tiene variantes AVIF y WebP en `public/images/products/optimized`
+  a 480, 800 y 1200 px. `ResponsiveProductImage.astro` las entrega mediante `<picture>`
+  y `srcset`, dejando que el navegador seleccione un único formato y tamaño adecuado.
+  Al añadir o reemplazar imágenes de producto hay que regenerar esas variantes antes del
+  build; la implementación actual usa ImageMagick con calidad AVIF 52 y WebP 78.
 
 ## Límites actuales
 

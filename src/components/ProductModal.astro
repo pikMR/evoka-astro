@@ -23,7 +23,11 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
     >
     <div class="product-modal-layout">
       <div class="product-modal-image">
-        <img id="modal-product-image" src="" alt="" />
+        <picture>
+          <source id="modal-product-image-avif" type="image/avif" />
+          <source id="modal-product-image-webp" type="image/webp" />
+          <img id="modal-product-image" src="" alt="" decoding="async" />
+        </picture>
       </div>
       <div class="product-modal-copy">
         <p class="eyebrow">{t("viewProduct")}</p><div class="modal-title-row">
@@ -55,6 +59,12 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
   const modalImage = document.querySelector<HTMLImageElement>(
     "#modal-product-image",
   )!;
+  const modalImageAvif = document.querySelector<HTMLSourceElement>(
+    "#modal-product-image-avif",
+  )!;
+  const modalImageWebp = document.querySelector<HTMLSourceElement>(
+    "#modal-product-image-webp",
+  )!;
   const modalTitle = document.querySelector<HTMLElement>(
     "#modal-product-title",
   )!;
@@ -67,11 +77,9 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
   const modalWhatsapp = document.querySelector<HTMLAnchorElement>(
     "#modal-product-whatsapp",
   )!;
-  const detailTriggers = [
-    ...document.querySelectorAll<HTMLButtonElement>(".details-trigger"),
-  ];
-
   const openProductModal = (trigger: HTMLButtonElement) => {
+    modalImageAvif.srcset = trigger.dataset.detailsImageAvif ?? "";
+    modalImageWebp.srcset = trigger.dataset.detailsImageWebp ?? "";
     modalImage.src = trigger.dataset.detailsImage ?? "";
     modalImage.alt = trigger.dataset.detailsName ?? "";
     modalTitle.textContent = trigger.dataset.detailsName ?? "";
@@ -85,9 +93,11 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
     productModal.showModal();
   };
 
-  detailTriggers.forEach((trigger) =>
-    trigger.addEventListener("click", () => openProductModal(trigger)),
-  );
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+    const trigger = event.target.closest<HTMLButtonElement>(".details-trigger");
+    if (trigger) openProductModal(trigger);
+  });
   productModalClose.addEventListener("click", () => productModal.close());
   productModal.addEventListener("click", (event) => {
     if (event.target === productModal) productModal.close();

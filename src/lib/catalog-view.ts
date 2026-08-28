@@ -36,6 +36,19 @@ export const whatsappForProduct = (locale: Locale, product: Product) =>
 export const assetUrl = (path: string) =>
   `${import.meta.env.BASE_URL.replace(/\/?$/, "/")}${path.replace(/^\/+/, "")}`;
 
+export const productImageWidths = [480, 800, 1200] as const;
+
+export const productImageUrl = (
+  imageId: number,
+  format: "avif" | "webp" | "jpg",
+  width?: number,
+) =>
+  assetUrl(
+    format === "jpg"
+      ? `images/products/${imageId}.jpg`
+      : `images/products/optimized/${imageId}-${width}.${format}`,
+  );
+
 const clean = (html: string) =>
   html
     .replace(/<[^>]+>/g, " ")

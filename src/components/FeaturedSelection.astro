@@ -1,7 +1,6 @@
 ---
 import {
   excerpt,
-  assetUrl,
   featuredProducts,
   formatPrice,
   localizedCategory,
@@ -9,6 +8,7 @@ import {
   translate,
   type Locale,
 } from "../lib/catalog-view";
+import ResponsiveProductImage from "./ResponsiveProductImage.astro";
 
 interface Props {
   locale: Locale;
@@ -40,8 +40,8 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
             href={`#product-${product.id}`}
             data-featured-filter={product.categories[0]}
           >
-            <img
-              src={assetUrl(`images/products/${product.imageIds[0]}.jpg`)}
+            <ResponsiveProductImage
+              imageId={product.imageIds[0]}
               alt={localizedProduct(locale, product).name}
               loading={index > 1 ? "lazy" : "eager"}
             />
