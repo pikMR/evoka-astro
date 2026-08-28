@@ -35,19 +35,30 @@ const localized = localizedProduct(locale, product);
       alt={localized.name}
     />
     <span class="stock-badge">
-      {product.stock > 0 ? translate(locale, "available") : translate(locale, "ask")}
+      {
+        product.stock > 0
+          ? translate(locale, "available")
+          : translate(locale, "soldout")
+      }
     </span>
   </a>
   <div class="catalog-card-body">
-    <p class="product-category">{localizedCategory(locale, product.categories[0])}</p>
+    <p class="product-category">
+      {localizedCategory(locale, product.categories[0])}
+    </p>
     <div class="catalog-title-row">
       <h3>{localized.name}</h3>
       <strong>{formatPrice(locale, product.price)}</strong>
     </div>
     <p class="catalog-excerpt">{excerpt(localized.description)}</p>
     <div class="catalog-links">
-      <a href={whatsappForProduct(locale, product)} target="_blank" rel="noreferrer">
-        {translate(locale, "whatsapp")} <span>↗</span>
+      <a
+        href={whatsappForProduct(locale, product)}
+        target="_blank"
+        rel="noreferrer"
+      >
+        {translate(locale, "whatsapp")}
+        <span>↗</span>
       </a>
       <button
         type="button"
@@ -55,11 +66,20 @@ const localized = localizedProduct(locale, product);
         data-details-name={localized.name}
         data-details-price={formatPrice(locale, product.price)}
         data-details-image={productImageUrl(product.imageIds[0], "jpg")}
-        data-details-image-avif={productImageUrl(product.imageIds[0], "avif", 1200)}
-        data-details-image-webp={productImageUrl(product.imageIds[0], "webp", 1200)}
+        data-details-image-avif={productImageUrl(
+          product.imageIds[0],
+          "avif",
+          1200,
+        )}
+        data-details-image-webp={productImageUrl(
+          product.imageIds[0],
+          "webp",
+          1200,
+        )}
         data-details-description={localized.description}
       >
-        {translate(locale, "details")} <span>→</span>
+        {translate(locale, "details")}
+        <span>→</span>
       </button>
     </div>
   </div>
