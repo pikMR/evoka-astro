@@ -27,6 +27,7 @@ Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical UR
 - Los productos destacados son actualmente `products[3]`, `products[4]` y `products[6]`: IDs 19, 20 y 22. Su orden depende directamente del array.
 - El catálogo visible se ordena alfabéticamente por nombre español en `catalog-view.ts`; la fuente `products` conserva su orden de origen.
 - `CatalogSection.astro` activa inicialmente 20 productos y materializa los siguientes en bloques de 20 mediante el botón de carga. Las tarjetas restantes viven en plantillas HTML inertes, por lo que sus imágenes no pueden solicitarse antes de incorporarlas al DOM; búsqueda y filtros materializan el catálogo completo para poder buscar todos sus resultados.
+- `categories` de `catalog.ts` deberán tener siempre como última categoría a `CATALOG_CATEGORIES.INTERNAL` (para mostrarla en la vista inicial), y su categoría principal estará posicionada en la primera posición.
 - La búsqueda compara nombre localizado más categorías en minúsculas.
 - Los filtros utilizan las categorías canónicas en español, aunque su etiqueta visible pueda estar traducida.
 - El modal usa la descripción HTML y reutiliza el enlace de WhatsApp de la tarjeta.

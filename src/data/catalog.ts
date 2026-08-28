@@ -195,7 +195,8 @@ export const products: Product[] = [
     "price": 4.132231,
     "stock": 14,
     "categories": [
-      CATALOG_CATEGORIES.WELLNESS_SPA
+      CATALOG_CATEGORIES.WELLNESS_SPA,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       42
@@ -210,8 +211,8 @@ export const products: Product[] = [
     "price": 0.826446,
     "stock": 114,
     "categories": [
-      CATALOG_CATEGORIES.INTERNAL,
-      CATALOG_CATEGORIES.CREATIVE_STATIONERY
+      CATALOG_CATEGORIES.CREATIVE_STATIONERY,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       43
@@ -226,8 +227,8 @@ export const products: Product[] = [
     "price": 4.132231,
     "stock": 12,
     "categories": [
-      CATALOG_CATEGORIES.INTERNAL,
-      CATALOG_CATEGORIES.CREATIVE_STATIONERY
+      CATALOG_CATEGORIES.CREATIVE_STATIONERY,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       44,
@@ -551,8 +552,8 @@ export const products: Product[] = [
     "price": 6.61157,
     "stock": 3,
     "categories": [
-      CATALOG_CATEGORIES.INTERNAL,
-      CATALOG_CATEGORIES.PETS
+      CATALOG_CATEGORIES.PETS,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       159,
@@ -636,7 +637,7 @@ export const products: Product[] = [
     "name": "Taza caricatura snoopy",
     "slug": "brown-bear-vector-graphics",
     "price": 16.528926,
-    "stock": 2,
+    "stock": 0,
     "categories": [
       CATALOG_CATEGORIES.SNOOPY_COLLECTION,
       CATALOG_CATEGORIES.INTERNAL
@@ -720,8 +721,8 @@ export const products: Product[] = [
     "price": 3.305785,
     "stock": 1,
     "categories": [
-      CATALOG_CATEGORIES.INTERNAL,
-      CATALOG_CATEGORIES.PETS
+      CATALOG_CATEGORIES.PETS,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       201
@@ -736,8 +737,8 @@ export const products: Product[] = [
     "price": 3.305785,
     "stock": 3,
     "categories": [
-      CATALOG_CATEGORIES.INTERNAL,
-      CATALOG_CATEGORIES.PETS
+      CATALOG_CATEGORIES.PETS,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       202
@@ -752,8 +753,8 @@ export const products: Product[] = [
     "price": 0,
     "stock": 1,
     "categories": [
-      CATALOG_CATEGORIES.INTERNAL,
-      CATALOG_CATEGORIES.PETS
+      CATALOG_CATEGORIES.PETS,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       203,
@@ -769,7 +770,6 @@ export const products: Product[] = [
     "price": 4.132231,
     "stock": 1,
     "categories": [
-      CATALOG_CATEGORIES.FRIENDSHIP_LOVE,
       CATALOG_CATEGORIES.PETS,
       CATALOG_CATEGORIES.INTERNAL,
     ],
@@ -787,8 +787,8 @@ export const products: Product[] = [
     "price": 0.413223,
     "stock": 2,
     "categories": [
-      CATALOG_CATEGORIES.INTERNAL,
-      CATALOG_CATEGORIES.PETS
+      CATALOG_CATEGORIES.PETS,
+      CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       208
