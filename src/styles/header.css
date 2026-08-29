@@ -1,4 +1,7 @@
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8,6 +11,19 @@
   margin: auto;
   padding-inline: max(32px, calc((100vw - 1280px) / 2));
   background: #f3dfc0;
+  margin-bottom: 24px;
+}
+
+.site-header::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: -24px;
+  left: 0;
+  height: 28px;
+  background: url('/images/brand/header-cenefa.svg') repeat-x bottom left / 240px 34px;
+  pointer-events: none;
 }
 
 .brand-logo {
@@ -135,6 +151,13 @@
     width: 100%;
     height: 75px;
     padding-inline: 16px;
+    margin-bottom: 20px;
+  }
+
+  .site-header::after {
+    bottom: -20px;
+    height: 24px;
+    background-size: 190px 28px;
   }
 
   .site-header nav {
