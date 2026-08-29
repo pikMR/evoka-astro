@@ -10,7 +10,7 @@ import SecurePaymentModal from "./SecurePaymentModal.astro";
 import SiteFooter from "./SiteFooter.astro";
 import SiteHeader from "./SiteHeader.astro";
 import ShippingModal from "./ShippingModal.astro";
-import { translate, type Locale } from "../lib/catalog-view";
+import { assetUrl, translate, type Locale } from "../lib/catalog-view";
 import "../styles/global.css";
 import "../styles/header.css";
 import "../styles/catalog.css";
@@ -31,6 +31,8 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={t("siteDescription")} />
     <meta name="theme-color" content="#f6f3ed" />
+    <link rel="icon" href={assetUrl("favicon.svg")} type="image/svg+xml" />
+    <link rel="mask-icon" href={assetUrl("favicon.svg")} color="#2e180a" />
     <title>{t("siteTitle")}</title>
   </head>
   <body>
