@@ -20,11 +20,20 @@ interface Props {
 
 const { locale, product } = Astro.props;
 const localized = localizedProduct(locale, product);
-const canonical = new URL(productDetailUrl(locale, product), Astro.site).toString();
+const canonical = new URL(
+  productDetailUrl(locale, product),
+  Astro.site,
+).toString();
 const price = product.price > 0 ? (product.price * 1.21).toFixed(2) : undefined;
-const availability = product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock";
+const availability =
+  product.stock > 0
+    ? "https://schema.org/InStock"
+    : "https://schema.org/OutOfStock";
 const title = `${localized.name} | Évoka`;
-const description = `${localized.name}: ${localized.description.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()}`;
+const description = `${localized.name}: ${localized.description
+  .replace(/<[^>]+>/g, " ")
+  .replace(/\s+/g, " ")
+  .trim()}`;
 ---
 
 <html lang={locale}>
@@ -35,40 +44,68 @@ const description = `${localized.name}: ${localized.description.replace(/<[^>]+>
     <link rel="canonical" href={canonical} />
     <link rel="icon" href={assetUrl("favicon.svg")} type="image/svg+xml" />
     <title>{title}</title>
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Product",
-      name: localized.name,
-      image: product.imageIds.map((imageId) => new URL(productImageUrl(imageId, "jpg"), Astro.site).toString()),
-      description,
-      sku: product.id,
-      category: localizedCategory(locale, product.categories[0]),
-      brand: { "@type": "Brand", name: "Évoka" },
-      offers: {
-        "@type": "Offer",
-        url: canonical,
-        priceCurrency: "EUR",
-        ...(price ? { price } : {}),
-        availability,
-      },
-    })} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: localized.name,
+        image: product.imageIds.map((imageId) =>
+          new URL(productImageUrl(imageId, "jpg"), Astro.site).toString(),
+        ),
+        description,
+        sku: product.id,
+        category: localizedCategory(locale, product.categories[0]),
+        brand: { "@type": "Brand", name: "Évoka" },
+        offers: {
+          "@type": "Offer",
+          url: canonical,
+          priceCurrency: "EUR",
+          ...(price ? { price } : {}),
+          availability,
+        },
+      })}
+    />
   </head>
   <body>
     <main class="product-page">
-      <a class="back-link" href={assetUrl(locale === "es" ? "" : `${locale}/`)}>← {translate(locale, "navCatalog")}</a>
+      <a class="back-link" href={assetUrl(locale === "es" ? "" : `${locale}/`)}
+        >← {translate(locale, "navCatalog")}</a
+      >
       <div class="product-layout">
         <div class="product-gallery">
-          <ResponsiveProductImage imageId={product.imageIds[0]} alt={localized.name} loading="eager" sizes="(max-width: 800px) 100vw, 50vw" />
+          <ResponsiveProductImage
+            imageId={product.imageIds[0]}
+            alt={localized.name}
+            loading="eager"
+            sizes="(max-width: 800px) 100vw, 50vw"
+          />
         </div>
         <article class="product-copy">
-          <p class="eyebrow">{localizedCategory(locale, product.categories[0])}</p>
+          <p class="eyebrow">
+            {localizedCategory(locale, product.categories[0])}
+          </p>
           <h1>{localized.name}</h1>
           <p class="product-price">{formatPrice(locale, product.price)}</p>
           <div class="product-description" set:html={localized.description} />
-          <p class:list={{ "is-available": product.stock > 0, "is-soldout": product.stock <= 0 }}>
-            {product.stock > 0 ? translate(locale, "available") : translate(locale, "soldout")}
+          <p
+            class:list={{
+              "is-available": product.stock > 0,
+              "is-soldout": product.stock <= 0,
+            }}
+          >
+            {
+              product.stock > 0
+                ? translate(locale, "available")
+                : translate(locale, "soldout")
+            }
           </p>
-          <a class="button button-dark" href={whatsappForProduct(locale, product)} target="_blank" rel="noreferrer">
+          <a
+            class="button button-dark"
+            href={whatsappForProduct(locale, product)}
+            target="_blank"
+            rel="noreferrer"
+          >
             {translate(locale, "whatsapp")} ↗
           </a>
         </article>
@@ -78,18 +115,77 @@ const description = `${localized.name}: ${localized.description.replace(/<[^>]+>
 </html>
 
 <style>
-  :global(body) { margin: 0; background: #f6f3ed; color: #2e180a; font-family: Arial, sans-serif; }
-  .product-page { max-width: 1180px; margin: 0 auto; padding: 2rem; }
-  .back-link { display: inline-block; margin-bottom: 2rem; color: inherit; text-decoration: none; }
-  .product-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .8fr); gap: clamp(2rem, 7vw, 7rem); align-items: center; }
-  .product-gallery :global(img) { display: block; width: 100%; height: auto; border-radius: 1rem; }
-  .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .75rem; }
-  h1 { font-size: clamp(2.5rem, 6vw, 5rem); line-height: .95; margin: .5rem 0 1rem; }
-  .product-price { font-size: 1.3rem; font-weight: 700; }
-  .product-description { line-height: 1.65; }
-  .is-available, .is-soldout { font-weight: 700; }
-  .is-available { color: #316b45; }
-  .is-soldout { color: #9c3e2f; }
-  .button { display: inline-block; padding: .9rem 1.2rem; color: white; background: #2e180a; text-decoration: none; border-radius: 999px; }
-  @media (max-width: 800px) { .product-page { padding: 1rem; } .product-layout { grid-template-columns: 1fr; gap: 2rem; } }
+  :global(body) {
+    margin: 0;
+    background: #f6f3ed;
+    color: #2e180a;
+    font-family: Arial, sans-serif;
+  }
+  .product-page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  .back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: inherit;
+    text-decoration: none;
+  }
+  .product-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
+    gap: clamp(2rem, 7vw, 7rem);
+    align-items: center;
+  }
+  .product-gallery :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+  }
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 0.95;
+    margin: 0.5rem 0 1rem;
+  }
+  .product-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  .product-description {
+    line-height: 1.65;
+  }
+  .is-available,
+  .is-soldout {
+    font-weight: 700;
+  }
+  .is-available {
+    color: #316b45;
+  }
+  .is-soldout {
+    color: #9c3e2f;
+  }
+  .button {
+    display: inline-block;
+    padding: 0.9rem 1.2rem;
+    color: white;
+    background: #2e180a;
+    text-decoration: none;
+    border-radius: 999px;
+  }
+  @media (max-width: 800px) {
+    .product-page {
+      padding: 1rem;
+    }
+    .product-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
 </style>

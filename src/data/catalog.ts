@@ -261,7 +261,7 @@ export const products: Product[] = [
     "name": "Bolsa de Bambú",
     "slug": "brown-bear-vector-graphics",
     "price": 0,
-    "stock": 10,
+    "stock": 100,
     "categories": [
       CATALOG_CATEGORIES.CORPORATE_PACKAGING,
       CATALOG_CATEGORIES.INTERNAL,
@@ -1169,7 +1169,7 @@ export const products: Product[] = [
     "name": "Almohada de Viaje Personalizada",
     "slug": "brown-bear-vector-graphics",
     "price": 0,
-    "stock": 1,
+    "stock": 100,
     "categories": [
       CATALOG_CATEGORIES.CORPORATE_PACKAGING,
       CATALOG_CATEGORIES.INTERNAL

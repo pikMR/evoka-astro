@@ -61,7 +61,7 @@ export const excerpt = (html: string) => {
 };
 
 export const formatPrice = (locale: Locale, price: number) => {
-  if (price <= 0) return translate(locale, "soldout");
+  if (price <= 0) return translate(locale, "onrequest");
 
   const priceLocale =
     locale === "en" ? "en-GB" : locale === "fr" ? "fr-FR" : "es-ES";
