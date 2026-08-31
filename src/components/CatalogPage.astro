@@ -23,6 +23,14 @@ interface Props {
 
 const { locale = "es" } = Astro.props;
 const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
+const canonicalPath = locale === "es" ? "" : `${locale}/`;
+const canonical = new URL(assetUrl(canonicalPath), Astro.site).toString();
+const socialImage = new URL(assetUrl("images/hero/1.jpeg"), Astro.site).toString();
+const languageUrls = {
+  es: new URL(assetUrl(""), Astro.site).toString(),
+  en: new URL(assetUrl("en/"), Astro.site).toString(),
+  fr: new URL(assetUrl("fr/"), Astro.site).toString(),
+};
 ---
 
 <html lang={locale}>
@@ -30,6 +38,23 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={t("siteDescription")} />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href={canonical} />
+    {Object.entries(languageUrls).map(([language, href]) => (
+      <link rel="alternate" hreflang={language} href={href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={languageUrls.es} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Évoka" />
+    <meta property="og:title" content={t("siteTitle")} />
+    <meta property="og:description" content={t("siteDescription")} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:locale" content={locale === "en" ? "en_GB" : locale === "fr" ? "fr_FR" : "es_ES"} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={t("siteTitle")} />
+    <meta name="twitter:description" content={t("siteDescription")} />
+    <meta name="twitter:image" content={socialImage} />
     <meta name="theme-color" content="#f6f3ed" />
     <link rel="icon" href={assetUrl("favicon.svg")} type="image/svg+xml" />
     <link rel="mask-icon" href={assetUrl("favicon.svg")} color="#2e180a" />

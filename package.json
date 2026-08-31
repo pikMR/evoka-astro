@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@astrojs/check": "latest",
+    "@astrojs/sitemap": "^3.7.4",
     "astro": "latest",
     "typescript": "latest"
-  },
-  "devDependencies": {}
+  }
 }

@@ -34,6 +34,15 @@ const description = `${localized.name}: ${localized.description
   .replace(/<[^>]+>/g, " ")
   .replace(/\s+/g, " ")
   .trim()}`;
+const socialImage = new URL(
+  productImageUrl(product.imageIds[0], "jpg"),
+  Astro.site,
+).toString();
+const languageUrls = {
+  es: new URL(productDetailUrl("es", product), Astro.site).toString(),
+  en: new URL(productDetailUrl("en", product), Astro.site).toString(),
+  fr: new URL(productDetailUrl("fr", product), Astro.site).toString(),
+};
 ---
 
 <html lang={locale}>
@@ -41,7 +50,23 @@ const description = `${localized.name}: ${localized.description
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description.slice(0, 160)} />
+    <meta name="robots" content="index,follow" />
     <link rel="canonical" href={canonical} />
+    {Object.entries(languageUrls).map(([language, href]) => (
+      <link rel="alternate" hreflang={language} href={href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={languageUrls.es} />
+    <meta property="og:type" content="product" />
+    <meta property="og:site_name" content="Évoka" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description.slice(0, 160)} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:locale" content={locale === "en" ? "en_GB" : locale === "fr" ? "fr_FR" : "es_ES"} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description.slice(0, 160)} />
+    <meta name="twitter:image" content={socialImage} />
     <link rel="icon" href={assetUrl("favicon.svg")} type="image/svg+xml" />
     <title>{title}</title>
     <script
