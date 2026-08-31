@@ -77,7 +77,7 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
   const modalWhatsapp = document.querySelector<HTMLAnchorElement>(
     "#modal-product-whatsapp",
   )!;
-  const openProductModal = (trigger: HTMLButtonElement) => {
+  const openProductModal = (trigger: HTMLElement) => {
     modalImageAvif.srcset = trigger.dataset.detailsImageAvif ?? "";
     modalImageWebp.srcset = trigger.dataset.detailsImageWebp ?? "";
     modalImage.src = trigger.dataset.detailsImage ?? "";
@@ -85,17 +85,13 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
     modalTitle.textContent = trigger.dataset.detailsName ?? "";
     modalPrice.textContent = trigger.dataset.detailsPrice ?? "";
     modalDescription.innerHTML = trigger.dataset.detailsDescription ?? "";
-    modalWhatsapp.href =
-      trigger
-        .closest(".catalog-card")
-        ?.querySelector<HTMLAnchorElement>(".catalog-links a:first-child")
-        ?.href || "#";
+    modalWhatsapp.href = trigger.dataset.detailsWhatsapp ?? "#";
     productModal.showModal();
   };
 
   document.addEventListener("click", (event) => {
     if (!(event.target instanceof Element)) return;
-    const trigger = event.target.closest<HTMLButtonElement>(".details-trigger");
+    const trigger = event.target.closest<HTMLElement>(".image-modal-trigger");
     if (trigger) openProductModal(trigger);
   });
   productModalClose.addEventListener("click", () => productModal.close());

@@ -8,6 +8,7 @@ El repositorio contiene un catálogo estático de Evoka construido con Astro, Ty
 
 - `src/pages/index.astro` renderiza español en `/`.
 - `src/pages/[lang].astro` genera `/es/`, `/en/` y `/fr/` mediante `getStaticPaths`.
+- `src/pages/productos/[slug].astro` y `src/pages/[lang]/productos/[slug].astro` generan páginas estáticas de detalle para todos los productos: `/productos/<slug>-<id>/`, `/en/productos/<slug>-<id>/` y `/fr/productos/<slug>-<id>/`.
 - `astro.config.mjs` declara español como locale por defecto, sin prefijo obligatorio, y usa `site: https://pikmr.github.io` con `base: /evoka-astro` en producción. En desarrollo cambia automáticamente a `http://localhost:4321` y `/`.
 - El selector de idioma construye sus enlaces con `assetUrl()`, por lo que conserva el prefijo de publicación (`/evoka-astro/`) en GitHub Pages y funciona también bajo `/` en desarrollo.
 - `src/components/CatalogPage.astro` compone la página y recibe `locale` (`es`, `en` o `fr`). Las secciones visuales, los modales y sus scripts viven en componentes independientes dentro de `src/components/`.
@@ -54,6 +55,7 @@ Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical UR
 
 - No hay tests, lint ni formatter configurados como scripts npm.
 - No hay API, autenticación, CMS, runtime PHP ni conexión a Adminer dentro del repositorio.
+- Las páginas de detalle de producto incluyen descripción visible, canonical y datos estructurados `Product`. Las tarjetas y los destacados enlazan a esas páginas mediante “Más detalles”; al pulsar la imagen se abre la vista rápida en modal.
 - `dist/`, `.astro/` y `node_modules/` son artefactos locales ignorados por Git.
 - `.github/workflows/astro.yml` codifica el despliegue estático a GitHub Pages mediante GitHub Actions.
 

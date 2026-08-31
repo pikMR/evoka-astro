@@ -71,6 +71,22 @@ export const formatPrice = (locale: Locale, price: number) => {
   });
 };
 
+const slugify = (value: string) =>
+  value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+export const productRouteSlug = (locale: Locale, product: Product) =>
+  `${slugify(localizedProduct(locale, product).name)}-${product.id}`;
+
+export const productDetailUrl = (locale: Locale, product: Product) => {
+  const prefix = locale === "es" ? "" : `/${locale}`;
+  return assetUrl(`${prefix}/productos/${productRouteSlug(locale, product)}/`);
+};
+
 export const visibleCategories = categories;
 export const featuredProducts = [products[3], products[4], products[6]];
 export const catalogProducts = [...products].sort((left, right) =>

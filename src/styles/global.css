@@ -312,6 +312,16 @@ h2 em {
     background: #e9e5da
 }
 
+.featured-image,
+.catalog-image {
+    width: 100%;
+    border: 0;
+    padding: 0;
+    color: inherit;
+    text-align: inherit;
+    cursor: pointer;
+}
+
 .featured-image {
     height: 425px
 }

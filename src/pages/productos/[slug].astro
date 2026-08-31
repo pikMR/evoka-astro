@@ -1,0 +1,15 @@
+---
+import ProductDetailPage from "../../components/ProductDetailPage.astro";
+import { products } from "../../data/catalog";
+import { productRouteSlug, type Locale } from "../../lib/catalog-view";
+
+export function getStaticPaths() {
+  return products.map((product) => ({
+    params: { slug: productRouteSlug("es", product) },
+    props: { locale: "es" as Locale, product },
+  }));
+}
+
+const { locale, product } = Astro.props;
+---
+<ProductDetailPage locale={locale} product={product} />

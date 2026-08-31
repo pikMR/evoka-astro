@@ -5,6 +5,7 @@ import {
   localizedCategory,
   localizedProduct,
   productImageUrl,
+  productDetailUrl,
   translate,
   whatsappForProduct,
   type Locale,
@@ -29,7 +30,18 @@ const localized = localizedProduct(locale, product);
   data-name={`${localized.name} ${product.categories.join(" ")}`.toLowerCase()}
   data-categories={product.categories.join("|")}
 >
-  <a class="catalog-image" href={`#product-${product.id}`}>
+  <button
+    type="button"
+    class="catalog-image image-modal-trigger"
+    aria-label={`${translate(locale, "viewProduct")}: ${localized.name}`}
+    data-details-name={localized.name}
+    data-details-price={formatPrice(locale, product.price)}
+    data-details-image={productImageUrl(product.imageIds[0], "jpg")}
+    data-details-image-avif={productImageUrl(product.imageIds[0], "avif", 1200)}
+    data-details-image-webp={productImageUrl(product.imageIds[0], "webp", 1200)}
+    data-details-description={localized.description}
+    data-details-whatsapp={whatsappForProduct(locale, product)}
+  >
     <ResponsiveProductImage
       imageId={product.imageIds[0]}
       alt={localized.name}
@@ -41,7 +53,7 @@ const localized = localizedProduct(locale, product);
           : translate(locale, "soldout")
       }
     </span>
-  </a>
+  </button>
   <div class="catalog-card-body">
     <p class="product-category">
       {localizedCategory(locale, product.categories[0])}
@@ -60,27 +72,10 @@ const localized = localizedProduct(locale, product);
         {translate(locale, "whatsapp")}
         <span>↗</span>
       </a>
-      <button
-        type="button"
-        class="details-trigger"
-        data-details-name={localized.name}
-        data-details-price={formatPrice(locale, product.price)}
-        data-details-image={productImageUrl(product.imageIds[0], "jpg")}
-        data-details-image-avif={productImageUrl(
-          product.imageIds[0],
-          "avif",
-          1200,
-        )}
-        data-details-image-webp={productImageUrl(
-          product.imageIds[0],
-          "webp",
-          1200,
-        )}
-        data-details-description={localized.description}
-      >
+      <a class="details-trigger" href={productDetailUrl(locale, product)}>
         {translate(locale, "details")}
         <span>→</span>
-      </button>
+      </a>
     </div>
   </div>
 </article>

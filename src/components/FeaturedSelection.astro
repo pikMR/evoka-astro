@@ -5,7 +5,10 @@ import {
   formatPrice,
   localizedCategory,
   localizedProduct,
+  productDetailUrl,
+  productImageUrl,
   translate,
+  whatsappForProduct,
   type Locale,
 } from "../lib/catalog-view";
 import ResponsiveProductImage from "./ResponsiveProductImage.astro";
@@ -35,10 +38,17 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
     {
       featuredProducts.map((product, index) => (
         <article class={`featured-card featured-${index}`}>
-          <a
-            class="featured-image"
-            href={`#product-${product.id}`}
-            data-featured-filter={product.categories[0]}
+          <button
+            type="button"
+            class="featured-image image-modal-trigger"
+            aria-label={`${t("viewProduct")}: ${localizedProduct(locale, product).name}`}
+            data-details-name={localizedProduct(locale, product).name}
+            data-details-price={formatPrice(locale, product.price)}
+            data-details-image={productImageUrl(product.imageIds[0], "jpg")}
+            data-details-image-avif={productImageUrl(product.imageIds[0], "avif", 1200)}
+            data-details-image-webp={productImageUrl(product.imageIds[0], "webp", 1200)}
+            data-details-description={localizedProduct(locale, product).description}
+            data-details-whatsapp={whatsappForProduct(locale, product)}
           >
             <ResponsiveProductImage
               imageId={product.imageIds[0]}
@@ -46,7 +56,7 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
               loading={index > 1 ? "lazy" : "eager"}
             />
             <span class="image-index">0{index + 1}</span>
-          </a>
+          </button>
           <div class="card-meta">
             <div>
               <p class="product-category">
