@@ -41,7 +41,7 @@ export const products: Product[] = [
   {
     "id": "13",
     "reference": "120536",
-    "name": "Diadema pelo",
+    "name": "Diadema para el pelo",
     "slug": "brown-bear-vector-graphics",
     "price": 6.61157,
     "stock": 6,
@@ -242,7 +242,7 @@ export const products: Product[] = [
   {
     "id": "29",
     "reference": "120571",
-    "name": "Mini vela  (unidad)",
+    "name": "Mini vela (unidad)",
     "slug": "brown-bear-vector-graphics",
     "price": 4.958678,
     "stock": 6,
@@ -258,7 +258,7 @@ export const products: Product[] = [
   {
     "id": "30",
     "reference": "120534-120541",
-    "name": "Bolsa de Bambú",
+    "name": "Tote Bag",
     "slug": "brown-bear-vector-graphics",
     "price": 0,
     "stock": 100,
@@ -270,7 +270,7 @@ export const products: Product[] = [
       46,
       83
     ],
-    "description": "<p><strong>Bolsas de lona personalizables con logo</strong>, únicas y versátiles, ideales para <strong>eventos, regalos corporativos o uso diario</strong>.</p>\n<p><strong>Tamaños disponibles:</strong></p>\n<p>Pequeña \"S\": 16 × 20 cm </p>\n<p>Mediana \"M\":  20 × 30 cm</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+    "description": "<p><strong>Tote Bag de tela personalizable con logotipo, única y versátil, ideal para eventos, regalos corporativos o uso diario.</strong>, únicas y versátiles, ideales para <strong>eventos, regalos corporativos o uso diario</strong>.</p>\n<p><strong>Tamaños disponibles:</strong></p>\n<p>Pequeña \"S\": 16 × 20 cm </p>\n<p>Mediana \"M\":  20 × 30 cm</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
   },
   {
     "id": "31",
@@ -291,7 +291,7 @@ export const products: Product[] = [
   {
     "id": "32",
     "reference": "120537",
-    "name": "Discos desmaquilladores (Unidad)",
+    "name": "Discos desmaquilladores (unidad)",
     "slug": "brown-bear-vector-graphics",
     "price": 2.479339,
     "stock": 12,
@@ -307,7 +307,7 @@ export const products: Product[] = [
   {
     "id": "33",
     "reference": "120538",
-    "name": "Guacha face",
+    "name": "Gua Sha facial",
     "slug": "brown-bear-vector-graphics",
     "price": 2.479339,
     "stock": 4,
@@ -340,7 +340,7 @@ export const products: Product[] = [
   {
     "id": "35",
     "reference": "120539",
-    "name": "Pin Motivador",
+    "name": "Pin motivador",
     "slug": "brown-bear-vector-graphics",
     "price": 4.132231,
     "stock": 16,
@@ -384,7 +384,7 @@ export const products: Product[] = [
       57,
       58
     ],
-    "description": "<p>Kit perfecto para despedidas de soltera inolvidables. Diseñado para una noche épica antes del “sí, acepto”, ofrece <strong>diversión, picardía y recuerdos memorables</strong>, activando el <strong>modo fiesta</strong> y celebrando el fin de la soltería con estilo.</p>\n<p><strong>Contenido:</strong></p>\n<p>1 <strong>antifáz</strong> (negro o rojo, aleatorio según disponibilidad)</p>\n<p>1 <strong>gafas temática “Bride to be”</strong> (rosa, blanco o negro, aleatorio según disponibilidad)</p>\n<p>1 <strong>dado erótico</strong> (negro o blanco, aleatorio según disponibilidad)</p>\n<p>1 <strong>vibrador tipo bala</strong> (batería no incluida)</p>\n<p>1 <strong>tanga</strong> (talla única, rojo o negro, aleatorio según disponibilidad)</p>\n<p>1 <strong>tarjeta temática</strong>: “Advertencia: esta BOLSA puede causar calor corporal excesivo”</p>\n<p><strong>Notas:</strong> Las imágenes del catálogo son referenciales; colores, modelos y diseños pueden variar según disponibilidad sin previo aviso.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+    "description": "<p>Kit perfecto para despedidas de soltera inolvidables. Diseñado para una noche épica antes del “sí, acepto”, ofrece <strong>diversión, picardía y recuerdos memorables</strong>, activando el <strong>modo fiesta</strong> y celebrando el fin de la soltería con estilo.</p>\n<p><strong>Contenido:</strong></p>\n<p>1 <strong>antifaz</strong> (negro o rojo, aleatorio según disponibilidad)</p>\n<p>1 <strong>gafas temáticas “Bride to be”</strong> (rosa, blanco o negro, aleatorio según disponibilidad)</p>\n<p>1 <strong>dado erótico</strong> (negro o blanco, aleatorio según disponibilidad)</p>\n<p>1 <strong>vibrador tipo bala</strong> (batería no incluida)</p>\n<p>1 <strong>tanga</strong> (talla única, rojo o negro, aleatorio según disponibilidad)</p>\n<p>1 <strong>tarjeta temática</strong>: “Advertencia: esta BOLSA puede causar calor corporal excesivo”</p>\n<p><strong>Notas:</strong> Las imágenes del catálogo son referenciales; colores, modelos y diseños pueden variar según disponibilidad sin previo aviso.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
   },
   {
     "id": "38",
@@ -401,7 +401,7 @@ export const products: Product[] = [
       60,
       59
     ],
-    "description": "<p>kit definitivo para el novio y su equipo. Un combo atrevido lleno de <strong>humor, picardía y diversión</strong>, diseñado para convertir cualquier despedida en una experiencia legendaria.</p>\n<p><strong>Contenido:</strong></p>\n<p>1 <strong>set de shots o chupitos</strong> (dos unidades, color negro o blanco, aleatorio según disponibilidad)</p>\n<p>1 <strong>pack de condones</strong></p>\n<p>1 <strong>gafas temática negra “GROOM”</strong></p>\n<p>1 <strong>dado erótico</strong> (negro o blanco, aleatorio según disponibilidad)</p>\n<p>1 <strong>calzoncillo sexy</strong> (negro, talla M, L o XL, aleatorio según disponibilidad)</p>\n<p>1 <strong>tarjeta</strong>: “Advertencia: esta BOLSA puede causar calor corporal excesivo”</p>\n<p><strong>Notas:</strong> Las imágenes del catálogo son referenciales; colores, modelos y diseños pueden variar según disponibilidad sin previo aviso.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+    "description": "<p>kit definitivo para el novio y su equipo. Un combo atrevido lleno de <strong>humor, picardía y diversión</strong>, diseñado para convertir cualquier despedida en una experiencia legendaria.</p>\n<p><strong>Contenido:</strong></p>\n<p>1 <strong>set de shots o chupitos</strong> (dos unidades, color negro o blanco, aleatorio según disponibilidad)</p>\n<p>1 <strong>pack de condones</strong></p>\n<p>1 <strong>gafas temáticas negra “GROOM”</strong></p>\n<p>1 <strong>dado erótico</strong> (negro o blanco, aleatorio según disponibilidad)</p>\n<p>1 <strong>calzoncillo sexy</strong> (negro, talla M, L o XL, aleatorio según disponibilidad)</p>\n<p>1 <strong>tarjeta</strong>: “Advertencia: esta BOLSA puede causar calor corporal excesivo”</p>\n<p><strong>Notas:</strong> Las imágenes del catálogo son referenciales; colores, modelos y diseños pueden variar según disponibilidad sin previo aviso.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
   },
   {
     "id": "40",
@@ -513,7 +513,7 @@ export const products: Product[] = [
   {
     "id": "63",
     "reference": "120544",
-    "name": "Dados sexy posturas-12 caras",
+    "name": "Dados sexys de 12 caras",
     "slug": "customizable-mug",
     "price": 5.785124,
     "stock": 6,
@@ -529,7 +529,7 @@ export const products: Product[] = [
   {
     "id": "64",
     "reference": "120547",
-    "name": "Bolsa cuerina -Small",
+    "name": "Bolsa de cuerina (S)",
     "slug": "brown-bear-vector-graphics",
     "price": 3.305785,
     "stock": 12,
@@ -561,12 +561,12 @@ export const products: Product[] = [
       161,
       162
     ],
-    "description": "<p><strong>Bolsa multiuso</strong> para merienda, decoración o comida de perros. Resistente y con <strong>cierre clip metálico</strong> que mantiene el contenido fresco.</p>\n<p><strong>Colores disponibles:</strong> verde militar, marrón oscuro y gris.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+    "description": "<p><strong>Bolsa multiuso</strong> para merienda, decoración o comida para perros. Resistente y con <strong>cierre clip metálico</strong> que mantiene el contenido fresco.</p>\n<p><strong>Colores disponibles:</strong> verde militar, marrón oscuro y gris.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
   },
   {
     "id": "66",
     "reference": "120554",
-    "name": "Donut gift socks",
+    "name": "Calcetines con diseño de donut",
     "slug": "brown-bear-vector-graphics",
     "price": 9.090909,
     "stock": 11,
@@ -617,7 +617,7 @@ export const products: Product[] = [
   {
     "id": "69",
     "reference": "120517-120518-120519",
-    "name": "Set bebé 3 piezas: Chupetero,  Sonajero y juego relajante",
+    "name": "Set bebé de 3 piezas: chupetero, sonajero y juguete relajante",
     "slug": "customizable-mug",
     "price": 16.528926,
     "stock": 3,
@@ -634,7 +634,7 @@ export const products: Product[] = [
   {
     "id": "70",
     "reference": "120571",
-    "name": "Taza caricatura snoopy",
+    "name": "Taza de Snoopy",
     "slug": "brown-bear-vector-graphics",
     "price": 16.528926,
     "stock": 0,
@@ -650,7 +650,7 @@ export const products: Product[] = [
   {
     "id": "71",
     "reference": "120564",
-    "name": "Termo Peanuts Snoopy |420ml",
+    "name": "Termo Peanuts Snoopy | 420 ml",
     "slug": "brown-bear-vector-graphics",
     "price": 20.661157,
     "stock": 1,
@@ -667,7 +667,7 @@ export const products: Product[] = [
   {
     "id": "73",
     "reference": "120570-1",
-    "name": "Pantuflas Patata sweet",
+    "name": "Pantuflas Patata Sweet",
     "slug": "brown-bear-vector-graphics",
     "price": 33.057851,
     "stock": 1,
@@ -683,7 +683,7 @@ export const products: Product[] = [
   {
     "id": "75",
     "reference": "120546",
-    "name": "Tanga talla única",
+    "name": "Tanga de talla única",
     "slug": "gafas-my-birthday",
     "price": 5.785124,
     "stock": 5,
@@ -743,7 +743,7 @@ export const products: Product[] = [
     "imageIds": [
       202
     ],
-    "description": "<p><strong>Placa de identificación para perro</strong> en forma de hueso, fabricada en <strong>acero inoxidable</strong>.</p>\n<p>Tamaño <strong>9 × 28 × 1.8 mm</strong>, disponible en <strong>plateado, dorado y negro</strong>.</p>\n<p>Elegante y resistente, perfecta para personalizar el collar de tu mascota.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+    "description": "<p><strong>Placa de identificación para perro</strong> en forma de hueso, fabricada en <strong>acero inoxidable</strong>.</p>\n<p>Tamaño <strong>9 × 28 × 1,8 mm</strong>, disponible en <strong>plateado, dorado y negro</strong>.</p>\n<p>Elegante y resistente, perfecta para personalizar el collar de tu mascota.</p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
   },
   {
     "id": "79",
@@ -1150,7 +1150,7 @@ export const products: Product[] = [
   {
     "id": "99",
     "reference": "120534-120541E",
-    "name": "Bolsa de Bambú Personalizada",
+    "name": "Tote Bag Personalizada",
     "slug": "brown-bear-vector-graphics",
     "price": 8.264463,
     "stock": 10,
