@@ -4,9 +4,11 @@ export const CATALOG_CATEGORIES = {
   WELLNESS_SPA: "Bienestar y spa",
   SNOOPY_COLLECTION: "Colección Snoopy",
   CUSTOM_BOXES: "Box personalizables",
+  CUSTOM_BONUSES: "Bonus personalizables",
+  CUSTOM_SETS: "Set personalizables",
   FRIENDS_BACHELORETTE: "Entre amigos y despedidas",
   PETS: "Mascotas",
-  CORPORATE_PACKAGING: "Packaging y empresarial",
+  CORPORATE_PACKAGING: "Packaging y regalos corporativos",
   THERMOS_CUPS: "Termos y tazas",
   CREATIVE_STATIONERY: "Papelería creativa",
   INTERNAL: "Inicio",
@@ -35,6 +37,8 @@ export const categories = [
   CATALOG_CATEGORIES.CORPORATE_PACKAGING,
   CATALOG_CATEGORIES.THERMOS_CUPS,
   CATALOG_CATEGORIES.CREATIVE_STATIONERY,
+  CATALOG_CATEGORIES.CUSTOM_BONUSES,
+  CATALOG_CATEGORIES.CUSTOM_SETS,
 ] as const;
 
 export const products: Product[] = [
@@ -79,7 +83,7 @@ export const products: Product[] = [
     "price": 16.528926,
     "stock": 5,
     "categories": [
-      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.CUSTOM_BONUSES,
       CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
@@ -102,7 +106,7 @@ export const products: Product[] = [
       81,
       28
     ],
-    "description": "<p><strong>Caja Ternura Natural</strong>, diseñada para transmitir <strong>calma, suavidad y amor</strong> desde el primer instante. Con un estilo <strong>minimalista</strong> y tonos crema, beige y madera natural, combina <strong>belleza, funcionalidad y armonía</strong>, ideal para <strong>baby shower, nacimiento o primera visita al recién nacido</strong>.</p>\n<p><strong>Contenido:</strong></p>\n<p>1 <strong>trapito de apego</strong>, color cúrcuma</p>\n<p>1 <strong>juguete de tela</strong>, color cúrcuma</p>\n<p>1 <strong>babero de tela</strong>, color cúrcuma</p>\n<p>1 <strong>pañal de algodón “Corazones”</strong></p>\n<p>1 <strong>tarjeta “Ternura Natural”</strong></p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+    "description": "<p>La <strong>caja Ternura Natural</strong> reúne <strong>calma, suavidad y amor</strong>. Su estilo minimalista y sus tonos crema, beige y madera natural la convierten en un regalo delicado para un <strong>baby shower, un nacimiento o una primera visita al recién nacido</strong>.</p>\n<p><strong>Contenido:</strong></p>\n<p>1 <strong>trapito de apego</strong>, color cúrcuma</p>\n<p>1 <strong>juguete de tela</strong>, color cúrcuma</p>\n<p>1 <strong>babero de tela</strong>, color cúrcuma</p>\n<p>1 <strong>pañal de algodón “Corazones”</strong></p>\n<p>1 <strong>tarjeta “Ternura Natural”</strong></p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
   },
   {
     "id": "20",
@@ -112,13 +116,13 @@ export const products: Product[] = [
     "price": 16.528926,
     "stock": 5,
     "categories": [
-      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.CUSTOM_BONUSES,
       CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
       29
     ],
-    "description": "<p><strong>BONUS:</strong> Tu caja, tu estilo; combínala y elige <strong>un bonus sorpresa</strong>.</p>\n<p>Los productos se incluyen de forma <strong>aleatoria</strong>, según disponibilidad.</p>\n<p><em>Las imágenes del catálogo son referenciales; colores, modelos y diseños pueden variar según disponibilidad sin previo aviso.</em></p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+    "description": "<p><strong>Tu caja, tu estilo.</strong> Combínala a tu manera y elige <strong>un bonus sorpresa</strong>.</p>\n<p>Los productos se incluyen de forma <strong>aleatoria</strong>, según disponibilidad.</p>\n<p><em>Las imágenes del catálogo son referenciales; colores, modelos y diseños pueden variar según disponibilidad sin previo aviso.</em></p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
   },
   {
     "id": "21",
@@ -152,7 +156,7 @@ export const products: Product[] = [
       32,
       33
     ],
-    "description": "<p><strong>Caja de regalo personalizada</strong>, perfecta para celebrar cumpleaños con <strong>estilo, humor y un toque único</strong>. Contiene productos decorativos, divertidos y reutilizables, seleccionados para crear una experiencia <strong>especial y memorable</strong>.</p>\n<p><strong>Contenido:</strong></p>\n<p>1 <strong>bolsa con 5 globos</strong></p>\n<p>1 <strong>vela volcán o vela en cera</strong> (solo para envíos)</p>\n<p>1 <strong>cupcake de peluche </strong></p>\n<p>2 <strong>gafas “My Birthday”</strong></p>\n<p>1 <strong>tarjeta “My Birthday”</strong></p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
+    "description": "<p>Una <strong>caja de regalo personalizada para cumpleaños</strong>, con <strong>estilo, humor y un toque único</strong>. Reúne productos decorativos, divertidos y reutilizables para una celebración <strong>especial y memorable</strong>.</p>\n<p><strong>Contenido:</strong></p>\n<p>1 <strong>bolsa con 5 globos</strong></p>\n<p>1 <strong>vela volcán o vela en cera</strong> (solo para envíos)</p>\n<p>1 <strong>cupcake de peluche</strong></p>\n<p>2 <strong>gafas “My Birthday”</strong></p>\n<p>1 <strong>tarjeta “My Birthday”</strong></p>\n<p><strong>Producto sin cambios ni devoluciones.</strong></p>"
   },
   {
     "id": "23",
@@ -280,7 +284,7 @@ export const products: Product[] = [
     "price": 22.31405,
     "stock": 5,
     "categories": [
-      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.CUSTOM_BONUSES,
       CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
@@ -328,7 +332,7 @@ export const products: Product[] = [
     "price": 16.528926,
     "stock": 5,
     "categories": [
-      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.CUSTOM_BONUSES,
       CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
@@ -453,7 +457,7 @@ export const products: Product[] = [
     "price": 16.528926,
     "stock": 5,
     "categories": [
-      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.CUSTOM_SETS,
       CATALOG_CATEGORIES.INTERNAL,
     ],
     "imageIds": [
@@ -636,7 +640,7 @@ export const products: Product[] = [
     "reference": "120571",
     "name": "Taza de Snoopy",
     "slug": "brown-bear-vector-graphics",
-    "price": 16.528926,
+    "price": 20.661157,
     "stock": 0,
     "categories": [
       CATALOG_CATEGORIES.SNOOPY_COLLECTION,
@@ -652,7 +656,7 @@ export const products: Product[] = [
     "reference": "120564",
     "name": "Termo Peanuts Snoopy | 420 ml",
     "slug": "brown-bear-vector-graphics",
-    "price": 20.661157,
+    "price": 16.528926,
     "stock": 1,
     "categories": [
       CATALOG_CATEGORIES.SNOOPY_COLLECTION,
@@ -669,7 +673,7 @@ export const products: Product[] = [
     "reference": "120570-1",
     "name": "Pantuflas Patata Sweet",
     "slug": "brown-bear-vector-graphics",
-    "price": 33.057851,
+    "price": 20.661157,
     "stock": 1,
     "categories": [
       CATALOG_CATEGORIES.FRIENDSHIP_LOVE,
@@ -750,7 +754,7 @@ export const products: Product[] = [
     "reference": "120563",
     "name": "Esterilla tipo nido para mascotas",
     "slug": "esterilla-tipo-nido-para-mascotas",
-    "price": 0,
+    "price": 28.92562,
     "stock": 1,
     "categories": [
       CATALOG_CATEGORIES.PETS,
@@ -800,7 +804,7 @@ export const products: Product[] = [
     "reference": "120565",
     "name": "Termo food grade Snoopy | 420 ml",
     "slug": "botella-food-grade-snoopy-420-ml",
-    "price": 20.661157,
+    "price": 16.528926,
     "stock": 3,
     "categories": [
       CATALOG_CATEGORIES.SNOOPY_COLLECTION,
@@ -819,7 +823,7 @@ export const products: Product[] = [
     "reference": "120567",
     "name": "Termo Happiness Snoopy | 500 ml",
     "slug": "termo-happiness-snoopy",
-    "price": 30,
+    "price": 16.528926,
     "stock": 3,
     "categories": [
       CATALOG_CATEGORIES.SNOOPY_COLLECTION,
@@ -836,7 +840,7 @@ export const products: Product[] = [
     "reference": "120568",
     "name": "Termo classic Snoopy |500ml",
     "slug": "termo-classic-snoopy-500ml",
-    "price": 24.793388,
+    "price": 16.528926,
     "stock": 1,
     "categories": [
       CATALOG_CATEGORIES.SNOOPY_COLLECTION,
@@ -853,7 +857,7 @@ export const products: Product[] = [
     "reference": "120570-2",
     "name": "Pantuflas Cacahuete Sweet",
     "slug": "brown-bear-vector-graphics",
-    "price": 33.057851,
+    "price": 20.661157,
     "stock": 1,
     "categories": [
       CATALOG_CATEGORIES.FRIENDSHIP_LOVE,
@@ -1020,7 +1024,7 @@ export const products: Product[] = [
     "reference": "120557",
     "name": "Termo Mini Snoopy-280ml",
     "slug": "gafas-my-birthday",
-    "price": 20.661157,
+    "price": 12.396694,
     "stock": 10,
     "categories": [
       CATALOG_CATEGORIES.SNOOPY_COLLECTION,
@@ -1058,7 +1062,7 @@ export const products: Product[] = [
     "price": 28.92562,
     "stock": 1,
     "categories": [
-      CATALOG_CATEGORIES.CUSTOM_BOXES,
+      CATALOG_CATEGORIES.CUSTOM_BONUSES,
       CATALOG_CATEGORIES.INTERNAL
     ],
     "imageIds": [
@@ -1069,7 +1073,7 @@ export const products: Product[] = [
   {
     "id": "91",
     "reference": "120591",
-    "name": "Box Sweet Breakfast ☕💝",
+    "name": "Box Sweet Breakfast",
     "slug": "juguete-de-felpa-para-perro",
     "price": 70.247934,
     "stock": 1,
@@ -1085,7 +1089,7 @@ export const products: Product[] = [
   {
     "id": "92",
     "reference": "120592",
-    "name": "Box SPA 🌸",
+    "name": "Box SPA",
     "slug": "juguete-de-felpa-para-perro",
     "price": 53.719008,
     "stock": 1,
@@ -1246,7 +1250,7 @@ export const products: Product[] = [
   {
     "id": "95",
     "reference": "120595",
-    "name": "Set de Termos Divertidos Frutales (x3) 🍋",
+    "name": "Set de Termos Divertidos Frutales (x3)",
     "slug": "juguete-de-felpa-para-perro",
     "price": 16.528926,
     "stock": 1,

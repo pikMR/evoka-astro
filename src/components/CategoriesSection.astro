@@ -1,9 +1,9 @@
 ---
-import { products } from "../data/catalog";
+import { categoryNavigationLabels } from "../i18n/ui";
 import {
   localizedCategory,
-  translate,
   visibleCategories,
+  translate,
   type Locale,
 } from "../lib/catalog-view";
 
@@ -13,36 +13,155 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
+// Presentation order only: category values and filter destinations are unchanged.
+const preferredCategoryOrder = [
+  "Box personalizables",
+  "Amistad y amor",
+  "Colección Snoopy",
+  "Bebés y nacimientos",
+  "Bienestar y spa",
+  "Entre amigos y despedidas",
+  "Termos y tazas",
+  "Papelería creativa",
+  "Mascotas",
+  "Packaging y regalos corporativos",
+  "Bonus personalizables",
+  "Set personalizables",
+];
+// Membership comes only from the catalog; unknown categories retain source order.
+const categoryRank = (category: string) => {
+  const index = preferredCategoryOrder.indexOf(category);
+  return index === -1 ? Number.POSITIVE_INFINITY : index;
+};
+const navigationCategories = [...visibleCategories].sort(
+  (left, right) => categoryRank(left) - categoryRank(right),
+);
+const additionalCategoriesId = `additional-categories-${locale}`;
 ---
+
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Manrope:wght@400&display=swap"
+/>
 
 <section class="section wrap categories-section" id="categorias">
   <div class="section-heading">
     <div>
       <p class="eyebrow">{t("categoriesEyebrow")}</p><h2>
         {t("categoriesTitle")}
-        <em>{t("categoriesAccent")}</em>
+        <span class="category-title-accent">{t("categoriesAccent")}</span>
       </h2>
     </div>
   </div><div class="category-list">
     {
-      visibleCategories.map((category, index) => (
-        <button
-          class={`category-row tone-${index % 3}`}
-          data-filter-link={category}
-        >
-          <span>0{index + 1}</span>
-          <h3>{localizedCategory(locale, category)}</h3>
-          <small>
-            {
-              products.filter((product) =>
-                product.categories.includes(category),
-              ).length
-            }{" "}
-            {t("products")}
-          </small>
-          <b>↗</b>
-        </button>
+      [navigationCategories.slice(0, 6), navigationCategories.slice(6)].map((group, groupIndex) => (
+        <div id={groupIndex === 1 ? additionalCategoriesId : undefined} hidden={groupIndex === 1}>
+          {group.map((category) => (
+            <button
+              type="button"
+              class="category-row"
+              data-filter-link={category}
+            >
+              <h3>{categoryNavigationLabels[locale]?.[category] ?? localizedCategory(locale, category)}</h3>
+              {category !== "Colección Snoopy" && (
+                <span class="category-indicator" aria-hidden="true">+</span>
+              )}
+            </button>
+          ))}
+        </div>
       ))
     }
   </div>
+  <button
+    type="button"
+    class="categories-toggle"
+    aria-expanded="false"
+    aria-controls={additionalCategoriesId}
+    data-more-label={t("categoriesShowMore")}
+    data-less-label={t("categoriesShowLess")}
+  >
+    {t("categoriesShowMore")}
+  </button>
 </section>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>(".categories-section .categories-toggle").forEach((toggle) => {
+    const controlledId = toggle.getAttribute("aria-controls");
+    const additionalCategories = controlledId ? document.getElementById(controlledId) : null;
+    if (!additionalCategories) return;
+
+    toggle.addEventListener("click", () => {
+      const expanded = toggle.getAttribute("aria-expanded") !== "true";
+      additionalCategories.hidden = !expanded;
+      toggle.setAttribute("aria-expanded", String(expanded));
+      toggle.textContent = (expanded ? toggle.dataset.lessLabel : toggle.dataset.moreLabel) ?? "";
+    });
+  });
+</script>
+
+<style>
+  .categories-section .category-row h3 {
+    font-family: "Manrope", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .categories-section .section-heading h2,
+  .categories-section .category-title-accent {
+    font-style: normal;
+  }
+
+  .categories-section .category-row {
+    /* Original warm .tone-0 from 9f6d7bd, shared by every category. */
+    background: linear-gradient(90deg, transparent, #f2d8bc);
+    --category-lift-shadow: 0 8px 18px -7px rgba(128, 95, 77, .22);
+    transition: transform 220ms ease, box-shadow 220ms ease;
+  }
+
+  .categories-section .category-row:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: var(--category-lift-shadow);
+    z-index: 1;
+  }
+
+  .category-row::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, #f2d8bc);
+    opacity: 0;
+    transition: opacity .2s ease;
+  }
+
+  .category-row:focus-visible::before {
+    opacity: .1;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .categories-section .category-row:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--category-lift-shadow);
+      z-index: 1;
+    }
+
+    .category-row:hover::before {
+      opacity: .1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .categories-section .category-row {
+      transition: none;
+    }
+
+    .categories-section .category-row:is(:hover, :focus-visible) {
+      transform: none;
+    }
+
+    .category-row::before {
+      transition: none;
+    }
+  }
+</style>

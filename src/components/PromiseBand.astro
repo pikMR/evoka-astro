@@ -1,19 +1,28 @@
 ---
-import { assetUrl, type Locale } from "../lib/catalog-view";
+import { assetUrl, translate, type Locale } from "../lib/catalog-view";
 
 interface Props {
   locale: Locale;
 }
 
 const { locale } = Astro.props;
+const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
 const title = locale === "fr" ? "Créez votre propre box" : locale === "en" ? "Create your own box" : "Crea tu propio box";
 const imageAlt = locale === "fr" ? "Étape" : locale === "en" ? "Step" : "Paso";
 ---
 
 <section class="promise-band">
   <div class="wrap promise-grid">
-    <h2>{title}</h2>
-    <div class="box-design-gallery" aria-label={title}>
+    <div class="promise-copy">
+      <h2>{t("boxTitle")}<br /><em>{t("boxTitleAccent")}</em></h2>
+      <p class="promise-description">{t("boxDescription")}</p>
+      <button type="button" class="promise-microaction" aria-controls="box-design-gallery"><span class="promise-action-text">{t("boxMicroaction")}</span>
+        <svg class="promise-hand-arrow" viewBox="0 0 56 34" aria-hidden="true" focusable="false">
+          <path d="M3 23c9 9 22 6 23-2 1-7-8-8-8-2 0 10 21 6 33-13M41 8l11-3-1 11" />
+        </svg>
+      </button>
+    </div>
+    <div class="box-design-gallery" id="box-design-gallery" role="group" tabindex="-1" aria-label={title}>
       {
         [1, 2, 3, 4].map((step, index) => (
           <button
@@ -44,6 +53,56 @@ const imageAlt = locale === "fr" ? "Étape" : locale === "en" ? "Step" : "Paso";
 </dialog>
 
 <script>
+  const exploreSteps = document.querySelector<HTMLButtonElement>(".promise-microaction");
+  const stepsGallery = document.querySelector<HTMLElement>("#box-design-gallery");
+
+  const positionArrow = () => {
+    if (!stepsGallery || !exploreSteps) return;
+    const arrow = exploreSteps.querySelector<SVGElement>(".promise-hand-arrow");
+    const first = stepsGallery.querySelector<HTMLElement>(".box-design-card");
+    if (!arrow || !first) return;
+    const mobile = window.matchMedia("(max-width: 620px)").matches;
+    const card = first.getBoundingClientRect();
+    const cta = exploreSteps.getBoundingClientRect();
+    const available = card.left - cta.right - 10 - 35;
+    const preferred = window.matchMedia("(max-width: 850px)").matches ? 65 : 75;
+    const width = mobile ? 50 : Math.max(26, Math.min(preferred, available));
+    const height = width * .56;
+    arrow.style.width = `${width}px`;
+    arrow.style.height = `${height}px`;
+    const centerX = cta.right + 10 + width / 2;
+    const centerY = cta.top + cta.height / 2 + height * .15;
+    // Aim the arrowhead at the first card, including the stacked mobile layout.
+    const targetX = mobile ? card.left + card.width / 2 : card.left + 12;
+    const targetY = mobile ? card.top + 12 : Math.min(card.bottom - 20, Math.max(card.top + 20, centerY));
+    const angle = Math.atan2(targetY - centerY, targetX - centerX) * 180 / Math.PI + 45;
+    arrow.style.transform = `translateY(-35%) rotate(${angle}deg)`;
+  };
+  if (stepsGallery && exploreSteps) {
+    const observer = new ResizeObserver(positionArrow);
+    observer.observe(stepsGallery);
+    observer.observe(exploreSteps);
+    window.addEventListener("resize", positionArrow);
+  }
+
+  exploreSteps?.addEventListener("click", () => {
+    if (!stepsGallery) return;
+    stepsGallery.focus({ preventScroll: true });
+    const header = document.querySelector<HTMLElement>(".site-header");
+    const headerBottom = header
+      ? header.getBoundingClientRect().bottom + Math.abs(parseFloat(getComputedStyle(header, "::after").bottom) || 0)
+      : 0;
+    const bounds = stepsGallery.getBoundingClientRect();
+    const top = Math.min(bounds.top, ...Array.from(stepsGallery.querySelectorAll(".box-design-card"), card => card.getBoundingClientRect().top));
+    const bottom = Math.max(bounds.bottom, ...Array.from(stepsGallery.querySelectorAll(".box-design-card"), card => card.getBoundingClientRect().bottom));
+    if (top < headerBottom + 16 || bottom > window.innerHeight - 16) {
+      window.scrollBy({
+        top: top - headerBottom - 24,
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+      });
+    }
+  });
+
   const boxModal = document.querySelector<HTMLDialogElement>("#box-design-modal");
   const boxModalImage = document.querySelector<HTMLImageElement>("#box-design-modal-image");
   const boxModalClose = document.querySelector<HTMLButtonElement>("#box-design-modal-close");

@@ -6,71 +6,70 @@ import {
   visibleCategories,
   type Locale,
 } from "../lib/catalog-view";
+import { CATALOG_CATEGORIES } from "../data/catalog";
 import { CATALOG_PAGE_SIZE } from "../config/site";
+import CatalogIllustrations from "./CatalogIllustrations.astro";
 import CatalogProductCard from "./CatalogProductCard.astro";
 
 interface Props {
   locale: Locale;
 }
 
+// Decorative line icons share the same viewBox and stroke treatment.
+const giftIcon = "M3 8h18v4H3z M5 12v9h14v-9 M12 8v13 M12 8H8a3 3 0 1 1 3-3l1 3Zm0 0h4a3 3 0 1 0-3-3l-1 3Z";
+const categoryIcons: Record<string, string> = {
+  [CATALOG_CATEGORIES.FRIENDSHIP_LOVE]: "M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z",
+  [CATALOG_CATEGORIES.BABIES_BIRTHS]: "M8 3H6L2 7l3 3 2-2v7l3 6h4l3-6V8l2 2 3-3-4-4h-2 M8 3a4 4 0 0 0 8 0 M7 15q5-2 10 0 M12 18v.01",
+  [CATALOG_CATEGORIES.WELLNESS_SPA]: "M12 20C5 20 2 15 2 9c5 0 8 3 10 7 M12 20c7 0 10-5 10-11-5 0-8 3-10 7 M12 16C7 12 8 7 12 3c4 4 5 9 0 13Z",
+  [CATALOG_CATEGORIES.SNOOPY_COLLECTION]: "M6 21v-6l-2-3V7l5-4h6l3 5 4 2v4l-5 2v5 M9 4l-1 7q2 4 4 0V5 M16 8h.01 M19 10h3 M6 18h11",
+  [CATALOG_CATEGORIES.CUSTOM_BOXES]: giftIcon,
+  [CATALOG_CATEGORIES.CUSTOM_SETS]: "M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z",
+  [CATALOG_CATEGORIES.CUSTOM_BONUSES]: "M5 7h14l2 14H3L5 7Z M9 7V5a3 3 0 0 1 6 0v2",
+  [CATALOG_CATEGORIES.FRIENDS_BACHELORETTE]: "M4 3h6v5a3 3 0 0 1-6 0V3Zm10 0h6v5a3 3 0 0 1-6 0V3Z M7 11v9 M17 11v9 M4 20h6 M14 20h6 M4 6h6 M14 6h6",
+  [CATALOG_CATEGORIES.PETS]: "M8 15c-5 6 0 8 4 5 4 3 9 1 4-5-2-4-6-4-8 0Z M6 8a2 3 0 1 1-4 0 2 3 0 1 1 4 0 M11 5a2 3 0 1 1-4 0 2 3 0 1 1 4 0 M17 5a2 3 0 1 1-4 0 2 3 0 1 1 4 0 M22 8a2 3 0 1 1-4 0 2 3 0 1 1 4 0",
+  [CATALOG_CATEGORIES.CORPORATE_PACKAGING]: "M3 7h18v13H3z M8 7V3h8v4 M3 11q9 6 18 0 M12 12v4",
+  [CATALOG_CATEGORIES.THERMOS_CUPS]: "M3 7h14v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7Z M17 8h2a3 3 0 0 1 0 6h-2 M6 2v2 M10 2v2 M14 2v2",
+  [CATALOG_CATEGORIES.CREATIVE_STATIONERY]: "m4 15-1 6 6-1L21 8l-5-5L4 15Z M13 6l5 5 M4 15l5 5",
+};
 const { locale } = Astro.props;
 const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
 ---
 
 <section class="catalog-section" id="catalogo">
   <div class="catalog-intro">
+    <CatalogIllustrations />
     <div class="wrap">
       <div class="section-heading catalog-heading">
         <div>
           <p class="eyebrow">{t("catalogEyebrow")}</p><h2>
             {t("catalogTitle")}
           </h2>
-        </div><p class="catalog-note">
-          {catalogProducts.length + " "}
-          {t("products")}<br />{
-            t("productsReady")
-              .split("\\n")
-              .map((line) => (
-                <>
-                  {line}
-                  <br />
-                </>
-              ))
-          }
-        </p>
+        </div>
       </div>
       <div class="catalog-toolbar">
         <label class="search-box"
-          ><span>⌕</span><input
+          ><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m15.2 15.2 4.3 4.3" /></svg><input
             id="product-search"
             type="search"
             placeholder={t("searchPlaceholder")}
             aria-label={t("searchPlaceholder")}
           /></label
         ><div class="filter-navigation">
-          <button
-            type="button"
-            class="filter-arrow"
-            data-filter-scroll="-1"
-            aria-label={t("left")}>←</button
-          ><div class="filter-list" role="group" aria-label={t("filterAria")}>
+          <div class="filter-list" role="group" aria-label={t("filterAria")}>
             {
               visibleCategories.map((category) => (
                 <button
+                  type="button"
                   class="filter-button"
                   data-filter={category}
                   aria-pressed="false"
                 >
-                  {localizedCategory(locale, category)}
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d={categoryIcons[category]} /></svg>
+                  <span>{localizedCategory(locale, category)}</span>
                 </button>
               ))
             }
-          </div><button
-            type="button"
-            class="filter-arrow"
-            data-filter-scroll="1"
-            aria-label={t("right")}>→</button
-          >
+          </div>
         </div>
       </div>
     </div>
@@ -79,7 +78,7 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
     <div class="catalog-grid" id="product-grid">
       {
         catalogProducts.map((product, index) =>
-          index < CATALOG_PAGE_SIZE ? (
+          product.categories.includes(CATALOG_CATEGORIES.SNOOPY_COLLECTION) ? (
             <CatalogProductCard locale={locale} product={product} index={index} />
           ) : (
             <template data-deferred-card={index}>
@@ -88,6 +87,11 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
           ),
         )
       }
+    </div>
+    <div class="catalog-pagination" id="catalog-view-all-action" hidden>
+      <button type="button" class="text-link catalog-view-all" id="catalog-view-all">
+        {t("catalogViewAll")} <span aria-hidden="true">→</span>
+      </button>
     </div>
     <div class="catalog-pagination" id="catalog-pagination">
       <p
@@ -109,21 +113,57 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
   </div>
 </section>
 
+<style>
+  .catalog-view-all {
+    align-self: center;
+    max-width: 100%;
+    min-height: 44px;
+    padding: 10px 14px;
+    border: 0;
+    background: transparent;
+    color: var(--evoka);
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+  }
+
+  .catalog-view-all:focus-visible {
+    outline: 2px solid var(--evoka);
+    outline-offset: 4px;
+  }
+
+  /* The catalog owns spacing between cards at every breakpoint. */
+  :global(#product-grid.catalog-grid):has(> .catalog-card:not([hidden])) {
+    --catalog-row-spacing: 24px;
+    row-gap: var(--catalog-row-spacing);
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 620px) {
+    :global(#product-grid.catalog-grid):has(> .catalog-card:not([hidden])) {
+      --catalog-row-spacing: 20px;
+    }
+  }
+
+</style>
+
 <script>
+  import { CATALOG_CATEGORIES } from "../data/catalog";
+
   const search = document.querySelector<HTMLInputElement>("#product-search")!;
   const buttons = [
     ...document.querySelectorAll<HTMLButtonElement>("[data-filter]"),
   ];
   const filterList = document.querySelector<HTMLElement>(".filter-list")!;
-  const filterArrows = [
-    ...document.querySelectorAll<HTMLButtonElement>("[data-filter-scroll]"),
-  ];
   let cards = [
     ...document.querySelectorAll<HTMLElement>(".catalog-card"),
   ];
   const empty = document.querySelector<HTMLElement>("#empty-state")!;
   const pagination = document.querySelector<HTMLElement>("#catalog-pagination")!;
-  const productGrid = document.querySelector<HTMLElement>("#product-grid")!;
+  const viewAllAction = document.querySelector<HTMLElement>("#catalog-view-all-action")!;
+  const viewAll = document.querySelector<HTMLButtonElement>("#catalog-view-all")!;
   const loadMore = document.querySelector<HTMLButtonElement>(
     "#catalog-load-more",
   )!;
@@ -137,33 +177,18 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
   const deferredCards = () => [
     ...document.querySelectorAll<HTMLTemplateElement>("[data-deferred-card]"),
   ];
-  const materializeDeferredCards = (limit = Number.POSITIVE_INFINITY) => {
+  const materializeDeferredCards = (matches: (card: HTMLElement) => boolean) => {
     deferredCards()
-      .filter((template) => Number(template.dataset.deferredCard) < limit)
+      .filter((template) => {
+        const card = template.content.querySelector<HTMLElement>(".catalog-card");
+        return card !== null && matches(card);
+      })
       .forEach((template) => {
-        productGrid.append(template.content.cloneNode(true));
-        template.remove();
+        // Replace in place to preserve catalog order across selective loads.
+        template.replaceWith(template.content.cloneNode(true));
       });
     cards = [...document.querySelectorAll<HTMLElement>(".catalog-card")];
   };
-
-  const updateFilterArrows = () => {
-    const maxScroll = filterList.scrollWidth - filterList.clientWidth;
-    filterArrows[0].disabled = filterList.scrollLeft <= 1;
-    filterArrows[1].disabled = filterList.scrollLeft >= maxScroll - 1;
-  };
-  filterArrows.forEach((arrow) =>
-    arrow.addEventListener("click", () => {
-      filterList.scrollBy({
-        left: Number(arrow.dataset.filterScroll) * 190,
-        behavior: "smooth",
-      });
-    }),
-  );
-  filterList.addEventListener("scroll", updateFilterArrows, { passive: true });
-  window.addEventListener("resize", updateFilterArrows);
-  filterList.scrollLeft = 0;
-  window.setTimeout(updateFilterArrows, 0);
 
   const highlightProduct = (id: string | null, updateHash = true) => {
     if (!id) return;
@@ -179,7 +204,8 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
     window.setTimeout(() => product.classList.remove("is-highlighted"), 1200);
   };
 
-  let activeFilter = "all";
+  // The initial product filter does not imply an explicit chip selection.
+  let activeFilter: string = CATALOG_CATEGORIES.SNOOPY_COLLECTION;
   let visibleLimit = catalogPageSize;
   const clearActiveFilter = () => {
     activeFilter = "all";
@@ -190,19 +216,27 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
   };
   const update = () => {
     const query = search.value.toLowerCase().trim();
+    viewAllAction.hidden = !(
+      activeFilter === CATALOG_CATEGORIES.SNOOPY_COLLECTION &&
+      query.length === 0 &&
+      !buttons.some((button) => button.classList.contains("is-active"))
+    );
     const showsAllMatches = activeFilter !== "all" || query.length > 0;
     const displayLimit = showsAllMatches
       ? Number.POSITIVE_INFINITY
       : visibleLimit;
+    const matchesCurrentView = (card: HTMLElement) =>
+      (card.dataset.name?.includes(query) ?? false) &&
+      (activeFilter === "all" ||
+        (card.dataset.categories?.split("|").includes(activeFilter) ?? false));
+    materializeDeferredCards((card) =>
+      matchesCurrentView(card) && Number(card.dataset.catalogIndex ?? 0) < displayLimit,
+    );
     let matches = 0;
     const totalProducts = Number(progress.dataset.total ?? cards.length);
     let hiddenMatches = !showsAllMatches && totalProducts > displayLimit;
     cards.forEach((card) => {
-      const matchesQuery = card.dataset.name?.includes(query) ?? false;
-      const matchesFilter =
-        activeFilter === "all" ||
-        (card.dataset.categories?.split("|").includes(activeFilter) ?? false);
-      const matchesCard = matchesQuery && matchesFilter;
+      const matchesCard = matchesCurrentView(card);
       const index = Number(card.dataset.catalogIndex ?? 0);
       if (matchesCard) {
         matches++;
@@ -235,7 +269,6 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
 
   buttons.forEach((button) =>
     button.addEventListener("click", () => {
-      materializeDeferredCards();
       const wasActive = button.classList.contains("is-active");
       activeFilter = wasActive ? "all" : (button.dataset.filter ?? "all");
       visibleLimit = catalogPageSize;
@@ -275,14 +308,18 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
           ?.scrollIntoView({ behavior: "smooth" });
       }),
   );
+  viewAll.addEventListener("click", () => {
+    clearActiveFilter();
+    visibleLimit = catalogPageSize;
+    update();
+    loadMore.focus({ preventScroll: true });
+  });
   loadMore.addEventListener("click", () => {
-    materializeDeferredCards(visibleLimit + catalogPageSize);
     visibleLimit += catalogPageSize;
     update();
   });
   search.addEventListener("input", () => {
     clearActiveFilter();
-    materializeDeferredCards();
     visibleLimit = catalogPageSize;
     update();
   });

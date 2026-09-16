@@ -20,37 +20,52 @@ const flagByLocale = {
       class="brand-logo"
       src={assetUrl("images/brand/logo-transparent-clean.png")}
       alt="Evoka"
-    /></a
+    /><span class="brand-tagline">{t("brandTagline")}</span></a
   >
-  <nav aria-label="Navegación principal">
-    <a href="#seleccion">{t("navSelection")}</a>
+  <button
+    type="button"
+    class="menu-toggle"
+    aria-expanded="false"
+    aria-controls="primary-navigation"
+    aria-label="Abrir navegación"
+  >
+    <span></span><span></span><span></span>
+  </button>
+  <nav id="primary-navigation" aria-label="Navegación principal">
     <a href="#catalogo">{t("navCatalog")}</a>
     <a href="#categorias">{t("navCategories")}</a>
+    <a href="#seleccion">{t("navSelection")}</a>
+    <a href="#contacto">{t("contact")}</a>
   </nav>
-  <a class="header-contact" href="#contacto"
-    >{t("contact")} <span>↗</span></a
-  ><div class="language-select">
-    <button
-      type="button"
-      class="language-current"
-      id="language-current"
-      aria-expanded="false"
-      aria-controls="language-menu"
-      ><span class="language-flag" set:html={flagByLocale[locale]} /><span
-        >{locale.toUpperCase()}</span
-      ><span class="language-chevron">⌄</span></button
-    ><div class="language-menu" id="language-menu" hidden>
-      {
-        (["es", "en", "fr"] as Locale[]).map((language) => (
-          <a
-            href={language === "es" ? assetUrl("") : assetUrl(`${language}/`)}
-            class:list={{ "is-active": locale === language }}
-          >
-            <span class="language-flag" set:html={flagByLocale[language]} />
-            <span>{language.toUpperCase()}</span>
-          </a>
-        ))
-      }
+  <div class="header-utilities">
+    <a class="header-search" href="#catalogo" aria-label={t("searchPlaceholder")}
+      ><svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="10.8" cy="10.8" r="5.8"></circle>
+        <path d="m15.2 15.2 4.3 4.3"></path>
+      </svg></a
+    ><div class="language-select">
+      <button
+        type="button"
+        class="language-current"
+        id="language-current"
+        aria-expanded="false"
+        aria-controls="language-menu"
+        ><span class="language-flag" set:html={flagByLocale[locale]} /><span
+          >{locale.toUpperCase()}</span
+        ><span class="language-chevron">⌄</span></button
+      ><div class="language-menu" id="language-menu" hidden>
+        {
+          (["es", "en", "fr"] as Locale[]).map((language) => (
+            <a
+              href={language === "es" ? assetUrl("") : assetUrl(`${language}/`)}
+              class:list={{ "is-active": locale === language }}
+            >
+              <span class="language-flag" set:html={flagByLocale[language]} />
+              <span>{language.toUpperCase()}</span>
+            </a>
+          ))
+        }
+      </div>
     </div>
   </div>
 </header>
@@ -60,6 +75,13 @@ const flagByLocale = {
     "#language-current",
   )!;
   const languageMenu = document.querySelector<HTMLElement>("#language-menu")!;
+  const headerSearch = document.querySelector<HTMLAnchorElement>(
+    ".header-search",
+  );
+  const menuToggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+  const primaryNavigation = document.querySelector<HTMLElement>(
+    "#primary-navigation",
+  );
   languageCurrent.addEventListener("click", () => {
     const isOpen = languageCurrent.getAttribute("aria-expanded") === "true";
     languageCurrent.setAttribute("aria-expanded", String(!isOpen));
@@ -73,5 +95,29 @@ const flagByLocale = {
       languageCurrent.setAttribute("aria-expanded", "false");
       languageMenu.hidden = true;
     }
+  });
+  headerSearch?.addEventListener("click", () => {
+    window.setTimeout(() => {
+      document.querySelector<HTMLInputElement>("#product-search")?.focus();
+    }, 0);
+  });
+  menuToggle?.addEventListener("click", () => {
+    const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+    menuToggle.setAttribute("aria-expanded", String(!isOpen));
+    primaryNavigation?.classList.toggle("is-open", !isOpen);
+  });
+  primaryNavigation?.addEventListener("click", (event) => {
+    if (!(event.target instanceof HTMLAnchorElement)) return;
+    menuToggle?.setAttribute("aria-expanded", "false");
+    primaryNavigation.classList.remove("is-open");
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    const shouldRestoreFocus =
+      menuToggle?.getAttribute("aria-expanded") === "true" &&
+      primaryNavigation?.contains(document.activeElement);
+    menuToggle?.setAttribute("aria-expanded", "false");
+    primaryNavigation?.classList.remove("is-open");
+    if (shouldRestoreFocus) menuToggle?.focus();
   });
 </script>

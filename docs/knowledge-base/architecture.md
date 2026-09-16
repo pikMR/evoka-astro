@@ -10,11 +10,12 @@ El repositorio contiene un catálogo estático de Evoka construido con Astro, Ty
 - `src/pages/[lang].astro` genera `/es/`, `/en/` y `/fr/` mediante `getStaticPaths`.
 - `src/pages/productos/[slug].astro` y `src/pages/[lang]/productos/[slug].astro` generan páginas estáticas de detalle para todos los productos: `/productos/<slug>-<id>/`, `/en/productos/<slug>-<id>/` y `/fr/productos/<slug>-<id>/`.
 - `@astrojs/sitemap` genera `sitemap-index.xml` durante el build; `public/robots.txt` lo declara y excluye `/es/` del sitemap porque duplica la portada española `/`.
-- `astro.config.mjs` declara español como locale por defecto, sin prefijo obligatorio, y usa `site: https://pikmr.github.io` con `base: /evoka-astro` en producción. En desarrollo cambia automáticamente a `http://localhost:4321` y `/`.
-- El selector de idioma construye sus enlaces con `assetUrl()`, por lo que conserva el prefijo de publicación (`/evoka-astro/`) en GitHub Pages y funciona también bajo `/` en desarrollo.
+- `astro.config.mjs` declara español como locale por defecto, sin prefijo obligatorio. Un build sin opciones adicionales usa `site: https://evoka.store` y `base: /`. En desarrollo, `site` cambia a `http://localhost:4321` y `base` sigue siendo `/`.
+- En GitHub Actions, `.github/workflows/astro.yml` pasa `--site` y `--base` al build con las salidas `origin` y `base_path` del paso `pages` (`actions/configure-pages@v5`). Estas opciones sustituyen los valores del archivo de configuración para ese build; la URL efectiva depende de la configuración de GitHub Pages.
+- El selector de idioma construye sus enlaces con `assetUrl()`, que usa `import.meta.env.BASE_URL`: funciona bajo `/` y conserva el prefijo de publicación cuando el build recibe otro `base`.
 - `src/components/CatalogPage.astro` compone la página y recibe `locale` (`es`, `en` o `fr`). Las secciones visuales, los modales y sus scripts viven en componentes independientes dentro de `src/components/`.
 
-Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical URLs ni sitemap configurados en el repositorio.
+Existe deliberadamente tanto `/` como `/es/`. No hay redirección entre ambas rutas; las páginas incluyen canonical y el sitemap excluye `/es/`.
 
 ## Flujo de datos
 
@@ -66,3 +67,5 @@ Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical UR
 `local-catalog-editor/` es una aplicación Node independiente de Astro y versionada con el repositorio. Se inicia bajo demanda mediante `npm run catalog:editor`, escucha exclusivamente en `127.0.0.1` y no genera rutas ni archivos dentro de `dist/`.
 
 El navegador aporta el formulario, un editor WYSIWYG sin dependencias externas y la conversión de imágenes a JPG. El servidor vuelve a validar y sanear los datos, genera identidades, presenta una vista previa de un solo uso y aplica una alta focalizada a `src/data/catalog.ts` y `public/images/products/`. No permite editar productos existentes ni consulta Adminer.
+
+Los nombres autorizados exclusivos de tarjeta se resuelven por ID y locale mediante `catalogProductNames` en `src/i18n/ui.ts`. Se aplican también al nombre de su vista ampliada. La búsqueda incluye tanto el nombre de tarjeta como el nombre localizado original, sin cambiar los nombres de origen que determinan el orden y las URLs de las fichas. Las descripciones cortas proceden de `catalog-short-descriptions.ts`; si falta una entrada para el producto o idioma, se usa un extracto de la descripción localizada. Así, las altas del editor local conservan una descripción visible sin requerir una entrada editorial adicional. En multicolumna, las tarjetas igualan su altura dentro de cada fila y sitúan los enlaces al pie mediante flex; hasta 440 px conservan el flujo natural.

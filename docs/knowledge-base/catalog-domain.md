@@ -32,6 +32,12 @@ El orden de los filtros es contractual porque procede del array exportado:
 8. Packaging y empresarial
 9. Termos y tazas
 10. Papelería creativa
+11. Bonus personalizables
+12. Set personalizables
+
+Bonus personalizables (FR: Bonus personnalisables; EN: Customisable Bonus) agrupa los Set Bonus de bolsa personalizable: IDs 15, 20, 31, 34 y 90. Se separan de Box personalizables conservando sus demás asociaciones. La categoría se añade al final para preservar el orden y los estilos por índice de las categorías existentes.
+
+Set personalizables (FR: Sets personnalisables; EN: Customisable sets) es independiente de Box y Bonus. Dog Kit, ID 59, pasa de Box a Set; no se reasignan otros productos sin confirmación. Se añade al final del array público.
 
 `Inicio` aparece en 75 productos, pero no en los filtros públicos. Añadir una categoría a un producto no la hace visible: también hay que decidir si entra en el array `categories` y aportar traducciones.
 
