@@ -12,30 +12,81 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
 
 <footer id="contacto">
   <div class="wrap footer-top">
-    <div>
-      <a class="brand brand-light" href="#inicio"
-        ><img
-          class="brand-logo-footer footer-brand-logo"
-          src={assetUrl("images/brand/logo-transparent-clean.png")}
-          alt={BRAND_NAME}
-        /></a
-      ><p>
-        {
-          t("footerTagline")
-            .split("\\n")
-            .map((line) => (
-              <>
-                {line}
-                <br />
-              </>
-            ))
-        }
+    <div class="footer-cell">
+    <div class="footer-brand">
+      <a class="footer-brand-link" href="#inicio">
+        <img class="footer-brand-logo" src={assetUrl("images/brand/logo-transparent-clean.png")} alt={BRAND_NAME} width="1536" height="1024" />
+      </a>
+      <p class="footer-tagline">{t("footerTagline")}</p>
+    </div>
+    </div>
+    <div class="footer-cell">
+    <section class="footer-column">
+      <h2 class="eyebrow">{t("footerContact")}</h2>
+      <div class="footer-contact-item">
+        <svg class="footer-line-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 6 9 7 9-7" /></svg>
+        <div class="footer-email-copy">
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+          <p>{t("footerEmailHelp")}</p>
+        </div>
+      </div>
+      <p class="footer-contact-item">
+        <svg class="footer-line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13v-1a8 8 0 0 1 16 0v5a4 4 0 0 1-4 4h-4" /><rect x="3" y="11" width="4" height="7" rx="2" /><rect x="17" y="11" width="4" height="7" rx="2" /></svg>
+        <span>{t("footerReply")}</span>
       </p>
-    </div><div>
-      <p class="eyebrow">{t("footerContact")}</p><a
-        href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a
-      ><p>{t("footerReply")}</p><div class="social-links">
-        <a
+    </section>
+    </div>
+    <div class="footer-cell">
+    <section class="footer-column">
+      <h2 class="eyebrow">{t("footerInformation")}</h2>
+      <button
+        type="button"
+        class="footer-info-trigger"
+        id="about-modal-trigger"
+        aria-haspopup="dialog"
+        aria-controls="about-modal"
+        >{t("footerAboutMore")}</button>
+      <button
+        type="button"
+        class="footer-info-trigger"
+        id="shipping-modal-trigger"
+        aria-haspopup="dialog"
+        aria-controls="shipping-modal"
+        >{t("footerAboutSummary")}</button
+      >
+      <button type="button" class="footer-info-trigger" id="secure-payment-trigger" aria-haspopup="dialog" aria-controls="secure-payment-modal">{t("securePayment")}</button>
+    </section>
+    </div>
+  </div><div class="wrap footer-services">
+    <div class="footer-cell">
+    <section class="footer-service">
+    <div class="footer-icon-circle" aria-hidden="true">
+      <svg class="footer-line-icon" viewBox="0 0 24 24">
+        <path d="M12 3 19 6v5c0 4.6-2.8 8.1-7 10-4.2-1.9-7-5.4-7-10V6l7-3Z"></path>
+        <path d="m9 12 2 2 4-5"></path>
+      </svg>
+    </div><div class="secure-payment-strip-copy">
+      <h2 class="eyebrow">{t("securePayment")}</h2>
+      <p>{t("securePaymentIntro")}</p>
+    </div>
+    </section>
+    </div>
+    <div class="footer-cell">
+    <section class="footer-service">
+      <div class="footer-icon-circle" aria-hidden="true">
+      <svg class="footer-line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5v8l-9 5-9-5V8l9-5Zm-9 5 9 5 9-5M12 13v8M7.5 5.5l9 5v4" /></svg>
+      </div>
+      <div class="secure-payment-strip-copy">
+        <h2 class="eyebrow">{t("footerAboutSummary")}</h2>
+        <p>{t("footerShippingDescription")}</p>
+      </div>
+    </section>
+    </div>
+    <div class="footer-cell">
+    <section class="footer-column footer-social">
+      <h2 class="eyebrow">{t("footerFollow")}</h2>
+      <div class="social-links">
+        <a aria-label="Instagram"
           href="https://www.instagram.com/evoka_deco/"
           target="_blank"
           rel="noreferrer"
@@ -59,18 +110,16 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
               cy="6.5"
               r="1.2"
               fill="currentColor"></circle></svg
-          ><span>Instagram ↗</span></a
-        ><a
+          ></a
+        ><a aria-label="Facebook"
           href="https://www.facebook.com/profile.php?id=61576576741857"
           target="_blank"
           rel="noreferrer"
-          ><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"
-            ><path
-              fill="currentColor"
-              d="M14 8h3V4h-3c-3.3 0-5 2-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.7.3-1 1-1Z"
-            ></path></svg
-          ><span>Facebook ↗</span></a
-        ><a
+          ><svg class="social-icon" viewBox="0 0 320 512" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+            <!-- Font Awesome Free 6, facebook-f. Icons: CC BY 4.0. https://fontawesome.com/license/free -->
+            <path fill="currentColor" d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"></path>
+          </svg></a
+        ><a aria-label="TikTok"
           href="https://www.tiktok.com/@evoka_deco0"
           target="_blank"
           rel="noreferrer"
@@ -79,58 +128,19 @@ const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
               fill="currentColor"
               d="M15 4c.3 1.9 1.4 3.2 3.5 3.5v3.2c-1.4-.1-2.6-.5-3.5-1.2v6.1a5.4 5.4 0 1 1-4.7-5.3v3.3a2.2 2.2 0 1 0 1.5 2V4H15Z"
             ></path></svg
-          ><span>TikTok ↗</span></a
-        ><a
+          ></a
+        ><a aria-label="Vinted"
           href={VINTED_URLS[locale]}
           target="_blank"
           rel="noreferrer"
-          ><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"
-            ><path
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="m4 5 8 14 8-14M7.2 5h9.6"></path></svg
-          ><span>Vinted ↗</span></a
+          ><svg class="social-icon" viewBox="-2 -2 28 28" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+            <!-- Vinted: Simple Icons, CC0. https://github.com/simple-icons/simple-icons/blob/develop/icons/vinted.svg -->
+            <path fill="currentColor" d="M19.316 0c-.258 0-.571.217-1.415.953-.3.108-.627.027-1.008.613-2.15 3.09-3.825 14.648-5.255 17.984-.286-1.444-.885-10.837-1.116-13.41-.028-.477.027-1.076.027-1.43 0-2.368-.516-3.567-2.886-3.567-1.198 0-2.382.436-3.008 1.226-.299.408-.409.708-.409 1.443 0 4.915 1.171 12.973 2.478 18.228C7.132 23.688 8.603 24 9.99 24c.654 0 1.307-.081 2.233-.544 3.212-1.567 4.07-5.84 4.9-9.993.15-.749.899-4.37 1.253-6.275.476-2.6 1.02-5.54 1.347-6.617C19.833.245 19.63 0 19.317 0z"></path>
+          </svg></a
         >
       </div>
-    </div><div class="footer-about-column">
-      <p class="eyebrow">{t("footerAboutEyebrow")}</p>
-      <button
-        type="button"
-        class="footer-info-trigger"
-        id="about-modal-trigger"
-        aria-haspopup="dialog"
-        aria-controls="about-modal"
-        >{t("footerAboutMore")} <span aria-hidden="true">↗</span></button>
-      <p class="eyebrow footer-shipping-heading">{t("shippingPolicies")}</p>
-      <button
-        type="button"
-        class="footer-info-trigger"
-        id="shipping-modal-trigger"
-        aria-haspopup="dialog"
-        aria-controls="shipping-modal"
-        >{t("footerAboutSummary")} <span aria-hidden="true">↗</span></button
-      >
+    </section>
     </div>
-  </div><div class="wrap secure-payment-strip">
-    <div class="secure-payment-mark" aria-hidden="true">
-      <svg viewBox="0 0 24 24">
-        <path d="M12 3 19 6v5c0 4.6-2.8 8.1-7 10-4.2-1.9-7-5.4-7-10V6l7-3Z"></path>
-        <path d="m9 12 2 2 4-5"></path>
-      </svg>
-    </div><div class="secure-payment-strip-copy">
-      <p class="eyebrow">{t("securePaymentEyebrow")}</p>
-      <h2>{t("securePayment")}</h2>
-      <p>{t("securePaymentIntro")}</p>
-    </div><button
-      type="button"
-      class="secure-payment-trigger"
-      id="secure-payment-trigger"
-      aria-haspopup="dialog"
-      aria-controls="secure-payment-modal"
-      >{t("securePaymentMore")} <span aria-hidden="true">↗</span></button>
   </div><div class="wrap footer-bottom">
     <span>© {SITE_YEAR} {BRAND_NAME}</span><span>{t("footerMade")}</span>
   </div>

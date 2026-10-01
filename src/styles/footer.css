@@ -1,115 +1,215 @@
-footer {
-  background: #f3dfc0 !important;
+footer#contacto {
+  --footer-gap: 16px;
+  --footer-cell-padding: clamp(12px, 2vw, 24px);
+  --footer-circle-size: 36px;
+  --footer-circle-bg: #e2c8af;
+  background: #f3dfc0;
   color: #4a271b;
-  padding: 80px 0 22px;
+  padding: 18px 0 8px;
 }
 
-.brand-light {
-  color: #4a271b;
+#contacto > .wrap {
+  max-width: 1080px;
 }
 
-.footer-top {
+#contacto .footer-top,
+#contacto .footer-services {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 40px;
-  min-height: 190px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  row-gap: 16px;
+  column-gap: 0;
 }
 
-.footer-top p:not(.eyebrow) {
-  font-style: italic;
+#contacto .footer-top {
+  padding-bottom: 12px;
+}
+
+/* Each cell is exactly one third; dividers sit on shared grid boundaries. */
+#contacto .footer-cell {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 0;
+  padding-inline: var(--footer-cell-padding);
+}
+
+#contacto .footer-cell > * {
+  max-width: 100%;
+}
+
+#contacto .footer-cell:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  inset-block: 8px;
+  inset-inline-start: 0;
+  border-inline-start: 1px solid #d2ad8d;
+  pointer-events: none;
+}
+
+#contacto .footer-brand,
+#contacto .footer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  gap: 7px;
+}
+
+#contacto .footer-brand {
+  gap: 6px;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: flex-start;
+  text-align: center;
+}
+
+#contacto .footer-brand-link {
+  display: block;
+  max-width: 100%;
+}
+
+#contacto .footer-brand-logo {
+  display: block;
+  width: 115px;
+  height: auto;
+  filter: brightness(0);
+}
+
+#contacto p {
+  margin: 0;
   color: #6b4635;
-  font-size: 13px;
-  line-height: 1.7;
-  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.4;
 }
 
-.footer-top a:not(.brand) {
+#contacto .footer-tagline {
+  font-size: 13px;
   font-style: italic;
-  color: #4a271b;
-  font-size: 13px;
 }
 
-.footer-info-trigger {
-  border: 0;
-  border-bottom: 1px solid currentColor;
-  padding: 0 0 4px;
-  background: transparent;
+#contacto .eyebrow {
+  margin: 0 0 4px;
   color: inherit;
-  font: 600 11px 'DM Sans', sans-serif;
+  font-size: 9.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+#contacto .footer-column a,
+#contacto .footer-info-trigger {
+  max-width: 100%;
+  color: inherit;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: #c49672;
+  text-underline-offset: 4px;
+  transition: color 150ms ease, text-decoration-color 150ms ease;
+}
+
+#contacto .footer-info-trigger {
+  padding: 0;
+  border: 0;
+  background: transparent;
   cursor: pointer;
 }
 
-.footer-info-trigger span {
-  margin-left: 7px;
-}
-
-.footer-shipping-heading {
-  margin-top: 28px;
-  margin-bottom: 10px;
-}
-
-.footer-brand-logo {
-  display: block;
-  width: 115px;
-  height: 102px;
-  object-fit: contain;
-  background: transparent !important;
-  padding: 0;
-  mix-blend-mode: normal;
-}
-
-.social-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 18px;
-  margin-top: 22px;
-}
-
-.social-links a {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  color: #4a271b;
-  font-size: 12px;
-  text-decoration: none;
-}
-
-.social-links a:hover {
+#contacto a:hover,
+#contacto button:hover {
   color: var(--evoka);
+  text-decoration-color: currentColor;
 }
 
-.social-links a span {
-  margin-left: 0;
-  color: #805f4d;
+#contacto a:focus-visible,
+#contacto button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 5px;
+  border-radius: 2px;
 }
 
-.social-icon {
-  display: block;
-  flex: 0 0 17px;
-  width: 17px;
-  height: 17px;
-}
-
-.secure-payment-strip {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+#contacto .footer-social {
   align-items: center;
-  gap: 18px;
-  border-top: 1px solid #d2ad8d;
-  padding: 24px 0;
+  justify-self: stretch;
+  max-width: 100%;
+  text-align: center;
 }
 
-.secure-payment-mark {
+#contacto .social-links {
+  display: grid;
+  grid-template-columns: repeat(4, var(--footer-circle-size));
+  gap: 8px;
+}
+
+#contacto .footer-icon-circle,
+#contacto .social-links a {
   display: grid;
   place-items: center;
-  width: 46px;
-  height: 46px;
-  border: 1px solid #c49672;
+  width: var(--footer-circle-size);
+  height: var(--footer-circle-size);
+  flex: 0 0 var(--footer-circle-size);
+  border-radius: 50%;
+  background: var(--footer-circle-bg);
+  color: #000;
+}
+
+#contacto .social-links a {
+  text-decoration: none;
+  transition: background-color 150ms ease;
+}
+
+#contacto .social-links a:hover {
+  background: #d2ad8d;
+}
+
+#contacto .social-links a:focus-visible {
   border-radius: 50%;
 }
 
-.secure-payment-mark svg {
-  width: 23px;
+#contacto .social-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+#contacto .footer-services {
+  border-top: 1px solid #d2ad8d;
+  padding: 12px 0;
+}
+
+#contacto .footer-service {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: fit-content;
+  max-width: 280px;
+  min-width: 0;
+}
+
+#contacto .footer-contact-item {
+  display: grid;
+  grid-template-columns: 17px minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+}
+
+#contacto .footer-contact-item span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+#contacto .footer-line-icon {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.7;
@@ -117,83 +217,93 @@ footer {
   stroke-linejoin: round;
 }
 
-.secure-payment-strip-copy .eyebrow {
+#contacto .footer-icon-circle .footer-line-icon {
+  width: 18px;
+  height: 18px;
+}
+
+#contacto .footer-email-copy {
+  min-width: 0;
+}
+
+#contacto .footer-email-copy a {
+  overflow-wrap: anywhere;
+}
+
+#contacto .footer-email-copy p {
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+#contacto .secure-payment-strip-copy {
+  min-width: 0;
+}
+
+#contacto .footer-services .eyebrow {
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  line-height: 1.5;
   margin-bottom: 4px;
 }
 
-.secure-payment-strip-copy h2 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 500;
+#contacto .footer-services .footer-social {
+  gap: 6px;
 }
 
-.secure-payment-strip-copy > p:last-child {
-  margin: 4px 0 0;
-  color: #6b4635;
-  font-size: 12px;
+#contacto .secure-payment-strip-copy > p:last-child {
+  font-size: 10.5px;
   line-height: 1.5;
 }
 
-.secure-payment-trigger {
-  border: 0;
-  border-bottom: 1px solid currentColor;
-  padding: 0 0 4px;
-  background: transparent;
-  color: inherit;
-  font: 600 11px 'DM Sans', sans-serif;
-  cursor: pointer;
-}
-
-.secure-payment-trigger span {
-  margin-left: 7px;
-}
-
-.secure-payment-trigger:hover {
-  color: var(--evoka);
-}
-
-.footer-bottom {
+#contacto .footer-bottom {
   display: flex;
+  align-items: baseline;
   justify-content: space-between;
+  gap: var(--footer-gap);
   border-top: 1px solid #d2ad8d;
-  padding-top: 18px;
-  color: #805f4d;
-  font-size: 10px;
+  padding-top: 6px;
+  color: #6b4635;
+  font-size: 11px;
+  line-height: 1.4;
 }
 
-.footer-bottom span {
-  color: #805f4d;
-}
-
-@media (max-width: 850px) {
-  .footer-top {
-    grid-template-columns: 1fr 1fr;
+@media (max-width: 950px) {
+  #contacto .footer-top > :last-child::before,
+  #contacto .footer-services > :last-child::before {
+    content: none;
   }
+
+  #contacto .footer-top,
+  #contacto .footer-services {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #contacto .footer-top > :last-child,
+  #contacto .footer-services > :last-child {
+    grid-column: 1 / -1;
+  }
+
 }
 
 @media (max-width: 620px) {
-  .footer-top {
-    grid-template-columns: 1fr;
-    gap: 25px;
+  #contacto .footer-top > :not(:first-child)::before,
+  #contacto .footer-services > :not(:first-child)::before {
+    content: none;
   }
 
-  .brand-logo-footer {
-    width: 82px;
-    height: 54px;
+  footer#contacto {
+    --footer-cell-padding: clamp(12px, 2vw, 24px);
+    padding-top: 18px;
   }
 
-  .secure-payment-strip {
-    grid-template-columns: auto 1fr;
-    align-items: start;
+  #contacto .footer-top,
+  #contacto .footer-services {
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .secure-payment-trigger {
-    grid-column: 2;
-    justify-self: start;
-  }
 
-  .footer-bottom {
+  #contacto .footer-bottom {
     flex-direction: column;
-    gap: 15px;
+    gap: 4px;
   }
 }

@@ -1,14 +1,11 @@
 ---
 import {
-  excerpt,
   featuredProducts,
   formatPrice,
   localizedCategory,
   localizedProduct,
   productDetailUrl,
-  productImageUrl,
   translate,
-  whatsappForProduct,
   type Locale,
 } from "../lib/catalog-view";
 import ResponsiveProductImage from "./ResponsiveProductImage.astro";
@@ -19,58 +16,59 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = (key: Parameters<typeof translate>[1]) => translate(locale, key);
+const descriptionText = (html: string) =>
+  html
+    .replace(/<\/?(?:p|div|li|ul|ol|br|h[1-6])\b[^>]*>/gi, " ")
+    .replace(/<[^>]+>/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+const descriptionKeys: Partial<Record<string, Parameters<typeof translate>[1]>> = {
+  "19": "selectionDescription19",
+  "20": "selectionDescription20",
+  "22": "selectionDescription22",
+};
+const imageSizes = "(max-width: 432px) calc(100vw - 32px), (max-width: 620px) 400px, (max-width: 1099px) calc((100vw - 88px) / 2), (max-width: 1244px) calc((100vw - 112px) / 3), 377.34px";
 ---
 
-<section class="section wrap" id="seleccion">
+<section class="section wrap featured-selection" id="seleccion">
   <div class="section-heading">
     <div>
-      <p class="eyebrow">{t("selectionEyebrow")}</p><h2>
-        {t("selectionTitle")}
-        <em>{t("selectionAccent")}</em>
+      <p class="eyebrow">{t("selectionEyebrow")}</p>
+      <h2>
+        {locale === "en" ? (
+          <>{t("selectionAccent")}{" "}{t("selectionTitle")}</>
+        ) : (
+          <>{t("selectionTitle")}{" "}{t("selectionAccent")}</>
+        )}
       </h2>
-    </div><span class="section-count"
-      >{featuredProducts.length.toString().padStart(2, "0")} / {
-        t("favorites")
-      }</span
-    >
+    </div>
   </div>
   <div class="featured-grid">
-    {
-      featuredProducts.map((product, index) => (
-        <article class={`featured-card featured-${index}`}>
-          <button
-            type="button"
-            class="featured-image image-modal-trigger"
-            aria-label={`${t("viewProduct")}: ${localizedProduct(locale, product).name}`}
-            data-details-name={localizedProduct(locale, product).name}
-            data-details-price={formatPrice(locale, product.price)}
-            data-details-image={productImageUrl(product.imageIds[0], "jpg")}
-            data-details-image-avif={productImageUrl(product.imageIds[0], "avif", 1200)}
-            data-details-image-webp={productImageUrl(product.imageIds[0], "webp", 1200)}
-            data-details-description={localizedProduct(locale, product).description}
-            data-details-whatsapp={whatsappForProduct(locale, product)}
-          >
-            <ResponsiveProductImage
-              imageId={product.imageIds[0]}
-              alt={localizedProduct(locale, product).name}
-              loading={index > 1 ? "lazy" : "eager"}
-            />
-            <span class="image-index">0{index + 1}</span>
-          </button>
-          <div class="card-meta">
-            <div>
-              <p class="product-category">
-                {localizedCategory(locale, product.categories[0])}
-              </p>
-              <h3>{localizedProduct(locale, product).name}</h3>
+    {featuredProducts.map((product, index) => {
+      const localized = localizedProduct(locale, product);
+      const descriptionKey = descriptionKeys[product.id];
+      const titleId = `selection-product-${product.id}`;
+      return (
+        <article class="featured-card">
+          <a class="featured-card-link" href={productDetailUrl(locale, product)} aria-labelledby={titleId}>
+            <div class="featured-image" data-image-id={product.imageIds[0]}>
+              <ResponsiveProductImage
+                imageId={product.imageIds[0]}
+                alt={localized.name}
+                loading={index > 1 ? "lazy" : "eager"}
+                sizes={imageSizes}
+              />
             </div>
-            <strong>{formatPrice(locale, product.price)}</strong>
-          </div>
-          <p class="card-description">
-            {excerpt(localizedProduct(locale, product).description)}
-          </p>
+            <p class="product-category">{localizedCategory(locale, product.categories[0])}</p>
+            <div class="card-meta">
+              <h3 id={titleId}>{localized.name}</h3>
+              <strong>{formatPrice(locale, product.price)}</strong>
+            </div>
+            <p class="card-description">{descriptionKey ? t(descriptionKey) : descriptionText(localized.description)}</p>
+            <span class="featured-discover">{t("selectionDiscover")}</span>
+          </a>
         </article>
-      ))
-    }
+      );
+    })}
   </div>
 </section>

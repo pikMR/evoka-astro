@@ -10,11 +10,12 @@ El repositorio contiene un catálogo estático de Evoka construido con Astro, Ty
 - `src/pages/[lang].astro` genera `/es/`, `/en/` y `/fr/` mediante `getStaticPaths`.
 - `src/pages/productos/[slug].astro` y `src/pages/[lang]/productos/[slug].astro` generan páginas estáticas de detalle para todos los productos: `/productos/<slug>-<id>/`, `/en/productos/<slug>-<id>/` y `/fr/productos/<slug>-<id>/`.
 - `@astrojs/sitemap` genera `sitemap-index.xml` durante el build; `public/robots.txt` lo declara y excluye `/es/` del sitemap porque duplica la portada española `/`.
-- `astro.config.mjs` declara español como locale por defecto, sin prefijo obligatorio, y usa `site: https://pikmr.github.io` con `base: /evoka-astro` en producción. En desarrollo cambia automáticamente a `http://localhost:4321` y `/`.
-- El selector de idioma construye sus enlaces con `assetUrl()`, por lo que conserva el prefijo de publicación (`/evoka-astro/`) en GitHub Pages y funciona también bajo `/` en desarrollo.
+- `astro.config.mjs` declara español como locale por defecto, sin prefijo obligatorio. Un build sin opciones adicionales usa `site: https://evoka.store` y `base: /`. En desarrollo, `site` cambia a `http://localhost:4321` y `base` sigue siendo `/`.
+- En GitHub Actions, `.github/workflows/astro.yml` pasa `--site` y `--base` al build con las salidas `origin` y `base_path` del paso `pages` (`actions/configure-pages@v5`). Estas opciones sustituyen los valores del archivo de configuración para ese build; la URL efectiva depende de la configuración de GitHub Pages.
+- El selector de idioma construye sus enlaces con `assetUrl()`, que usa `import.meta.env.BASE_URL`: funciona bajo `/` y conserva el prefijo de publicación cuando el build recibe otro `base`.
 - `src/components/CatalogPage.astro` compone la página y recibe `locale` (`es`, `en` o `fr`). Las secciones visuales, los modales y sus scripts viven en componentes independientes dentro de `src/components/`.
 
-Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical URLs ni sitemap configurados en el repositorio.
+Existe deliberadamente tanto `/` como `/es/`. No hay redirección entre ambas rutas; las páginas incluyen canonical y el sitemap excluye `/es/`.
 
 ## Flujo de datos
 
@@ -26,9 +27,12 @@ Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical UR
 
 ## Comportamiento de la página
 
+- Orden de la Home: Hero → PromiseBand → FeaturedSelection (`#seleccion`) → CategoriesSection (`#categorias`) → CatalogSection (`#catalogo`) → footer (`#contacto`). Explora es una lista editorial sin numeración; el Catálogo presenta sus filtros con iconos en un grid responsive: 5 columnas por encima de 1100 px, 3 hasta 1100 px, 2 hasta 620 px y 1 hasta 479 px, sin desplazamiento horizontal. Los anchors y la selección explícita de categorías permanecen independientes del orden visual.
+
 - Los productos destacados son actualmente `products[3]`, `products[4]` y `products[6]`: IDs 19, 20 y 22. Su orden depende directamente del array.
 - El catálogo visible se ordena alfabéticamente por nombre español en `catalog-view.ts`; la fuente `products` conserva su orden de origen.
-- `CatalogSection.astro` activa inicialmente 20 productos y materializa los siguientes en bloques de 20 mediante el botón de carga. Las tarjetas restantes viven en plantillas HTML inertes, por lo que sus imágenes no pueden solicitarse antes de incorporarlas al DOM; búsqueda y filtros materializan el catálogo completo para poder buscar todos sus resultados.
+- `CatalogSection.astro` presenta inicialmente los 7 productos Snoopy sin marcar un chip. “Ver todos los productos” abre la vista general en bloques de 20. Las tarjetas no Snoopy comienzan en plantillas HTML inertes; el controlador materializa las necesarias para la vista, búsqueda o categoría seleccionada.
+- `selectCategory(category)` establece explícitamente el filtro, reinicia el límite y reutiliza `update()` para resultados, materialización, estado vacío y paginación. Sincroniza los chips presentes y centra el seleccionado cuando existe su contenedor. Las filas `[data-filter-link]` limpian la búsqueda, llaman directamente a esta operación y hacen scroll a `#catalogo`; no requieren chips ni simulan clics. Seleccionar otra vez la misma fila conserva la categoría. Los chips mantienen su toggle manual y conservan el texto de búsqueda. El buscador y “Ver todos” reutilizan la selección `all`. La presentación inicial se distingue mediante estado interno, no por la presencia de chips. No cambia la URL ni los identificadores compartidos ES/FR/EN.
 - `categories` de `catalog.ts` deberán tener siempre como última categoría a `CATALOG_CATEGORIES.INTERNAL` (para mostrarla en la vista inicial), y su categoría principal estará posicionada en la primera posición.
 - La búsqueda compara nombre localizado más categorías en minúsculas.
 - Los filtros utilizan las categorías canónicas en español, aunque su etiqueta visible pueda estar traducida.
@@ -66,3 +70,5 @@ Existe deliberadamente tanto `/` como `/es/`. No hay redirecciones, canonical UR
 `local-catalog-editor/` es una aplicación Node independiente de Astro y versionada con el repositorio. Se inicia bajo demanda mediante `npm run catalog:editor`, escucha exclusivamente en `127.0.0.1` y no genera rutas ni archivos dentro de `dist/`.
 
 El navegador aporta el formulario, un editor WYSIWYG sin dependencias externas y la conversión de imágenes a JPG. El servidor vuelve a validar y sanear los datos, genera identidades, presenta una vista previa de un solo uso y aplica una alta focalizada a `src/data/catalog.ts` y `public/images/products/`. No permite editar productos existentes ni consulta Adminer.
+
+Los nombres autorizados exclusivos de tarjeta se resuelven por ID y locale mediante `catalogProductNames` en `src/i18n/ui.ts`. Se aplican también al nombre de su vista ampliada. La búsqueda incluye tanto el nombre de tarjeta como el nombre localizado original, sin cambiar los nombres de origen que determinan el orden y las URLs de las fichas. Las descripciones cortas proceden de `catalog-short-descriptions.ts`; si falta una entrada para el producto o idioma, se usa un extracto de la descripción localizada. Así, las altas del editor local conservan una descripción visible sin requerir una entrada editorial adicional. En multicolumna, las tarjetas igualan su altura dentro de cada fila y sitúan los enlaces al pie mediante flex; hasta 440 px conservan el flujo natural.

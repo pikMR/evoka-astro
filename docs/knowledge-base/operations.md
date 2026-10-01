@@ -50,7 +50,17 @@ No introducir credenciales ni exports brutos en Git. Usar archivos temporales ig
 
 El despliegue de producción se realiza mediante GitHub Pages y GitHub Actions. El workflow está en `.github/workflows/astro.yml` y se ejecuta automáticamente con cada push a `main`; también se puede lanzar manualmente desde la pestaña Actions. Usa Node.js `22.12.0` porque la versión actual de Astro requiere Node.js 22.12.0 o superior. El build genera `dist/`, que se publica usando el entorno `github-pages`.
 
-La configuración está preparada para la URL de proyecto `https://pikmr.github.io/evoka-astro/`: `astro.config.mjs` define `site` y `base`, mientras que `configure-pages` proporciona esos valores al build del workflow. En el repositorio de GitHub, Pages debe tener seleccionado `GitHub Actions` como fuente de publicación (Settings → Pages → Build and deployment → Source).
+Un `npm run build` sin opciones adicionales usa los valores de `astro.config.mjs`: `site: https://evoka.store` y `base: /`. En desarrollo, `site` es `http://localhost:4321` y `base` sigue siendo `/`.
+
+El workflow ejecuta este comando después del paso `pages` (`actions/configure-pages@v5`):
+
+```yaml
+npm run build -- --site "${{ steps.pages.outputs.origin }}" --base "${{ steps.pages.outputs.base_path }}"
+```
+
+Las opciones `--site` y `--base` sustituyen los valores de `astro.config.mjs` para ese build. Por tanto, el despliegue usa el origen y la ruta base que devuelve GitHub Pages según su configuración, sin fijar `/evoka-web/` en el workflow. Al revisar un despliegue, comprobar esos valores en el paso de build; no deducir la URL publicada únicamente del archivo de configuración local.
+
+En el repositorio de GitHub, Pages debe tener seleccionado `GitHub Actions` como fuente de publicación (Settings → Pages → Build and deployment → Source).
 
 Para publicar:
 
@@ -60,4 +70,4 @@ git commit -m "Configurar despliegue en GitHub Pages"
 git push github-evoka main
 ```
 
-El remoto `github-evoka` apunta a `https://github.com/pikMR/evoka-astro.git`; `origin` continúa apuntando al remoto privado local.
+El remoto `github-evoka` apunta a `https://github.com/deco-evoka/evoka-web.git`; `origin` continúa apuntando al remoto privado local.
